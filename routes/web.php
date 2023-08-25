@@ -17,7 +17,7 @@ Route::get('/', function () {
     // return view('welcome');
     return redirect('sia/login');
 });
-Route::get('sia/login', function () { return view('main/login'); });
+Route::get('sia/login', function () { return view('auth/login'); });
 // Route::get('sia/main', function () { return view('layouts/main'); });
 Route::get('sia/dashboard', function () { return view('dashboard/dashboard'); });
 Route::get('sia/absensi/create', function () { return view('absensi/create'); });
