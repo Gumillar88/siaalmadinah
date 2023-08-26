@@ -1,4 +1,208 @@
-<div class="app-menu navbar-menu">
+<div class="app-menu navbar-menu" style="padding-top: 1%;">
+    <div class="navbar-brand-box">
+        <a href="index.html" class="logo logo-dark">
+            <span class="logo-sm">
+                <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
+            </span>
+            <span class="logo-lg">
+                <img src="{{url('assets/images/logo-dark.png')}}" alt="" height="17">
+            </span>
+        </a>
+        <a href="index.html" class="logo logo-light">
+            <span class="logo-sm">
+                <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
+            </span>
+            <span class="logo-lg">
+                <img src="{{url('assets/images/logo-light.png')}}" alt="" height="17">
+            </span>
+        </a>
+        <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+            <i class="ri-record-circle-line">
+            </i>
+        </button>
+    </div>
+    <div id="scrollbar">
+        <div class="container-fluid">
+            <div id="two-column-menu">
+            </div>
+            <ul class="navbar-nav" id="navbar-nav">
+                <li class="menu-title">
+                    <span data-key="t-menu">
+                        Menu
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="/dashboard">
+                        <i data-feather="home" class="icon-dual">
+                        </i>
+                        <span data-key="t-dashboards">
+                            Dashboards
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="/bk">
+                        <i data-feather="home" class="icon-dual">
+                        </i>
+                        <span data-key="t-dashboards">
+                            BK
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="/ppdb">
+                        <i data-feather="home" class="icon-dual">
+                        </i>
+                        <span data-key="t-dashboards">
+                            PPDB
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i data-feather="grid" class="icon-dual">
+                        </i>
+                        <span data-key="t-apps">
+                            Payment
+                        </span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarApps">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="/transaksi_pengeluaran" class="nav-link" data-key="t-calendar">
+                                    Transaksi Pengeluaran 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/spp" class="nav-link" data-key="t-chat">
+                                    SPP 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/gedung" class="nav-link" data-key="t-chat">
+                                    Gedung 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/pendaftaran" class="nav-link" data-key="t-chat">
+                                    Pendaftaran 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#users" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i data-feather="grid" class="icon-dual">
+                        </i>
+                        <span data-key="t-apps">
+                            Users
+                        </span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="users">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="/student" class="nav-link" data-key="t-calendar">
+                                    Student
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/teacher" class="nav-link" data-key="t-chat">
+                                    Teacher 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/parent" class="nav-link" data-key="t-chat">
+                                    Parent 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#master_data" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i data-feather="grid" class="icon-dual">
+                        </i>
+                        <span data-key="t-apps">
+                            Master Data
+                        </span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="master_data">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="/list_schools" class="nav-link" data-key="t-calendar">
+                                    List Schools
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/list_school_levels" class="nav-link" data-key="t-chat">
+                                    List School levels 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/list_classes" class="nav-link" data-key="t-chat">
+                                    List Classes 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/list_courses" class="nav-link" data-key="t-chat">
+                                    List Courses 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/list_employees" class="nav-link" data-key="t-chat">
+                                    List Employees 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/list_teachers" class="nav-link" data-key="t-chat">
+                                    List Teachers 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/list_students" class="nav-link" data-key="t-chat">
+                                    List Students 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#setting" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i data-feather="grid" class="icon-dual">
+                        </i>
+                        <span data-key="t-apps">
+                            Settings
+                        </span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="setting">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="/apps" class="nav-link" data-key="t-calendar">
+                                    Apps
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/role" class="nav-link" data-key="t-chat">
+                                    Role
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-chat">
+                                    Backup Database 
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar-background">
+    </div>
+</div>
+
+<!-- <div class="app-menu navbar-menu" style="padding-top: 1%;">
     <div class="navbar-brand-box">
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
@@ -1462,4 +1666,4 @@
     </div>
     <div class="sidebar-background">
     </div>
-</div>
+</div> -->
