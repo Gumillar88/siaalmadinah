@@ -1,4 +1,4 @@
-<header id="page-topbar">
+<header id="page-topbar" style="padding-top: 5px; padding-bottom: 5px;">
     <div class="layout-width">
         <div class="navbar-header">
             <div class="d-flex">
