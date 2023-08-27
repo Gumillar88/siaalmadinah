@@ -59,6 +59,7 @@ CREATE TABLE `apps_menu`  (
   `menu_order` int NULL DEFAULT NULL,
   `menu_type` enum('menu','dropdown','tab') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `menu_icon` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `icon` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `is_root` int NULL DEFAULT NULL,
   `is_active` int NULL DEFAULT NULL,
   `created_by` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
