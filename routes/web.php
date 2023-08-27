@@ -18,6 +18,7 @@ Route::get('/', function () {
     return redirect('login');
 });
 Route::get('login', function () { return view('auth/login'); });
+Route::get('choose_app', function () { return view('auth/choose_app'); });
 // Route::get('sia/main', function () { return view('layouts/main'); });
 Route::get('dashboard', function () { return view('dashboard/dashboard'); });
 Route::get('bk', function () { return view('bk/index'); });
