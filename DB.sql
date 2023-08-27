@@ -27,6 +27,7 @@ CREATE TABLE `apps`  (
   `hcode` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `icon` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `is_active` int NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp,
   `created_by` int NOT NULL,
