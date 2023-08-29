@@ -44,7 +44,8 @@ class AuthController extends Controller
         $id = base64_decode($id);
         $apps = Apps::find($id);
         if (!empty($apps)) {
-            Session()->put('apps_id', $id);
+            Session::put('apps_id', $id);
+            Session::put('hcode', $apps->hcode);
             return Redirect::to($apps->hcode);
         }
         return Redirect()->back();//->with('success', 'your message,here');

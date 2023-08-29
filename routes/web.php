@@ -55,19 +55,23 @@ Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'
     /*
     ** Module Payments
     */ 
-    Route::get('/transaction-expenditure', [PaymentController::class, 'expenditureRender'])->name('transaction-expenditure');
-    Route::get('/spp', [PaymentController::class, 'sppRender'])->name('spp');
-    Route::get('/transaction-building', [PaymentController::class, 'transactionBuildingRender'])->name('transaction-building');
-    Route::get('/registration', [PaymentController::class, 'registrationRender'])->name('registrations');
-    Route::get('/payment/create', [PaymentController::class, 'createPaymentRender'])->name('payment-create');
+    // Route::get('/transaction-expenditure', [PaymentController::class, 'expenditureRender'])->name('transaction-expenditure');
+    // Route::get('/spp', [PaymentController::class, 'sppRender'])->name('spp');
+    // Route::get('/transaction-building', [PaymentController::class, 'transactionBuildingRender'])->name('transaction-building');
+    // Route::get('/registration', [PaymentController::class, 'registrationRender'])->name('registrations');
+    // Route::get('/payment/create', [PaymentController::class, 'createPaymentRender'])->name('payment-create');
 
     /*
     ** Module User, Student, Teacher, Parents
     */ 
-    Route::get('/student', [UserController::class, 'studentRender'])->name('student');
-    Route::get('/teacher', [UserController::class, 'teacherRender'])->name('teacher');
-    Route::get('/parent', [UserController::class, 'parentRender'])->name('parent'); 
+    // Route::get('/student', [UserController::class, 'studentRender'])->name('student');
+    // Route::get('/teacher', [UserController::class, 'teacherRender'])->name('teacher');
+    // Route::get('/parent', [UserController::class, 'parentRender'])->name('parent'); 
+});
 
+Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'], function() {
+    
+    Route::get('/', [DashboardController::class, 'indexRender'])->name('dashboard');
     /*
     ** Module Master Data
     */
@@ -81,6 +85,10 @@ Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'
     Route::get('/master/employee', [MasterDataController::class, 'EmployeeRender'])->name('master-employee');
     Route::get('/master/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
     Route::get('/master/student', [MasterDataController::class, 'StudentRender'])->name('master-student');
+
+    Route::get('/master/student', [UserController::class, 'studentRender'])->name('master-student');
+    Route::get('/master/teacher', [UserController::class, 'teacherRender'])->name('master-teacher');
+    Route::get('/master/parent', [UserController::class, 'parentRender'])->name('master-parent'); 
 
     /*
     ** Module Settings & Role Data
