@@ -39,9 +39,9 @@ CREATE TABLE `apps`  (
 -- ----------------------------
 -- Records of apps
 -- ----------------------------
--- INSERT INTO `apps` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'dashboard', 'Dashboard', 'Lorem ipsum dolor siamet', 1, '2022-08-20 10:46:58', 0, '2022-08-20 14:52:26', 1);
--- INSERT INTO `apps` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'ppdb', 'PPDB', 'Lorem ipsum dolor siamet', 1, '2022-08-20 10:47:15', 1, '2022-08-20 14:52:30', 1);
--- INSERT INTO `apps` VALUES (3, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'eraport', 'E-Raport', '', 1, '2023-08-26 15:03:54', 1, '2023-08-26 15:03:54', 1);
+INSERT INTO `apps` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'dashboard', 'Dashboard', 'Lorem ipsum dolor siamet', 'fa fa-arror-left', 1, '2022-08-20 10:46:58', 0, '2022-08-20 14:52:26', 1);
+INSERT INTO `apps` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'ppdb', 'PPDB', 'Lorem ipsum dolor siamet', 'fa fa-arror-left', 1, '2022-08-20 10:47:15', 1, '2022-08-20 14:52:30', 1);
+INSERT INTO `apps` VALUES (3, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'eraport', 'E-Raport', '', 1, '2023-08-26 15:03:54', 'fa fa-arror-left', 1, '2023-08-26 15:03:54', 1);
 
 -- ----------------------------
 -- Table structure for apps_menu
@@ -59,7 +59,6 @@ CREATE TABLE `apps_menu`  (
   `menu_order` int NULL DEFAULT NULL,
   `menu_type` enum('menu','dropdown','tab') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `menu_icon` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-  `icon` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `is_root` int NULL DEFAULT NULL,
   `is_active` int NULL DEFAULT NULL,
   `created_by` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -72,7 +71,7 @@ CREATE TABLE `apps_menu`  (
 -- ----------------------------
 -- Records of apps_menu
 -- ----------------------------
--- INSERT INTO `apps_menu` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, NULL, 'Dashboard', 'home', 'Master Dashboard', 'dashboard', 0, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', 1, 1, '1', '2021-10-15 20:23:39', '2021-11-17 07:41:42', '1');
+INSERT INTO `apps_menu` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, NULL, 'Dashboard', 'home', 'Master Dashboard', 'dashboard', 0, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', 1, 1, '1', '2021-10-15 20:23:39', '2021-11-17 07:41:42', '1');
 -- INSERT INTO `apps_menu` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 3, NULL, 'master user', 'ppdb', 'Lorem ipsum dolor siamet', '/ppdb', 2, 'dropdown', NULL, 1, 1, '1', '2022-08-20 11:08:55', '2022-08-20 11:08:55', '1');
 
 -- ----------------------------
