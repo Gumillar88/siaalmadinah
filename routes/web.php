@@ -37,7 +37,7 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'indexRender'])->name('login');
 Route::post('/auth-login', [AuthController::class, 'loginHandle'])->name('auth-login');
 
-Route::group(['prefix' => 'sia', 'middleware' => ['auth'], 'as' => 'sia'], function() {
+// Route::group(['prefix' => 'sia', 'middleware' => ['auth'], 'as' => 'sia'], function() {
     
     Route::get('/dashboard', [DashboardController::class, 'indexRender'])->name('dashboard');
     Route::get('/choose-app', [ChooseAppController::class, 'indexRender'])->name('choose-app');
@@ -53,32 +53,32 @@ Route::group(['prefix' => 'sia', 'middleware' => ['auth'], 'as' => 'sia'], funct
     Route::get('/transaction-expenditure', [PaymentController::class, 'expenditureRender'])->name('transaction-expenditure');
     Route::get('/spp', [PaymentController::class, 'sppRender'])->name('spp');
     Route::get('/transaction-building', [PaymentController::class, 'transactionBuildingRender'])->name('transaction-building');
-    Route::get('/registrations', [PaymentController::class, 'registrationRender'])->name('registrations');
+    Route::get('/registration', [PaymentController::class, 'registrationRender'])->name('registrations');
     Route::get('/payment/create', [PaymentController::class, 'createPaymentRender'])->name('payment-create');
 
     /*
     ** Module User, Student, Teacher, Parents
     */ 
-    Route::get('/students', [UserController::class, 'studentRender'])->name('students');
-    Route::get('/teachers', [UserController::class, 'teacherRender'])->name('teachers');
-    Route::get('/parents', [UserController::class, 'parentRender'])->name('parents'); 
+    Route::get('/student', [UserController::class, 'studentRender'])->name('student');
+    Route::get('/teacher', [UserController::class, 'teacherRender'])->name('teacher');
+    Route::get('/parent', [UserController::class, 'parentRender'])->name('parent'); 
 
     /*
     ** Module Lists Master Data
     */
-    Route::get('/list-schools', [MasterDataController::class, 'listSchoolRender'])->name('list-schools');
-    Route::get('/list-school-levels', [MasterDataController::class, 'listSchoolLevelsRender'])->name('list-school-levels');
-    Route::get('/list-classes', [MasterDataController::class, 'listClassesRender'])->name('list-classes');
-    Route::get('/list-courses', [MasterDataController::class, 'listCoursesRender'])->name('list-courses');
-    Route::get('/list-employees', [MasterDataController::class, 'listEmployeesRender'])->name('list-employees');
-    Route::get('/list-teachers', [MasterDataController::class, 'listTeacherRender'])->name('list-teachers');
-    Route::get('/list-students', [MasterDataController::class, 'listStudentsRender'])->name('list-students');
+    Route::get('/master/list-school', [MasterDataController::class, 'listSchoolRender'])->name('list-school');
+    Route::get('/master/list-school-level', [MasterDataController::class, 'listSchoolLevelRender'])->name('list-school-level');
+    Route::get('/master/list-class', [MasterDataController::class, 'listClassRender'])->name('list-class');
+    Route::get('/master/list-course', [MasterDataController::class, 'listCourseRender'])->name('list-course');
+    Route::get('/master/list-employee', [MasterDataController::class, 'listEmployeeRender'])->name('list-employee');
+    Route::get('/master/list-teacher', [MasterDataController::class, 'listTeacherRender'])->name('list-teacher');
+    Route::get('/master/list-student', [MasterDataController::class, 'listStudentRender'])->name('list-student');
 
     /*
     ** Module Settings & Role Data
     */
     Route::get('/apps', [SettingsController::class, 'appsRender'])->name('apps');
     Route::get('/role', [SettingsController::class, 'roleRender'])->name('role');
-});
+// });
 
 Route::get('/logout', [AuthController::class, 'logoutRender'])->name('logout');

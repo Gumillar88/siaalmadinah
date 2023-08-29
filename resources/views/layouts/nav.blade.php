@@ -1,3 +1,8 @@
+<?php 
+use Illuminate\Support\Facades\URL;
+use App\Models\AppsMenu;
+$AppsMenu = AppsMenu::where(['is_active'=>'1','is_root'=>'1'])->orderBy('menu_order','asc')->get();
+?>
 <div class="app-menu navbar-menu" style="padding-top: 1%;">
     <div class="navbar-brand-box">
         <a href="index.html" class="logo logo-dark">
@@ -31,7 +36,41 @@
                         Menu
                     </span>
                 </li>
-                <li class="nav-item">
+                <?php foreach ($AppsMenu as $AM): ?>
+                    <?php if ($AM->menu_type == 'dropdown'): ?>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#{{$AM->slug}}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="{{$AM->slug}}">
+                                <?php echo $AM->menu_icon ?>
+                                <span data-key="t-{{$AM->slug}}">
+                                    {{$AM->menu_name}}
+                                </span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="{{$AM->slug}}">
+                                <ul class="nav nav-sm flex-column">
+                                    <?php 
+                                    $SubAppsMenu = AppsMenu::where(['is_active'=>'1','is_root'=>'0','id_parent'=>$AM->id])->orderBy('menu_order','asc')->get();
+                                    foreach ($SubAppsMenu as $SAM): ?>
+                                    <li class="nav-item">
+                                        <a href="{{url::to($SAM->menu_url)}}" class="nav-link" data-key="t-{{$SAM->slug}}">
+                                            {{$SAM->menu_name}}
+                                        </a>
+                                    </li>
+                                    <?php endforeach ?>
+                                </ul>
+                            </div>
+                        </li>
+                    <?php elseif($AM->menu_type == 'menu'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{url::to($AM->menu_url)}}">
+                            <?php echo $AM->menu_icon ?>
+                            <span data-key="t-{{$AM->slug}}">
+                                {{$AM->menu_name}}
+                            </span>
+                        </a>
+                    </li>
+                    <?php endif ?>
+                <?php endforeach ?>
+                <!-- <li class="nav-item">
                     <a class="nav-link menu-link" href="/dashboard">
                         <i data-feather="home" class="icon-dual">
                         </i>
@@ -39,8 +78,8 @@
                             Dashboards
                         </span>
                     </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a class="nav-link menu-link" href="/bk">
                         <i data-feather="home" class="icon-dual">
                         </i>
@@ -194,7 +233,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

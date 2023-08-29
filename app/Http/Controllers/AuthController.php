@@ -21,7 +21,6 @@ class AuthController extends Controller
             'email'         => 'required',
             'password'      => 'required',
         ]);
-        
         $data = [
             'email'     => $input['email'],
             'password'  => $input['password'],

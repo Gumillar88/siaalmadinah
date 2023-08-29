@@ -9,36 +9,36 @@ class MasterDataController extends Controller
 {
     public function listSchoolRender()
     {
-       return view('master_data/list_schools');
+       return view('master_data/list_school');
     }
 
-    public function listSchoolLevelsRender()
+    public function listSchoolLevelRender()
     {
-        return view('master_data/list_school_levels');
+        return view('master_data/list_school_level');
     }
 
-    public function listClassesRender()
+    public function listClassRender()
     {
-        return view('master_data/list_classes');
+        return view('master_data/list_classe');
     }
 
-    public function listCoursesRender() 
+    public function listCourseRender() 
     { 
         return view('master_data/list_courses');
     }
 
-    public function listEmployeesRender()
+    public function listEmployeeRender()
     {
-        return view('master_data/list_employees');
+        return view('master_data/list_employee');
     }
 
     public function listTeacherRender()
     {
-        return view('master_data/list_teachers');
+        return view('master_data/list_teacher');
     }
 
-    public function listStudentsRender()
+    public function listStudentRender()
     {
-        return view('master_data/list_students');
+        return view('master_data/list_student');
     }
 }
