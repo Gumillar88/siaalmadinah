@@ -11,7 +11,7 @@
  Target Server Version : 100425
  File Encoding         : 65001
 
- Date: 26/08/2023 17:23:14
+ Date: 29/08/2023 22:26:36
 */
 
 SET NAMES utf8mb4;
@@ -34,14 +34,15 @@ CREATE TABLE `apps`  (
   `update_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `update_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of apps
 -- ----------------------------
 INSERT INTO `apps` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'dashboard', 'Dashboard', 'Lorem ipsum dolor siamet', 'fa fa-arror-left', 1, '2022-08-20 10:46:58', 0, '2022-08-20 14:52:26', 1);
 INSERT INTO `apps` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'ppdb', 'PPDB', 'Lorem ipsum dolor siamet', 'fa fa-arror-left', 1, '2022-08-20 10:47:15', 1, '2022-08-20 14:52:30', 1);
-INSERT INTO `apps` VALUES (3, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'eraport', 'E-Raport', '', 1, '2023-08-26 15:03:54', 'fa fa-arror-left', 1, '2023-08-26 15:03:54', 1);
+INSERT INTO `apps` VALUES (3, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'eraport', 'E-Raport', '', '1', 2023, '0000-00-00 00:00:00', 1, '2023-08-29 21:58:14', 1);
+INSERT INTO `apps` VALUES (4, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'master', 'Master Data', '', 'fa fa-dashboard', 1, '2023-08-29 22:16:24', 0, '2023-08-29 22:17:01', 0);
 
 -- ----------------------------
 -- Table structure for apps_menu
@@ -66,13 +67,23 @@ CREATE TABLE `apps_menu`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp,
   `updated_by` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of apps_menu
 -- ----------------------------
-INSERT INTO `apps_menu` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, NULL, 'Dashboard', 'home', 'Master Dashboard', 'dashboard', 0, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', 1, 1, '1', '2021-10-15 20:23:39', '2021-11-17 07:41:42', '1');
--- INSERT INTO `apps_menu` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 3, NULL, 'master user', 'ppdb', 'Lorem ipsum dolor siamet', '/ppdb', 2, 'dropdown', NULL, 1, 1, '1', '2022-08-20 11:08:55', '2022-08-20 11:08:55', '1');
+INSERT INTO `apps_menu` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, NULL, 'Dashboard', 'dashboard', 'Master Dashboard', 'dashboard', 0, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', 1, 1, '1', '2021-10-15 20:23:39', '2021-11-17 07:41:42', '1');
+INSERT INTO `apps_menu` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, NULL, 'Master Data', 'master', NULL, 'master', 99, 'dropdown', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', 1, 1, '1', '2023-08-29 12:45:14', '2023-08-29 12:45:14', '1');
+INSERT INTO `apps_menu` VALUES (3, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, NULL, 'BK', 'bk', NULL, 'bk', 1, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', 1, 0, '1', '2023-08-29 12:45:12', '2023-08-29 12:45:12', '1');
+INSERT INTO `apps_menu` VALUES (4, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 2, NULL, 'PPDB', 'ppdb', NULL, 'ppdb', 2, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', 1, 0, '1', '2023-08-29 12:45:13', '2023-08-29 12:45:13', '1');
+INSERT INTO `apps_menu` VALUES (6, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List School', 'school', NULL, 'master/school', 1, 'menu', NULL, 0, 1, '1', '2023-08-29 12:45:14', '2023-08-29 12:45:14', '1');
+INSERT INTO `apps_menu` VALUES (7, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List School Level', 'school', NULL, 'master/schoollevel', 2, 'menu', NULL, 0, 1, '1', '2023-08-29 12:47:45', '2023-08-29 12:47:45', '1');
+INSERT INTO `apps_menu` VALUES (8, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List Class', 'class', NULL, 'master/class', 3, 'menu', NULL, 0, 1, '1', '2023-08-29 12:47:45', '2023-08-29 12:47:45', '1');
+INSERT INTO `apps_menu` VALUES (9, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List Course', 'course', NULL, 'master/course', 4, 'menu', NULL, 0, 1, '1', '2023-08-29 12:47:45', '2023-08-29 12:47:45', '1');
+INSERT INTO `apps_menu` VALUES (10, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List Employee', 'employee', NULL, 'master/employee', 5, 'menu', NULL, 0, 1, '1', '2023-08-29 12:47:46', '2023-08-29 12:47:46', '1');
+INSERT INTO `apps_menu` VALUES (11, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List Teacher', 'teacher', NULL, 'master/teacher', 6, 'menu', NULL, 0, 1, '1', '2023-08-29 12:47:46', '2023-08-29 12:47:46', '1');
+INSERT INTO `apps_menu` VALUES (12, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List Student', 'student', NULL, 'master/student', 7, 'menu', NULL, 0, 1, '1', '2023-08-29 12:47:47', '2023-08-29 12:47:47', '1');
+INSERT INTO `apps_menu` VALUES (13, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, NULL, 'Dashboard', 'dashboard', 'Master Dashboard', 'dashboard', 0, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', 1, 0, '1', '2021-10-15 20:23:39', '2021-11-17 07:41:42', '1');
 
 -- ----------------------------
 -- Table structure for apps_menu_role_permission
@@ -82,7 +93,7 @@ CREATE TABLE `apps_menu_role_permission`  (
   `role_id` int NOT NULL,
   `permission_id` int NOT NULL,
   `school_token` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of apps_menu_role_permission
@@ -122,7 +133,7 @@ CREATE TABLE `apps_menu_user`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `update_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of apps_menu_user
@@ -138,7 +149,7 @@ CREATE TABLE `apps_school_relateds`  (
   `school_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `apps_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of apps_school_relateds
@@ -160,7 +171,7 @@ CREATE TABLE `apps_user`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `update_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of apps_user
@@ -191,7 +202,7 @@ CREATE TABLE `bk_record`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of bk_record
@@ -209,7 +220,7 @@ CREATE TABLE `bk_setting`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of bk_setting
@@ -233,7 +244,7 @@ CREATE TABLE `class`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of class
@@ -256,7 +267,7 @@ CREATE TABLE `class_user`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of class_user
@@ -278,7 +289,7 @@ CREATE TABLE `course`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course
@@ -306,7 +317,7 @@ CREATE TABLE `course_class`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course_class
@@ -333,7 +344,7 @@ CREATE TABLE `course_class_user`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course_class_user
@@ -364,7 +375,7 @@ CREATE TABLE `course_detail`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course_detail
@@ -391,7 +402,7 @@ CREATE TABLE `course_detail_attendance`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course_detail_attendance
@@ -416,7 +427,7 @@ CREATE TABLE `course_document`  (
   `updated_by` int NOT NULL,
   `teacher_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course_document
@@ -437,7 +448,7 @@ CREATE TABLE `logs`  (
   `response` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `created_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of logs
@@ -458,7 +469,7 @@ CREATE TABLE `mst_academic_year`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mst_academic_year
@@ -474,7 +485,7 @@ CREATE TABLE `mst_permission`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mst_permission
@@ -498,7 +509,7 @@ CREATE TABLE `mst_role`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mst_role
@@ -528,7 +539,7 @@ CREATE TABLE `mst_school`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mst_school
@@ -549,23 +560,23 @@ CREATE TABLE `mst_school_grade`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9878 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mst_school_grade
 -- ----------------------------
-INSERT INTO `mst_school_grade` VALUES (1, 4, 'XII', 'XII', '2022-08-17 19:23:52', 1, '2022-08-17 19:25:24', 1);
-INSERT INTO `mst_school_grade` VALUES (2, 4, 'XI', 'XI', '2022-08-17 19:22:44', 1, '2022-08-17 19:23:05', 1);
-INSERT INTO `mst_school_grade` VALUES (3, 4, 'X', 'X', '2022-08-17 19:22:34', 1, '2022-08-17 19:26:15', 1);
-INSERT INTO `mst_school_grade` VALUES (4, 3, 'IX', 'IX', '2022-08-17 19:24:32', 1, '2022-08-17 19:25:41', 1);
-INSERT INTO `mst_school_grade` VALUES (5, 3, 'VIII', 'VIII', '2022-08-17 19:24:32', 1, '2022-08-17 19:24:32', 1);
-INSERT INTO `mst_school_grade` VALUES (6, 3, 'VII', 'VII', '2022-08-17 19:23:52', 1, '2022-08-17 19:25:39', 1);
-INSERT INTO `mst_school_grade` VALUES (33, 2, 'VI', 'VI', '2022-08-20 15:22:57', 1, '2022-08-20 15:22:57', 1);
-INSERT INTO `mst_school_grade` VALUES (34, 2, 'V', 'V', '2022-08-20 15:22:57', 1, '2022-08-20 15:22:57', 1);
-INSERT INTO `mst_school_grade` VALUES (35, 2, 'IV', 'IV', '2022-08-20 15:23:39', 1, '2022-08-20 15:23:39', 1);
-INSERT INTO `mst_school_grade` VALUES (36, 2, 'III', 'III', '2022-08-20 15:23:39', 1, '2022-08-20 15:23:39', 1);
-INSERT INTO `mst_school_grade` VALUES (37, 2, 'II', 'II', '2022-08-20 15:24:24', 1, '2022-08-20 15:24:24', 1);
-INSERT INTO `mst_school_grade` VALUES (38, 2, 'I', 'I', '2022-08-20 15:24:24', 1, '2022-08-20 15:24:24', 1);
+INSERT INTO `mst_school_grade` VALUES (1, 2, 'I', 'I', '2022-08-20 15:24:24', 1, '2023-08-29 19:18:53', 1);
+INSERT INTO `mst_school_grade` VALUES (2, 2, 'II', 'II', '2022-08-20 15:24:24', 1, '2023-08-29 19:19:10', 1);
+INSERT INTO `mst_school_grade` VALUES (3, 2, 'III', 'III', '2022-08-20 15:23:39', 1, '2023-08-29 19:19:11', 1);
+INSERT INTO `mst_school_grade` VALUES (4, 2, 'IV', 'IV', '2022-08-20 15:23:39', 1, '2023-08-29 19:19:13', 1);
+INSERT INTO `mst_school_grade` VALUES (5, 2, 'V', 'V', '2022-08-20 15:22:57', 1, '2023-08-29 19:19:14', 1);
+INSERT INTO `mst_school_grade` VALUES (6, 2, 'VI', 'VI', '2022-08-20 15:22:57', 1, '2023-08-29 19:19:15', 1);
+INSERT INTO `mst_school_grade` VALUES (7, 3, 'VII', 'VII', '2022-08-17 19:23:52', 1, '2023-08-29 19:19:15', 1);
+INSERT INTO `mst_school_grade` VALUES (8, 3, 'VIII', 'VIII', '2022-08-17 19:24:32', 1, '2023-08-29 19:19:16', 1);
+INSERT INTO `mst_school_grade` VALUES (9, 3, 'IX', 'IX', '2022-08-17 19:24:32', 1, '2023-08-29 19:19:17', 1);
+INSERT INTO `mst_school_grade` VALUES (10, 4, 'X', 'X', '2022-08-17 19:22:34', 1, '2023-08-29 19:19:19', 1);
+INSERT INTO `mst_school_grade` VALUES (11, 4, 'XI', 'XI', '2022-08-17 19:22:44', 1, '2023-08-29 19:19:20', 1);
+INSERT INTO `mst_school_grade` VALUES (12, 4, 'XII', 'XII', '2022-08-17 19:23:52', 1, '2023-08-29 19:19:22', 1);
 
 -- ----------------------------
 -- Table structure for mst_school_level
@@ -579,7 +590,7 @@ CREATE TABLE `mst_school_level`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mst_school_level
@@ -609,7 +620,7 @@ CREATE TABLE `parent`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of parent
@@ -634,7 +645,7 @@ CREATE TABLE `reff_api`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of reff_api
@@ -648,7 +659,7 @@ CREATE TABLE `reff_bank_code`  (
   `bank_code` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `bank_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `is_active` tinyint NOT NULL DEFAULT 1
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of reff_bank_code
@@ -817,7 +828,7 @@ CREATE TABLE `student`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student
@@ -843,7 +854,7 @@ CREATE TABLE `student_payment_billing`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student_payment_billing
@@ -872,7 +883,7 @@ CREATE TABLE `student_payment_record`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student_payment_record
@@ -900,7 +911,7 @@ CREATE TABLE `student_registration`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student_registration
@@ -925,7 +936,7 @@ CREATE TABLE `student_registration_document`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student_registration_document
@@ -956,7 +967,7 @@ CREATE TABLE `teacher`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of teacher
@@ -975,6 +986,7 @@ CREATE TABLE `users`  (
   `password` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `email` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `phone` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `content` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL COMMENT 'create json data',
   `role_id` int NOT NULL,
   `account_id` int NOT NULL,
   `is_active` int NOT NULL DEFAULT 1,
@@ -985,12 +997,12 @@ CREATE TABLE `users`  (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'Admin', 'admin', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'admin', '0893456789', 6, 0, 1, 0, 1, '2022-08-20 14:36:49', 1, '2022-08-20 15:33:56', 1);
-INSERT INTO `users` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'jamal', 'jamal', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'jamal@mailinator.com', '08765456789', 3, 1, 1, 0, 1, '2022-08-20 15:07:02', 1, '2022-08-20 15:33:08', 1);
+INSERT INTO `users` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'Admin', 'admin', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'admin@admin.com', '0893456789', NULL, 6, 0, 1, 0, 1, '2022-08-20 14:36:49', 1, '2023-08-29 21:24:38', 1);
+INSERT INTO `users` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'jamal', 'jamal', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'jamal@mailinator.com', '08765456789', NULL, 3, 1, 1, 0, 1, '2022-08-20 15:07:02', 1, '2022-08-20 15:33:08', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
