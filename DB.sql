@@ -965,10 +965,10 @@ CREATE TABLE `teacher`  (
 INSERT INTO `teacher` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', '3175211111710011', '111111', 'Jamal Bahri', 'laki-laki', 'WNI', 'Bojong Gede', '[]', 3, 1, 0, '2022-08-01', 1, '2022-08-20 14:34:49', 1, '2022-08-20 14:43:46', 1);
 
 -- ----------------------------
--- Table structure for user
+-- Table structure for users
 -- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`  (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `school_token` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -989,9 +989,9 @@ CREATE TABLE `user`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of user
+-- Records of users
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'Admin', 'admin', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'admin', '0893456789', 6, 0, 1, 0, 1, '2022-08-20 14:36:49', 1, '2022-08-20 15:33:56', 1);
-INSERT INTO `user` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'jamal', 'jamal', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'jamal@mailinator.com', '08765456789', 3, 1, 1, 0, 1, '2022-08-20 15:07:02', 1, '2022-08-20 15:33:08', 1);
+INSERT INTO `users` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'Admin', 'admin', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'admin', '0893456789', 6, 0, 1, 0, 1, '2022-08-20 14:36:49', 1, '2022-08-20 15:33:56', 1);
+INSERT INTO `users` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 'jamal', 'jamal', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'jamal@mailinator.com', '08765456789', 3, 1, 1, 0, 1, '2022-08-20 15:07:02', 1, '2022-08-20 15:33:08', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
