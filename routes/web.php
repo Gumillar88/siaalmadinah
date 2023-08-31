@@ -1,6 +1,23 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
+
+use App\Http\Controllers\Admin\{
+    DashboardController,
+    ChooseAppController,
+    BkController,
+    PpdbController,
+    PaymentController,
+    UserController,
+    MasterDataController,
+    SettingsController,
+};
+// use App\Http\Controllers\Admin\DashboardController;
+// use App\Http\Controllers\Admin\ChooseAppController;
+// use App\Http\Controllers\Admin\BkController;
+// use App\Http\Controllers\Admin\PpdbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,33 +31,70 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
     return redirect('login');
 });
-Route::get('login', function () { return view('auth/login'); });
-Route::get('choose_app', function () { return view('auth/choose_app'); });
-// Route::get('sia/main', function () { return view('layouts/main'); });
-Route::get('dashboard', function () { return view('dashboard/dashboard'); });
-Route::get('bk', function () { return view('bk/index'); });
-Route::get('ppdb', function () { return view('ppdb/index'); });
-Route::get('ppdb/create', function () { return view('ppdb/create'); });
-Route::get('transaksi_pengeluaran', function () { return view('payment/transaksi_pengeluaran'); });
-Route::get('spp', function () { return view('payment/spp'); });
-Route::get('gedung', function () { return view('payment/gedung'); });
-Route::get('pendaftaran', function () { return view('payment/pendaftaran'); });
-Route::get('payment/create', function () { return view('payment/create'); });
-Route::get('student', function () { return view('master_user/student'); });
-Route::get('teacher', function () { return view('master_user/teacher'); });
-Route::get('parent', function () { return view('master_user/parent'); });
-Route::get('list_schools', function () { return view('master_data/list_schools'); });
-Route::get('list_school_levels', function () { return view('master_data/list_school_levels'); });
-Route::get('list_classes', function () { return view('master_data/list_classes'); });
-Route::get('list_courses', function () { return view('master_data/list_courses'); });
-Route::get('list_employees', function () { return view('master_data/list_employees'); });
-Route::get('list_teachers', function () { return view('master_data/list_teachers'); });
-Route::get('list_students', function () { return view('master_data/list_students'); });
-Route::get('apps', function () { return view('settings/apps'); });
-Route::get('role', function () { return view('settings/role'); });
 
+Route::get('/login', [AuthController::class, 'indexRender'])->name('login');
+Route::post('/auth-login', [AuthController::class, 'loginHandle'])->name('auth-login');
 
+Route::group(['prefix' => 'sia', 'middleware' => ['auth'], 'as' => 'sia'], function() {
+    Route::get('/choose-app', [ChooseAppController::class, 'indexRender'])->name('choose-app');
+    Route::get('/module/{id}', [AuthController::class, 'appsHandler'])->name('apps-handle');
+});
 
+Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'], function() {
+
+    Route::get('/', [DashboardController::class, 'indexRender'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'indexRender'])->name('dashboard');
+
+    Route::get('/bk', [BkController::class, 'indexRender'])->name('bk');
+    Route::get('/ppdb', [PpdbController::class, 'indexRender'])->name('ppdb');
+    Route::get('/ppdb/create', [PpdbController::class, 'createRender'])->name('ppdb-create');
+    Route::get('/ppdb', [PpdbController::class, 'indexRender'])->name('ppdb');
+
+    /*
+    ** Module Payments
+    */ 
+    // Route::get('/transaction-expenditure', [PaymentController::class, 'expenditureRender'])->name('transaction-expenditure');
+    // Route::get('/spp', [PaymentController::class, 'sppRender'])->name('spp');
+    // Route::get('/transaction-building', [PaymentController::class, 'transactionBuildingRender'])->name('transaction-building');
+    // Route::get('/registration', [PaymentController::class, 'registrationRender'])->name('registrations');
+    // Route::get('/payment/create', [PaymentController::class, 'createPaymentRender'])->name('payment-create');
+
+    /*
+    ** Module User, Student, Teacher, Parents
+    */ 
+    // Route::get('/student', [UserController::class, 'studentRender'])->name('student');
+    // Route::get('/teacher', [UserController::class, 'teacherRender'])->name('teacher');
+    // Route::get('/parent', [UserController::class, 'parentRender'])->name('parent'); 
+});
+
+Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'], function() {
+    
+    Route::get('/', [DashboardController::class, 'indexRender'])->name('dashboard');
+    /*
+    ** Module Master Data
+    */
+    Route::get('/master/school', [MasterDataController::class, 'SchoolRender'])->name('master-school');
+    Route::get('/master/school/form', [MasterDataController::class, 'SchoolForm'])->name('master-school-form');
+    Route::get('/master/schoollevel', [MasterDataController::class, 'SchoolLevelRender'])->name('master-schoollevel');
+    Route::get('/master/class', [MasterDataController::class, 'ClassRender'])->name('master-class');
+    Route::get('/master/class/create', [MasterDataController::class, 'ClassCreateRender'])->name('master-class-create');
+    Route::get('/master/class/edit/{id}', [MasterDataController::class, 'ClassEditRender'])->name('master-class-edit');
+    Route::get('/master/course', [MasterDataController::class, 'CourseRender'])->name('master-course');
+    Route::get('/master/employee', [MasterDataController::class, 'EmployeeRender'])->name('master-employee');
+    Route::get('/master/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
+    Route::get('/master/student', [MasterDataController::class, 'StudentRender'])->name('master-student');
+
+    Route::get('/master/student', [UserController::class, 'studentRender'])->name('master-student');
+    Route::get('/master/teacher', [UserController::class, 'teacherRender'])->name('master-teacher');
+    Route::get('/master/parent', [UserController::class, 'parentRender'])->name('master-parent'); 
+
+    /*
+    ** Module Settings & Role Data
+    */
+    Route::get('/apps', [SettingsController::class, 'appsRender'])->name('apps');
+    Route::get('/role', [SettingsController::class, 'roleRender'])->name('role');
+});
+
+Route::get('/logout', [AuthController::class, 'logoutRender'])->name('logout');

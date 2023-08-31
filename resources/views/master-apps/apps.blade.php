@@ -1,5 +1,4 @@
 <?php 
-use Illuminate\Support\Facades\URL;
 use App\Models\Apps;
 $apps = Apps::get();
 ?>
@@ -75,7 +74,6 @@ $apps = Apps::get();
                                 <div class="col-lg-6 row">
                                     <div class="p-4">
                                         <?php foreach ($apps as $row): ?>
-                                        <a href="{{url::to('sia/module/'.base64_encode($row->id))}}">        
                                         <div class="card col-sm-6 col-xs-12 apps-box" style="background-color: #E3F2FD; border-color: transparent;">
                                             <div class="card-body">
                                                 <h5 class="card-title">
@@ -84,7 +82,6 @@ $apps = Apps::get();
                                                 </h5>
                                             </div>
                                         </div>
-                                            </a>
                                         <?php endforeach ?>
                                     </div>
                                 </div>
