@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\URL;
     <div class="card-header card-header-primary">
       <h4 class="card-title ">{{$view['module']}}</h4>
       <p class="card-category">{{$view['page']}}</p>
-      <a id="addRow" class="btn btn-primary col-sm-2" href="{{url::to('master/class/edit')}}"><i class=" bx bx-plus-medical"></i> Add New</a>
+      <a id="addRow" class="btn btn-primary col-sm-2" href="{{url::to(Session::get('hcode').'/class/create')}}"><i class=" bx bx-plus-medical"></i> Add New</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\URL;
               <td class="text-center">{{$row->name}}</td>
               <td class="text-center">
                 <span>
-                  <a class="fs-15" href="{{url::to('master/class/edit/$row->id')}}"><i class="ri-edit-2-line"></i></a>
+                  <a class="fs-15" href="{{url::to(Session::get('hcode').'/class/edit/'.$row->id)}}"><i class="ri-edit-2-line"></i></a>
                   <a class="fs-15"><i class=" bx bx-trash"></i></a>
                 </span>
               </td>

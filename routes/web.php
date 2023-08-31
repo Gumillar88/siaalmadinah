@@ -70,25 +70,27 @@ Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'
 });
 
 Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'], function() {
-    
+
     Route::get('/', [DashboardController::class, 'indexRender'])->name('dashboard');
     /*
     ** Module Master Data
     */
-    Route::get('/master/school', [MasterDataController::class, 'SchoolRender'])->name('master-school');
-    Route::get('/master/school/form', [MasterDataController::class, 'SchoolForm'])->name('master-school-form');
-    Route::get('/master/schoollevel', [MasterDataController::class, 'SchoolLevelRender'])->name('master-schoollevel');
-    Route::get('/master/class', [MasterDataController::class, 'ClassRender'])->name('master-class');
-    Route::get('/master/class/create', [MasterDataController::class, 'ClassCreateRender'])->name('master-class-create');
-    Route::get('/master/class/edit/{id}', [MasterDataController::class, 'ClassEditRender'])->name('master-class-edit');
-    Route::get('/master/course', [MasterDataController::class, 'CourseRender'])->name('master-course');
-    Route::get('/master/employee', [MasterDataController::class, 'EmployeeRender'])->name('master-employee');
-    Route::get('/master/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
-    Route::get('/master/student', [MasterDataController::class, 'StudentRender'])->name('master-student');
+    Route::get('/school', [MasterDataController::class, 'SchoolRender'])->name('master-school');
+    Route::get('/school/form', [MasterDataController::class, 'SchoolForm'])->name('master-school-form');
+    Route::get('/schoollevel', [MasterDataController::class, 'SchoolLevelRender'])->name('master-schoollevel');
+    Route::get('/class', [MasterDataController::class, 'ClassRender'])->name('master-class');
+    Route::get('/class/create', [MasterDataController::class, 'ClassCreateRender'])->name('master-class-create');
+    Route::post('/class/create/store', [MasterDataController::class, 'ClassCreateStore'])->name('master-class-create-store');
+    Route::get('/class/edit/{id}', [MasterDataController::class, 'ClassEditRender'])->name('master-class-edit');
+    Route::post('/class/edit/{id}/store', [MasterDataController::class, 'ClassEditStore'])->name('master-class-edit-store');
+    Route::get('/course', [MasterDataController::class, 'CourseRender'])->name('master-course');
+    Route::get('/employee', [MasterDataController::class, 'EmployeeRender'])->name('master-employee');
+    Route::get('/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
+    Route::get('/student', [MasterDataController::class, 'StudentRender'])->name('master-student');
 
-    Route::get('/master/student', [UserController::class, 'studentRender'])->name('master-student');
-    Route::get('/master/teacher', [UserController::class, 'teacherRender'])->name('master-teacher');
-    Route::get('/master/parent', [UserController::class, 'parentRender'])->name('master-parent'); 
+    Route::get('/student', [UserController::class, 'studentRender'])->name('master-student');
+    Route::get('/teacher', [UserController::class, 'teacherRender'])->name('master-teacher');
+    Route::get('/parent', [UserController::class, 'parentRender'])->name('master-parent'); 
 
     /*
     ** Module Settings & Role Data

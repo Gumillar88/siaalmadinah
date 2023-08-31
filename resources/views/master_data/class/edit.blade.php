@@ -9,7 +9,7 @@
       <!-- <a id="addRow" class="btn btn-primary col-sm-2" href="{{route('master-class-create')}}"><i class=" bx bx-plus-medical"></i> Add New</a> -->
     </div>
     <div class="card-body">
-      <form method="POST" accept="{{route('master-class-update')}}">    
+      <form method="POST" action="{{route('master-class-update')}}">    
         @csrf
         <div class="row">
           <div class="col-md-12 form-group">
