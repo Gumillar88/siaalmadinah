@@ -590,21 +590,18 @@ class MasterDataController extends Controller
 
     public function EmployeeRender()
     {
-        
-    }
-    public function ClassStore(Request $request)
-    {   
-        return redirect(url::to('/master/list-class'));
+        $list = Employee::all();
+        return view('master_data/employee/index',['list'=>$list]);
     }
     
     public function TeacherRender()
     {
         $list = Teacher::all();
-        return view('master_data/teacher',['list'=>$list]);
+        return view('master_data/teacher/index',['list'=>$list]);
     }
     public function StudentRender()
     {
         $list = Student::all();
-        return view('master_data/student',['list'=>$list]);
+        return view('master_data/student/index',['list'=>$list]);
     }
 }
