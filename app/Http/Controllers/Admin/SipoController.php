@@ -21,4 +21,9 @@ class SipoController extends Controller
     {
         return view('sipo/achievement'); 
     }
+
+    public function classRender()
+    {
+        return view('sipo/class_set'); 
+    }
 }

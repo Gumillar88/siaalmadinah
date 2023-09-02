@@ -44,7 +44,7 @@ Route::group(['prefix' => 'sipo', 'middleware' => ['auth'], 'as' => 'sipo'], fun
     Route::get('/subjects_taken', [SipoController::class, 'subjectsRender'])->name('subjects_taken');
     Route::get('/extracuricullar', [SipoController::class, 'extRender'])->name('extracuricullar');
     Route::get('/achievement', [SipoController::class, 'achRender'])->name('achievement');
-
+    Route::get('/class_set', [SipoController::class, 'classRender'])->name('class_set');
 });
 
 Route::group(['prefix' => 'sia', 'middleware' => ['auth'], 'as' => 'sia'], function() {
