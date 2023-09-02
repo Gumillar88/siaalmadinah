@@ -354,7 +354,7 @@ class MasterDataController extends Controller
         
         $request->session()->flash('data-created', '');
         return back();
-
+    }
     public function ClassCreateRender()
     {   
         $view['module']   = 'Class';
