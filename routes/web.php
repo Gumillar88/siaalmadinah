@@ -43,6 +43,7 @@ Route::post('/auth-login', [AuthController::class, 'loginHandle'])->name('auth-l
 Route::group(['prefix' => 'sipo', 'middleware' => ['auth'], 'as' => 'sipo'], function() {
     Route::get('/subjects_taken', [SipoController::class, 'subjectsRender'])->name('subjects_taken');
     Route::get('/extracuricullar', [SipoController::class, 'extRender'])->name('extracuricullar');
+    Route::get('/achievement', [SipoController::class, 'achRender'])->name('achievement');
 
 });
 

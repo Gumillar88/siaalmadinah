@@ -16,4 +16,9 @@ class SipoController extends Controller
     {
         return view('sipo/extracuricullar'); 
     }
+
+    public function achRender()
+    {
+        return view('sipo/achievement'); 
+    }
 }
