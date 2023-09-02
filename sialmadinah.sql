@@ -27,7 +27,7 @@ CREATE TABLE `apps` (
   `name` text NOT NULL,
   `description` text NOT NULL,
   `icon` text NOT NULL,
-  `is_active` enum('1','0') DEFAULT '1' COMMENT '1: is_delete & o not_delete',
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & o not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `update_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -37,7 +37,7 @@ CREATE TABLE `apps` (
 
 /*Data for the table `apps` */
 
-insert  into `apps`(`id`,`school_token`,`hcode`,`name`,`description`,`icon`,`is_active`,`created_at`,`created_by`,`update_at`,`update_by`) values 
+insert  into `apps`(`id`,`school_token`,`hcode`,`name`,`description`,`icon`,`is_delete`,`created_at`,`created_by`,`update_at`,`update_by`) values 
 (1,'aF5I7jy9nZmGEFY16&zhlIebtI^','dashboard','Dashboard','Lorem ipsum dolor siamet','fa fa-arror-left','1','2022-08-20 10:46:58',0,'2022-08-20 14:52:26',1),
 (2,'aF5I7jy9nZmGEFY16&zhlIebtI^','ppdb','PPDB','Lorem ipsum dolor siamet','fa fa-arror-left','1','2022-08-20 10:47:15',1,'2022-08-20 14:52:30',1),
 (3,'aF5I7jy9nZmGEFY16&zhlIebtI^','eraport','E-Raport','','1','','0000-00-00 00:00:00',1,'2023-08-29 21:58:14',1),
@@ -60,29 +60,30 @@ CREATE TABLE `apps_menu` (
   `menu_type` enum('menu','dropdown','tab') DEFAULT NULL,
   `menu_icon` text DEFAULT NULL,
   `is_root` enum('1','0') DEFAULT '0' COMMENT '1: is_root & 0: not root',
-  `is_active` enum('1','0') DEFAULT '1' COMMENT '1: is_delete & o not_deletd',
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_by` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp(),
   `updated_by` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `apps_menu` */
 
-insert  into `apps_menu`(`id`,`school_token`,`apps_id`,`id_parent`,`menu_name`,`slug`,`menu_description`,`menu_url`,`menu_order`,`menu_type`,`menu_icon`,`is_root`,`is_active`,`created_by`,`created_at`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'Dashboard','dashboard','Master Dashboard','dashboard',0,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','1','1','2021-10-15 20:23:39','2021-11-17 07:41:42','1'),
-(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'Master Data','master',NULL,'master',99,'dropdown','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','1','1','2023-08-29 12:45:14','2023-08-29 12:45:14','1'),
-(3,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'BK','bk',NULL,'bk',1,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','','1','2023-08-29 12:45:12','2023-08-29 12:45:12','1'),
-(4,'aF5I7jy9nZmGEFY16&zhlIebtI^',2,NULL,'PPDB','ppdb',NULL,'ppdb',2,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','','1','2023-08-29 12:45:13','2023-08-29 12:45:13','1'),
-(6,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List School','school',NULL,'school',1,'menu',NULL,'','1','1','2023-08-29 12:45:14','2023-08-29 12:45:14','1'),
-(7,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List School Level','school',NULL,'schoollevel',2,'menu',NULL,'','1','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
-(8,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Class','class',NULL,'class',3,'menu',NULL,'','1','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
-(9,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Course','course',NULL,'course',4,'menu',NULL,'','1','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
-(10,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Employee','employee',NULL,'master/employee',5,'menu',NULL,'','1','1','2023-08-29 12:47:46','2023-08-29 12:47:46','1'),
-(11,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Teacher','teacher',NULL,'master/teacher',6,'menu',NULL,'','1','1','2023-08-29 12:47:46','2023-08-29 12:47:46','1'),
-(12,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Student','student',NULL,'master/student',7,'menu',NULL,'','1','1','2023-08-29 12:47:47','2023-08-29 12:47:47','1'),
-(13,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'Dashboard','dashboard','Master Dashboard','dashboard',0,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','','1','2021-10-15 20:23:39','2021-11-17 07:41:42','1');
+insert  into `apps_menu`(`id`,`school_token`,`apps_id`,`id_parent`,`menu_name`,`slug`,`menu_description`,`menu_url`,`menu_order`,`menu_type`,`menu_icon`,`is_root`,`is_delete`,`created_by`,`created_at`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'Dashboard','dashboard','Master Dashboard','dashboard',0,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','0','1','2021-10-15 20:23:39','2021-11-17 07:41:42','1'),
+(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'Master Data','master',NULL,'master',99,'dropdown','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','0','1','2023-08-29 12:45:14','2023-08-29 12:45:14','1'),
+(3,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'BK','bk',NULL,'bk',1,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','0','1','2023-08-29 12:45:12','2023-08-29 12:45:12','1'),
+(4,'aF5I7jy9nZmGEFY16&zhlIebtI^',2,NULL,'PPDB','ppdb',NULL,'ppdb',2,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','0','1','2023-08-29 12:45:13','2023-08-29 12:45:13','1'),
+(6,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List School','school',NULL,'school',1,'menu',NULL,'0','0','1','2023-08-29 12:45:14','2023-08-29 12:45:14','1'),
+(7,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List School Level','school',NULL,'schoollevel',2,'menu',NULL,'0','0','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
+(8,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Class','class',NULL,'class',3,'menu',NULL,'0','0','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
+(9,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Course','course',NULL,'course',4,'menu',NULL,'0','0','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
+(10,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Employee','employee',NULL,'employee',5,'menu',NULL,'0','1','1','2023-08-29 12:47:46','2023-08-29 12:47:46','1'),
+(11,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Teacher','teacher',NULL,'teacher',6,'menu',NULL,'0','1','1','2023-08-29 12:47:46','2023-08-29 12:47:46','1'),
+(12,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Student','student',NULL,'student',7,'menu',NULL,'0','1','1','2023-08-29 12:47:47','2023-08-29 12:47:47','1'),
+(13,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'Dashboard','dashboard','Master Dashboard','dashboard',0,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','','1','2021-10-15 20:23:39','2021-11-17 07:41:42','1'),
+(14,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'List Users','user',NULL,'user',8,NULL,NULL,'0','0',NULL,'2023-09-02 15:14:50','2023-09-02 15:14:54','1');
 
 /*Table structure for table `apps_menu_role_permission` */
 
@@ -236,7 +237,7 @@ CREATE TABLE `class` (
   `academic_year_id` int(11) NOT NULL,
   `name` text DEFAULT NULL,
   `pic` varchar(255) DEFAULT NULL,
-  `is_active` enum('1','0') DEFAULT '1' COMMENT '1: is_delete & 0 not_delete',
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0 not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -246,7 +247,7 @@ CREATE TABLE `class` (
 
 /*Data for the table `class` */
 
-insert  into `class`(`id`,`school_token`,`hcode`,`school_grade_id`,`academic_year_id`,`name`,`pic`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+insert  into `class`(`id`,`school_token`,`hcode`,`school_grade_id`,`academic_year_id`,`name`,`pic`,`is_delete`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
 (1,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=','TK-A-1',1,1,'TK A-1','','1','2022-08-14 18:19:11',0,'2023-09-01 05:46:05',0),
 (2,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=','TK-B-2',1,1,'TK B-2',NULL,'1','2023-09-01 01:36:35',1,'2023-09-01 21:27:58',1);
 
@@ -261,7 +262,7 @@ CREATE TABLE `class_user` (
   `student_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
   `academic_year_id` int(11) NOT NULL,
-  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & o not_delete',
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -271,7 +272,7 @@ CREATE TABLE `class_user` (
 
 /*Data for the table `class_user` */
 
-insert  into `class_user`(`id`,`school_token`,`class_id`,`student_id`,`teacher_id`,`academic_year_id`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+insert  into `class_user`(`id`,`school_token`,`class_id`,`student_id`,`teacher_id`,`academic_year_id`,`is_delete`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
 (1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'0','2022-08-20 13:11:21',1,'2022-08-20 13:11:21',1);
 
 /*Table structure for table `course` */
@@ -314,7 +315,7 @@ CREATE TABLE `course_class` (
   `schdule_end` time NOT NULL,
   `academic_year_id` int(11) NOT NULL,
   `school_grade_id` int(11) NOT NULL,
-  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -324,7 +325,7 @@ CREATE TABLE `course_class` (
 
 /*Data for the table `course_class` */
 
-insert  into `course_class`(`id`,`school_token`,`course_id`,`class_id`,`teacher_id`,`schedule_day`,`schedule_date`,`schedule_start`,`schdule_end`,`academic_year_id`,`school_grade_id`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+insert  into `course_class`(`id`,`school_token`,`course_id`,`class_id`,`teacher_id`,`schedule_day`,`schedule_date`,`schedule_start`,`schdule_end`,`academic_year_id`,`school_grade_id`,`is_delete`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
 (1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Senin','2022-08-22','08:00:00','10:00:00',1,4,'0','2022-08-20 13:23:14',1,'2022-08-20 13:38:38',1),
 (2,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Selasa','2022-08-23','10:00:00','11:00:00',1,1,'0','2022-08-20 13:49:10',1,'2022-08-20 13:49:10',1),
 (3,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Rabu','2022-08-24','10:00:00','11:00:00',1,1,'0','2022-08-20 13:50:46',1,'2022-08-20 13:50:46',1);
@@ -342,7 +343,7 @@ CREATE TABLE `course_class_user` (
   `teacher_id` int(11) NOT NULL,
   `academic_year_id` int(11) NOT NULL,
   `school_grade_id` int(11) NOT NULL,
-  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -352,7 +353,7 @@ CREATE TABLE `course_class_user` (
 
 /*Data for the table `course_class_user` */
 
-insert  into `course_class_user`(`id`,`school_token`,`student_id`,`course_id`,`class_id`,`teacher_id`,`academic_year_id`,`school_grade_id`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+insert  into `course_class_user`(`id`,`school_token`,`student_id`,`course_id`,`class_id`,`teacher_id`,`academic_year_id`,`school_grade_id`,`is_delete`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
 (1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,1,4,NULL,'2022-08-20 13:52:54',1,'2022-08-20 13:52:54',1);
 
 /*Table structure for table `course_detail` */
@@ -374,7 +375,7 @@ CREATE TABLE `course_detail` (
   `name` text NOT NULL,
   `description` text NOT NULL,
   `link_class_forum` text DEFAULT NULL,
-  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -384,7 +385,7 @@ CREATE TABLE `course_detail` (
 
 /*Data for the table `course_detail` */
 
-insert  into `course_detail`(`id`,`school_token`,`class_id`,`teacher_id`,`course_id`,`academic_year_id`,`hcode`,`sort_order`,`event_date`,`event_start`,`event_end`,`name`,`description`,`link_class_forum`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+insert  into `course_detail`(`id`,`school_token`,`class_id`,`teacher_id`,`course_id`,`academic_year_id`,`hcode`,`sort_order`,`event_date`,`event_start`,`event_end`,`name`,`description`,`link_class_forum`,`is_delete`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
 (1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'1st-intro',1,'2022-08-22','08:00:00','08:00:00','Introduction','Pengenalan Materi yang akan disiapkan','https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1','0','2022-08-20 13:25:49',1,'2022-08-20 13:45:34',1),
 (2,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'2nd-Materi-Reproduksi',2,'2022-08-29','08:00:00','10:00:00','Reproduksi','Reproduksi','https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1','0','2022-08-20 13:26:06',1,'2022-08-20 13:46:04',1);
 
@@ -402,7 +403,7 @@ CREATE TABLE `course_detail_attendance` (
   `teacher_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `log_time` time NOT NULL,
-  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -412,7 +413,7 @@ CREATE TABLE `course_detail_attendance` (
 
 /*Data for the table `course_detail_attendance` */
 
-insert  into `course_detail_attendance`(`id`,`school_token`,`course_id`,`course_detail_id`,`course_class_user_id`,`class_id`,`teacher_id`,`student_id`,`log_time`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+insert  into `course_detail_attendance`(`id`,`school_token`,`course_id`,`course_detail_id`,`course_class_user_id`,`class_id`,`teacher_id`,`student_id`,`log_time`,`is_delete`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
 (1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,1,1,'13:53:18','0','2022-08-20 13:54:20',1,'2022-08-20 13:54:20',1);
 
 /*Table structure for table `course_document` */

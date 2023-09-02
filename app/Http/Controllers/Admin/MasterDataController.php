@@ -16,9 +16,12 @@ use App\Http\Models\MasterClassesModel;
 use App\Http\Models\MasterAcademicYearModel;
 use App\Http\Models\MasterCoursesModel;
 use App\Http\Models\MasterTeacherModel;
+use App\Http\Models\MasterEmployeeModel;
+use App\Http\Models\MasterRoleModel;
 use App\Helpers\AppHelpers;
 use Validator;
 use Session;
+use Hash;
 use App\Models\Teacher;
 use App\Models\User;
 
@@ -34,6 +37,8 @@ class MasterDataController extends Controller
         $this->current_year     = new MasterAcademicYearModel();
         $this->master_course    = new MasterCoursesModel();
         $this->master_teacher   = new MasterTeacherModel();
+        $this->master_employee  = new MasterEmployeeModel();
+        $this->master_roles     = new MasterRoleModel();
         $this->helper           = new AppHelpers();
     }
 
@@ -354,7 +359,8 @@ class MasterDataController extends Controller
         
         $request->session()->flash('data-created', '');
         return back();
-
+    }
+    
     public function ClassCreateRender()
     {   
         $view['module']   = 'Class';
@@ -405,7 +411,7 @@ class MasterDataController extends Controller
         $academic_year = $this->current_year->getByCurrentYear();
         $data = [
             'school_token'      => $input['school_token'],
-            'hcode'          => str_replace(' ', '-', $input['name']),
+            'hcode'             => str_replace(' ', '-', $input['name']),
             'school_grade_id'   => $input['school_level_id'],
             'academic_year_id'  => $academic_year->id,
             'name'              => $input['name'],
@@ -600,12 +606,178 @@ class MasterDataController extends Controller
         return redirect('/master/course/');
     }
 
+    public function UserRender()
+    {
+        $lists = $this->master_employee->getAll();
+        
+        $_schools = $this->helper->_getAllMasterSchoolByTokenData();
+        $schools = $this->master_school->getAll();
+
+        $_roles = $this->helper->_getAllMasterRoleByIdData();
+        $roles = $this->master_roles->getAll();
+        $data = [
+            'lists'         => $lists,
+            'form_action'   => URL::to('/master/user/create'),
+            'form_method'   => 'POST',
+            '_schools'      => $_schools,
+            'schools'       => $schools,
+            'roles'         => $roles,
+            '_roles'        => $_roles,
+        ];
+
+        return view('master_data/users/index', $data);
+    }
+
+    public function UserCreateHandle(Request $request)
+    {
+        $input = $request->all();
+        
+        // Validate input
+        $validator = Validator::make($input, [
+            'name'          => 'required|max:255',
+            'school_token'  => 'required',
+            'email'         => 'required',
+            'username'          => 'required',
+            'password'      => 'required',
+        ]);
+
+        if ($validator->fails())
+        {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user_id = $request->session()->get('user_id');
+        
+        // Encrypt password
+        $hash = Hash::make($input['password']);
+
+        if(isset($input['content']))
+        {
+            $content = json_encode($input['content']);
+        } 
+        else 
+        {
+            $content = '';
+        }
+        
+        $data = [
+            'school_token'  => $input['school_token'],
+            'name'          => $input['name'],
+            'username'      => $input['username'],
+            'password'      => $hash,
+            'email'         => $input['email'],
+            'role_id'       => $input['role_id'],
+            'content'       => $content,
+            'is_active'     => '1',
+            'created_at'    => date('Y-m-d'),
+            'created_by'    => $user_id,
+        ];
+
+        $this->master_employee->create($data);
+        
+        $request->session()->flash('data-created', '');
+        return back();
+    }
+
+    public function UserEditRender($id)
+    {
+        $user_id = base64_decode($id);
+        $users = $this->master_employee->getOne($user_id);
+
+        $_schools = $this->helper->_getAllMasterSchoolByTokenData();
+        $schools = $this->master_school->getAll();
+
+        $_roles = $this->helper->_getAllMasterRoleByIdData();
+        $roles = $this->master_roles->getAll();
+        
+        $data = [
+            'form_action'   => URL::to('/master/user/edit'),
+            'form_method'   => 'POST',
+            '_schools'      => $_schools,
+            'schools'       => $schools,
+            'roles'         => $roles,
+            'users'         => $users,
+        ];
+        
+        return view('master_data/users/edit', $data);
+    }
+
+    public function UserEditHandle(Request $request)
+    {
+        $input = $request->all();
+        
+        // Validate input
+        $validator = Validator::make($input, [
+            'name'          => 'required|max:255',
+            'school_token'  => 'required',
+            'email'         => 'required',
+            'username'          => 'required',
+        ]);
+
+        if ($validator->fails())
+        {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user_id = $request->session()->get('user_id');
+
+        if (!empty($input['password'])) 
+        {
+            // Encrypt password
+            $hash = Hash::make($input['password']);
+        } 
+        else 
+        {
+            $hash = $input['password_old'];
+        }
+
+        if(isset($input['content']))
+        {
+            $content = json_encode($input['content']);
+        } 
+        else 
+        {
+            $content = '';
+        }
+        
+        $data = [
+            'school_token'  => $input['school_token'],
+            'name'          => $input['name'],
+            'username'      => $input['username'],
+            'password'      => $hash,
+            'email'         => $input['email'],
+            'role_id'       => $input['role_id'],
+            'content'       => $content,
+            'is_active'     => '1',
+            'updated_at'    => date('Y-m-d'),
+            'updated_by'    => $user_id,
+        ];
+
+        $id = base64_decode($input['id']);
+        // Save Data
+        $this->master_employee->update($id, $data);
+
+        $request->session()->flash('data-updated', '');
+        return back();
+    }
+
     public function EmployeeRender()
     {
-        $list = Employee::all();
-        return view('master_data/employee/index',['list'=>$list]);
+        $lists = $this->master_employee->getAll();
+        
+        $_schools = $this->helper->_getAllMasterSchoolByTokenData();
+        $schools = $this->master_school->getAll();
+        $data = [
+            'lists'         => $lists,
+            'form_action'   => URL::to('/master/users/create'),
+            'form_method'   => 'POST',
+            '_schools'      => $_schools,
+            'schools'       => $schools,
+        ];
+
+        return view('master_data/employee/index', $data);
     }
-    
+
     public function TeacherRender()
     {
         $list = Teacher::all();
