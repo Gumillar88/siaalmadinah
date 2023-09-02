@@ -50,7 +50,7 @@ class AuthController extends Controller
             Session::put('name', $user->name);
             Session::put('username', $user->username);
             Session::put('email', $user->email);
-//             Session::put('apps_id', $id);
+            // Session::put('apps_id', $id);
           
             return redirect('/sia/choose-app');
         }
