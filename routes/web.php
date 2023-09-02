@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\{
     NilaiController,
     MasterDataController,
     SettingsController,
+    SipoController
 };
 // use App\Http\Controllers\Admin\DashboardController;
 // use App\Http\Controllers\Admin\ChooseAppController;
@@ -37,6 +38,13 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'indexRender'])->name('login');
 Route::post('/auth-login', [AuthController::class, 'loginHandle'])->name('auth-login');
+
+
+Route::group(['prefix' => 'sipo', 'middleware' => ['auth'], 'as' => 'sipo'], function() {
+    Route::get('/subjects_taken', [SipoController::class, 'subjectsRender'])->name('subjects_taken');
+    Route::get('/extracuricullar', [SipoController::class, 'extRender'])->name('extracuricullar');
+
+});
 
 Route::group(['prefix' => 'sia', 'middleware' => ['auth'], 'as' => 'sia'], function() {
     Route::get('/choose-app', [ChooseAppController::class, 'indexRender'])->name('choose-app');
