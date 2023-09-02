@@ -1,39 +1,75 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="col-md-12">
-  <div class="card">
-    <div class="card-header card-header-primary">
-      <h4 class="card-title ">{{$view['module']}}</h4>
-      <p class="card-category">{{$view['page']}}</p>
-      <!-- <a id="addRow" class="btn btn-primary col-sm-2" href="{{route('master-class-create')}}"><i class=" bx bx-plus-medical"></i> Add New</a> -->
-    </div>
-    <div class="card-body">
-      <form method="POST" accept="{{route('master-class-update')}}">    
-        @csrf
-        <div class="row">
-          <div class="col-md-12 form-group">
-            <label>{{ucwords(str_replace('_','','academic_year'))}}</label>
-            <input type="text" required class="form-control" name="academic_year_id">
-          </div>
-          <div class="col-md-12 form-group">
-            <label>{{ucwords(str_replace('_','','school_grade'))}}</label>
-            <input type="text" required class="form-control" name="school_grade_id">
-          </div>
-          <div class="col-md-12 form-group">
-            <label>{{ucwords(str_replace('_','','name'))}}</label>
-            <input type="text" required class="form-control" name="name">
-          </div>
-          <div class="col-md-12 form-group">
-            <label>{{ucwords(str_replace('_','','pic'))}}</label>
-            <input type="text" required class="form-control" name="pic">
-          </div>
-          <div class="col-md-12 form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ $form_action }}" method="{{ $form_method }}">
+                @csrf
+                <input type="hidden" value="{{ base64_encode($classes->id) }}" name="id">
+                @if(count($errors) > 0)
+                <div class="alert alert-danger" role="alert">
+                    {{ $errors->all()[0] }}
+                </div>
+                @endif
+
+                @if(Session::has('data-updated'))
+                <div class="alert alert-success">Data has been updated</div>
+                @endif
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="name_school" class="form-label">School Name</label>
+                            <select class="form-control" name="school_token">
+
+                                @foreach($schools as $value)
+                                @if($value->token == $classes->school_token)
+                                <option value="{{ $value->token }}" selected>
+                                    {{ $value->name }}
+                                </option>
+                                @else
+                                <option value="{{ $value->token }}" selected>
+                                    {{ $value->name }}
+                                </option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="school_level" class="form-label">School Level</label>
+                            <select class="form-control" name="school_level_id">
+                                @foreach($school_levels as $value)
+                                @if($value->id == $classes->school_grade_id)
+                                <option value="{{ $value->id }}" selected>
+                                    {{ $value->name }}
+                                </option>
+                                @else
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="col-12">
+                        <label for="name" class="form-label">Class Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ $classes->name }}" id="name">
+                    </div>
+                    <!--end col-->
+                    <div class="col-lg-12 mt-3">
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+
+                <!--end row-->
+            </form>
         </div>
-      </form>
     </div>
-  </div>
 </div>
 @endsection

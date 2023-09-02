@@ -8,10 +8,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Models\Apps;
-
+use App\Http\Models\UserModel;
+use App\Helpers\AppHelpers;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->user     = new UserModel();
+        $this->helper   = new AppHelpers();
+    }
+    
     public function indexRender()
     {
         return view('auth/login');
@@ -32,6 +39,13 @@ class AuthController extends Controller
         
         if (Auth::attempt($data)) 
         {
+            $user = $this->user->getByEmail($input['email']);
+            
+            Session::put('school_token', $user->school_token);
+            Session::put('user_id', $user->id);
+            Session::put('role_id', $user->role_id);
+            Session::put('account_id', $user->account_id);
+            
             return redirect('/sia/choose-app');
         }
         else 

@@ -1,4 +1,6 @@
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
+
 <head>
     <meta charset="utf-8" />
     <title>
@@ -15,6 +17,7 @@
     <link href="{{url('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{url('assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
     <div id="layout-wrapper">
         @include('layouts.header')
@@ -22,12 +25,14 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="NotificationModalbtn-close">
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="mt-2 text-center">
-                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px">
+                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px">
                             </lord-icon>
                             <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
                                 <h4>
@@ -111,4 +116,5 @@
     <script src="{{url('assets/js/app.js')}}">
     </script>
 </body>
+
 </html>

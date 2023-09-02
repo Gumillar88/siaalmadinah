@@ -75,20 +75,53 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     /*
     ** Module Master Data
     */
-    Route::get('/master/school', [MasterDataController::class, 'SchoolRender'])->name('master-school');
-    Route::get('/master/school/form', [MasterDataController::class, 'SchoolForm'])->name('master-school-form');
-    Route::get('/master/schoollevel', [MasterDataController::class, 'SchoolLevelRender'])->name('master-schoollevel');
-    Route::get('/master/class', [MasterDataController::class, 'ClassRender'])->name('master-class');
-    Route::get('/master/class/create', [MasterDataController::class, 'ClassCreateRender'])->name('master-class-create');
-    Route::get('/master/class/edit/{id}', [MasterDataController::class, 'ClassEditRender'])->name('master-class-edit');
-    Route::get('/master/course', [MasterDataController::class, 'CourseRender'])->name('master-course');
-    Route::get('/master/employee', [MasterDataController::class, 'EmployeeRender'])->name('master-employee');
-    Route::get('/master/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
-    Route::get('/master/student', [MasterDataController::class, 'StudentRender'])->name('master-student');
+    Route::get('/school', [MasterDataController::class, 'SchoolRender'])->name('master-school');
+    Route::post('/school/create', [MasterDataController::class, 'SchoolHandle'])->name('master-school-save');
 
-    Route::get('/master/student', [UserController::class, 'studentRender'])->name('master-student');
-    Route::get('/master/teacher', [UserController::class, 'teacherRender'])->name('master-teacher');
-    Route::get('/master/parent', [UserController::class, 'parentRender'])->name('master-parent'); 
+    Route::get('/school/edit/{id}', [MasterDataController::class, 'SchoolEditRender'])->name('master-school-edit');
+    Route::post('/school/edit/', [MasterDataController::class, 'SchoolEditHandle'])->name('master-school-save');
+    
+    Route::get('/school/remove/{id}', [MasterDataController::class, 'SchoolRemoveRender'])->name('master-school-remove');
+    Route::post('/school/remove/', [MasterDataController::class, 'SchoolRemoveHandle'])->name('master-school-delete');
+
+    Route::get('/schoollevel', [MasterDataController::class, 'SchoolLevelRender'])->name('master-schoollevel');
+    Route::post('/schoollevel/create', [MasterDataController::class, 'SchoolLevelHandle'])->name('master-schoollevel-save');
+
+    Route::get('/schoollevel/edit/{id}', [MasterDataController::class, 'SchoolLevelEditRender'])->name('master-schoollevel-edit');
+    Route::post('/schoollevel/edit/', [MasterDataController::class, 'SchoolLevelEditHandle'])->name('master-schoollevel-update');
+    
+    Route::get('/schoollevel/remove/{id}', [MasterDataController::class, 'SchoolLevelRemoveRender'])->name('master-schoollevel-remove');
+    Route::post('/schoollevel/remove/', [MasterDataController::class, 'SchoolLevelRemoveHandle'])->name('master-schoollevel-delete');
+
+    Route::get('/class', [MasterDataController::class, 'ClassRender'])->name('master-class');
+
+    Route::post('/class/create', [MasterDataController::class, 'ClassCreateHandle'])->name('master-class-save');
+
+    Route::get('/class/edit/{id}', [MasterDataController::class, 'ClassEditRender'])->name('master-class-edit');
+    Route::post('/class/edit/', [MasterDataController::class, 'ClassEditHandle'])->name('master-class-update');
+
+    Route::get('/class/remove/{id}', [MasterDataController::class, 'ClassRemoveRender'])->name('master-class-remove');
+    Route::post('/class/remove/', [MasterDataController::class, 'ClassRemoveHandle'])->name('master-class-delete');
+
+    /*
+    ** Course
+    */ 
+    Route::get('/course', [MasterDataController::class, 'CourseRender'])->name('master-course');
+    Route::post('/course/create', [MasterDataController::class, 'CourseCreateHandle'])->name('master-course-save');
+
+    Route::get('/course/edit/{id}', [MasterDataController::class, 'CourseEditRender'])->name('master-course-edit');
+    Route::post('/course/edit/', [MasterDataController::class, 'CourseEditHandle'])->name('master-course-update');
+
+    Route::get('/course/remove/{id}', [MasterDataController::class, 'CourseRemoveRender'])->name('master-course-remove');
+    Route::post('/course/remove/', [MasterDataController::class, 'CourseRemoveHandle'])->name('master-course-delete');
+
+    Route::get('/employee', [MasterDataController::class, 'EmployeeRender'])->name('master-employee');
+    Route::get('/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
+    Route::get('/student', [MasterDataController::class, 'StudentRender'])->name('master-student');
+
+    Route::get('/student', [UserController::class, 'studentRender'])->name('master-student');
+    Route::get('/teacher', [UserController::class, 'teacherRender'])->name('master-teacher');
+    Route::get('/parent', [UserController::class, 'parentRender'])->name('master-parent'); 
 
     /*
     ** Module Settings & Role Data
