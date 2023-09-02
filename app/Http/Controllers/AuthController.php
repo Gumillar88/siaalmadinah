@@ -8,11 +8,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Models\Apps;
-use App\Models\Users;
-
-
+use App\Http\Models\UserModel;
+use App\Helpers\AppHelpers;
+use App\Models\Users
+  
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->user     = new UserModel();
+        $this->helper   = new AppHelpers();
+    }
+    
     public function indexRender()
     {
         return view('auth/login');
@@ -30,23 +37,21 @@ class AuthController extends Controller
             'email'     => $input['email'],
             'password'  => $input['password'],
         ];
-        // print_r($data);exit;
+      
         if (Auth::attempt($data)) 
         {
-            $User = Users::where(['email'=>$data['email']])->first();
-            if (empty($User)) {
-                return redirect()->route('login')->with('failed', 'Incorrect Email or Password');
-            }
-            // print_r($User);
-            echo $User->name;
-            exit;
-            Session::put('id', $User->id);
-            Session::put('name', $User->name);
-            Session::put('username', $User->username);
-            Session::put('email', $User->email);
-            Session::put('role_id', $User->role_id);
-            Session::put('content', json_decode($User->content,true));
-            Session::put('apps_id', $id);
+            $user = $this->user->getByEmail($input['email']);
+            
+            Session::put('school_token', $user->school_token);
+            Session::put('user_id', $user->id);
+            Session::put('role_id', $user->role_id);
+            Session::put('account_id', $user->account_id);
+            
+            Session::put('name', $user->name);
+            Session::put('username', $user->username);
+            Session::put('email', $user->email);
+//             Session::put('apps_id', $id);
+          
             return redirect('/sia/choose-app');
         }
         else 

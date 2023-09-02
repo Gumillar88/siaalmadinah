@@ -21,7 +21,8 @@ $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_active'=>'1'
                 <img src="{{url('assets/images/logo-light.png')}}" alt="" height="17">
             </span>
         </a>
-        <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+        <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+            id="vertical-hover">
             <i class="ri-record-circle-line">
             </i>
         </button>
@@ -37,38 +38,40 @@ $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_active'=>'1'
                     </span>
                 </li>
                 <?php foreach ($AppsMenu as $AM): ?>
-                    <?php if ($AM->menu_type == 'dropdown'): ?>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#{{$AM->slug}}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="{{$AM->slug}}">
-                                <?php echo $AM->menu_icon ?>
-                                <span data-key="t-{{$AM->slug}}">
-                                    {{$AM->menu_name}}
-                                </span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="{{$AM->slug}}">
-                                <ul class="nav nav-sm flex-column">
-                                    <?php 
+                <?php if ($AM->menu_type == 'dropdown'): ?>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#{{$AM->slug}}" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="{{$AM->slug}}">
+                        <?php echo $AM->menu_icon ?>
+                        <span data-key="t-{{$AM->slug}}">
+                            {{$AM->menu_name}}
+                        </span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="{{$AM->slug}}">
+                        <ul class="nav nav-sm flex-column">
+                            <?php 
                                     $SubAppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_active'=>'1','is_root'=>'0','id_parent'=>$AM->id])->orderBy('menu_order','asc')->get();
                                     foreach ($SubAppsMenu as $SAM): ?>
-                                    <li class="nav-item">
-                                        <a href="{{url::to(Session::get('hcode').'/'.$SAM->menu_url)}}" class="nav-link" data-key="t-{{$SAM->slug}}">
-                                            {{$SAM->menu_name}}
-                                        </a>
-                                    </li>
-                                    <?php endforeach ?>
-                                </ul>
-                            </div>
-                        </li>
-                    <?php elseif($AM->menu_type == 'menu'): ?>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{url::to(Session::get('hcode').'/'.$AM->menu_url)}}">
-                            <?php echo $AM->menu_icon ?>
-                            <span data-key="t-{{$AM->slug}}">
-                                {{$AM->menu_name}}
-                            </span>
-                        </a>
-                    </li>
-                    <?php endif ?>
+                            <li class="nav-item">
+                                <a href="{{url::to(Session::get('hcode').'/'.$SAM->menu_url)}}" class="nav-link"
+                                    data-key="t-{{$SAM->slug}}">
+                                    {{$SAM->menu_name}}
+                                </a>
+                            </li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                </li>
+                <?php elseif($AM->menu_type == 'menu'): ?>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{url::to(Session::get('hcode').'/'.$AM->menu_url)}}">
+                        <?php echo $AM->menu_icon ?>
+                        <span data-key="t-{{$AM->slug}}">
+                            {{$AM->menu_name}}
+                        </span>
+                    </a>
+                </li>
+                <?php endif ?>
                 <?php endforeach ?>
                 <!-- <li class="nav-item">
                     <a class="nav-link menu-link" href="/dashboard">
