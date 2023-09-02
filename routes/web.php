@@ -51,22 +51,6 @@ Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'
     Route::get('/ppdb', [PpdbController::class, 'indexRender'])->name('ppdb');
     Route::get('/ppdb/create', [PpdbController::class, 'createRender'])->name('ppdb-create');
     Route::get('/ppdb', [PpdbController::class, 'indexRender'])->name('ppdb');
-
-    /*
-    ** Module Payments
-    */ 
-    // Route::get('/transaction-expenditure', [PaymentController::class, 'expenditureRender'])->name('transaction-expenditure');
-    // Route::get('/spp', [PaymentController::class, 'sppRender'])->name('spp');
-    // Route::get('/transaction-building', [PaymentController::class, 'transactionBuildingRender'])->name('transaction-building');
-    // Route::get('/registration', [PaymentController::class, 'registrationRender'])->name('registrations');
-    // Route::get('/payment/create', [PaymentController::class, 'createPaymentRender'])->name('payment-create');
-
-    /*
-    ** Module User, Student, Teacher, Parents
-    */ 
-    // Route::get('/student', [UserController::class, 'studentRender'])->name('student');
-    // Route::get('/teacher', [UserController::class, 'teacherRender'])->name('teacher');
-    // Route::get('/parent', [UserController::class, 'parentRender'])->name('parent'); 
 });
 
 Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'], function() {
@@ -75,6 +59,10 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     /*
     ** Module Master Data
     */
+
+    /*
+    ** Schools
+    */ 
     Route::get('/school', [MasterDataController::class, 'SchoolRender'])->name('master-school');
     Route::post('/school/create', [MasterDataController::class, 'SchoolHandle'])->name('master-school-save');
 
@@ -84,6 +72,9 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     Route::get('/school/remove/{id}', [MasterDataController::class, 'SchoolRemoveRender'])->name('master-school-remove');
     Route::post('/school/remove/', [MasterDataController::class, 'SchoolRemoveHandle'])->name('master-school-delete');
 
+    /*
+    ** School Level
+    */ 
     Route::get('/schoollevel', [MasterDataController::class, 'SchoolLevelRender'])->name('master-schoollevel');
     Route::post('/schoollevel/create', [MasterDataController::class, 'SchoolLevelHandle'])->name('master-schoollevel-save');
 
@@ -93,6 +84,9 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     Route::get('/schoollevel/remove/{id}', [MasterDataController::class, 'SchoolLevelRemoveRender'])->name('master-schoollevel-remove');
     Route::post('/schoollevel/remove/', [MasterDataController::class, 'SchoolLevelRemoveHandle'])->name('master-schoollevel-delete');
 
+    /*
+    ** Class
+    */ 
     Route::get('/class', [MasterDataController::class, 'ClassRender'])->name('master-class');
 
     Route::post('/class/create', [MasterDataController::class, 'ClassCreateHandle'])->name('master-class-save');
@@ -115,13 +109,43 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     Route::get('/course/remove/{id}', [MasterDataController::class, 'CourseRemoveRender'])->name('master-course-remove');
     Route::post('/course/remove/', [MasterDataController::class, 'CourseRemoveHandle'])->name('master-course-delete');
 
+    /*
+    ** Employee
+    */ 
     Route::get('/employee', [MasterDataController::class, 'EmployeeRender'])->name('master-employee');
+
+    Route::post('/employee/create', [MasterDataController::class, 'EmployeeCreateHandle'])->name('master-employee-save');
+
+    Route::get('/employee/edit/{id}', [MasterDataController::class, 'EmployeeEditRender'])->name('master-employee-edit');
+    Route::post('/employee/edit/', [MasterDataController::class, 'EmployeeEditHandle'])->name('master-employee-update');
+
+    Route::get('/employee/remove/{id}', [MasterDataController::class, 'EmployeeRemoveRender'])->name('master-employee-remove');
+    Route::post('/employee/remove/', [MasterDataController::class, 'EmployeeRemoveHandle'])->name('master-employee-delete');
+
+    /*
+    ** Teacher
+    */ 
     Route::get('/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
+
+    Route::post('/teacher/create', [MasterDataController::class, 'TeacherCreateHandle'])->name('master-teacher-save');
+
+    Route::get('/teacher/edit/{id}', [MasterDataController::class, 'TeacherEditRender'])->name('master-teacher-edit');
+    Route::post('/teacher/edit/', [MasterDataController::class, 'TeacherEditHandle'])->name('master-teacher-update');
+
+    Route::get('/teacher/remove/{id}', [MasterDataController::class, 'TeacherRemoveRender'])->name('master-teacher-remove');
+    Route::post('/teacher/remove/', [MasterDataController::class, 'TeacherRemoveHandle'])->name('master-teacher-delete');
+    /*
+    ** student
+    */ 
     Route::get('/student', [MasterDataController::class, 'StudentRender'])->name('master-student');
 
-    Route::get('/student', [UserController::class, 'studentRender'])->name('master-student');
-    Route::get('/teacher', [UserController::class, 'teacherRender'])->name('master-teacher');
-    Route::get('/parent', [UserController::class, 'parentRender'])->name('master-parent'); 
+    Route::post('/student/create', [MasterDataController::class, 'StudentCreateHandle'])->name('master-student-save');
+
+    Route::get('/student/edit/{id}', [MasterDataController::class, 'StudentEditRender'])->name('master-student-edit');
+    Route::post('/student/edit/', [MasterDataController::class, 'StudentEditHandle'])->name('master-student-update');
+
+    Route::get('/student/remove/{id}', [MasterDataController::class, 'StudentRemoveRender'])->name('master-student-remove');
+    Route::post('/student/remove/', [MasterDataController::class, 'StudentRemoveHandle'])->name('master-student-delete');
 
     /*
     ** Module Settings & Role Data
