@@ -27,7 +27,7 @@ CREATE TABLE `apps` (
   `name` text NOT NULL,
   `description` text NOT NULL,
   `icon` text NOT NULL,
-  `is_active` int(11) NOT NULL,
+  `is_active` enum('1','0') DEFAULT '1' COMMENT '1: is_delete & o not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `update_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -38,10 +38,10 @@ CREATE TABLE `apps` (
 /*Data for the table `apps` */
 
 insert  into `apps`(`id`,`school_token`,`hcode`,`name`,`description`,`icon`,`is_active`,`created_at`,`created_by`,`update_at`,`update_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^','dashboard','Dashboard','Lorem ipsum dolor siamet','fa fa-arror-left',1,'2022-08-20 10:46:58',0,'2022-08-20 14:52:26',1),
-(2,'aF5I7jy9nZmGEFY16&zhlIebtI^','ppdb','PPDB','Lorem ipsum dolor siamet','fa fa-arror-left',1,'2022-08-20 10:47:15',1,'2022-08-20 14:52:30',1),
-(3,'aF5I7jy9nZmGEFY16&zhlIebtI^','eraport','E-Raport','','1',2023,'0000-00-00 00:00:00',1,'2023-08-29 21:58:14',1),
-(4,'aF5I7jy9nZmGEFY16&zhlIebtI^','master','Master Data','','fa fa-dashboard',1,'2023-08-29 22:16:24',0,'2023-08-29 22:17:01',0);
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^','dashboard','Dashboard','Lorem ipsum dolor siamet','fa fa-arror-left','1','2022-08-20 10:46:58',0,'2022-08-20 14:52:26',1),
+(2,'aF5I7jy9nZmGEFY16&zhlIebtI^','ppdb','PPDB','Lorem ipsum dolor siamet','fa fa-arror-left','1','2022-08-20 10:47:15',1,'2022-08-20 14:52:30',1),
+(3,'aF5I7jy9nZmGEFY16&zhlIebtI^','eraport','E-Raport','','1','','0000-00-00 00:00:00',1,'2023-08-29 21:58:14',1),
+(4,'aF5I7jy9nZmGEFY16&zhlIebtI^','master','Master Data','','fa fa-dashboard','1','2023-08-29 22:16:24',0,'2023-08-29 22:17:01',0);
 
 /*Table structure for table `apps_menu` */
 
@@ -59,8 +59,8 @@ CREATE TABLE `apps_menu` (
   `menu_order` int(11) DEFAULT NULL,
   `menu_type` enum('menu','dropdown','tab') DEFAULT NULL,
   `menu_icon` text DEFAULT NULL,
-  `is_root` int(11) DEFAULT NULL,
-  `is_active` int(11) DEFAULT NULL,
+  `is_root` enum('1','0') DEFAULT '0' COMMENT '1: is_root & 0: not root',
+  `is_active` enum('1','0') DEFAULT '1' COMMENT '1: is_delete & o not_deletd',
   `created_by` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp(),
@@ -71,18 +71,18 @@ CREATE TABLE `apps_menu` (
 /*Data for the table `apps_menu` */
 
 insert  into `apps_menu`(`id`,`school_token`,`apps_id`,`id_parent`,`menu_name`,`slug`,`menu_description`,`menu_url`,`menu_order`,`menu_type`,`menu_icon`,`is_root`,`is_active`,`created_by`,`created_at`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'Dashboard','dashboard','Master Dashboard','dashboard',0,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>',1,1,'1','2021-10-15 20:23:39','2021-11-17 07:41:42','1'),
-(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'Master Data','master',NULL,'master',99,'dropdown','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>',1,1,'1','2023-08-29 12:45:14','2023-08-29 12:45:14','1'),
-(3,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'BK','bk',NULL,'bk',1,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>',1,0,'1','2023-08-29 12:45:12','2023-08-29 12:45:12','1'),
-(4,'aF5I7jy9nZmGEFY16&zhlIebtI^',2,NULL,'PPDB','ppdb',NULL,'ppdb',2,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>',1,0,'1','2023-08-29 12:45:13','2023-08-29 12:45:13','1'),
-(6,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List School','school',NULL,'school',1,'menu',NULL,0,1,'1','2023-08-29 12:45:14','2023-08-29 12:45:14','1'),
-(7,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List School Level','school',NULL,'schoollevel',2,'menu',NULL,0,1,'1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
-(8,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Class','class',NULL,'class',3,'menu',NULL,0,1,'1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
-(9,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Course','course',NULL,'course',4,'menu',NULL,0,1,'1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
-(10,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Employee','employee',NULL,'master/employee',5,'menu',NULL,0,1,'1','2023-08-29 12:47:46','2023-08-29 12:47:46','1'),
-(11,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Teacher','teacher',NULL,'master/teacher',6,'menu',NULL,0,1,'1','2023-08-29 12:47:46','2023-08-29 12:47:46','1'),
-(12,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Student','student',NULL,'master/student',7,'menu',NULL,0,1,'1','2023-08-29 12:47:47','2023-08-29 12:47:47','1'),
-(13,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'Dashboard','dashboard','Master Dashboard','dashboard',0,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>',1,0,'1','2021-10-15 20:23:39','2021-11-17 07:41:42','1');
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'Dashboard','dashboard','Master Dashboard','dashboard',0,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','1','1','2021-10-15 20:23:39','2021-11-17 07:41:42','1'),
+(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'Master Data','master',NULL,'master',99,'dropdown','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','1','1','2023-08-29 12:45:14','2023-08-29 12:45:14','1'),
+(3,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'BK','bk',NULL,'bk',1,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','','1','2023-08-29 12:45:12','2023-08-29 12:45:12','1'),
+(4,'aF5I7jy9nZmGEFY16&zhlIebtI^',2,NULL,'PPDB','ppdb',NULL,'ppdb',2,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','','1','2023-08-29 12:45:13','2023-08-29 12:45:13','1'),
+(6,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List School','school',NULL,'school',1,'menu',NULL,'','1','1','2023-08-29 12:45:14','2023-08-29 12:45:14','1'),
+(7,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List School Level','school',NULL,'schoollevel',2,'menu',NULL,'','1','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
+(8,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Class','class',NULL,'class',3,'menu',NULL,'','1','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
+(9,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Course','course',NULL,'course',4,'menu',NULL,'','1','1','2023-08-29 12:47:45','2023-08-29 12:47:45','1'),
+(10,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Employee','employee',NULL,'master/employee',5,'menu',NULL,'','1','1','2023-08-29 12:47:46','2023-08-29 12:47:46','1'),
+(11,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Teacher','teacher',NULL,'master/teacher',6,'menu',NULL,'','1','1','2023-08-29 12:47:46','2023-08-29 12:47:46','1'),
+(12,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,2,'List Student','student',NULL,'master/student',7,'menu',NULL,'','1','1','2023-08-29 12:47:47','2023-08-29 12:47:47','1'),
+(13,'aF5I7jy9nZmGEFY16&zhlIebtI^',4,NULL,'Dashboard','dashboard','Master Dashboard','dashboard',0,'menu','<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>','1','','1','2021-10-15 20:23:39','2021-11-17 07:41:42','1');
 
 /*Table structure for table `apps_menu_role_permission` */
 
@@ -195,7 +195,7 @@ CREATE TABLE `bk_record` (
   `message` text NOT NULL,
   `description` text NOT NULL,
   `reason` text NOT NULL,
-  `is_case_close` int(11) NOT NULL DEFAULT 0,
+  `is_case_close` int(11) DEFAULT 0 COMMENT '1: problem_solve 0: progress',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -232,10 +232,11 @@ CREATE TABLE `class` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `school_token` varchar(255) NOT NULL,
   `hcode` varchar(100) NOT NULL,
-  `school_grade_id` int(11) DEFAULT NULL,
-  `academic_year_id` int(11) DEFAULT NULL,
+  `school_grade_id` int(11) NOT NULL,
+  `academic_year_id` int(11) NOT NULL,
   `name` text DEFAULT NULL,
   `pic` varchar(255) DEFAULT NULL,
+  `is_active` enum('1','0') DEFAULT '1' COMMENT '1: is_delete & 0 not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -245,9 +246,9 @@ CREATE TABLE `class` (
 
 /*Data for the table `class` */
 
-insert  into `class`(`id`,`school_token`,`hcode`,`school_grade_id`,`academic_year_id`,`name`,`pic`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=','TK-A-1',1,1,'TK A-1','','2022-08-14 18:19:11',0,'2023-09-01 05:46:05',0),
-(2,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=','TK-B-2',1,1,'TK B-2',NULL,'2023-09-01 01:36:35',1,'2023-09-01 21:27:58',1);
+insert  into `class`(`id`,`school_token`,`hcode`,`school_grade_id`,`academic_year_id`,`name`,`pic`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=','TK-A-1',1,1,'TK A-1','','1','2022-08-14 18:19:11',0,'2023-09-01 05:46:05',0),
+(2,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=','TK-B-2',1,1,'TK B-2',NULL,'1','2023-09-01 01:36:35',1,'2023-09-01 21:27:58',1);
 
 /*Table structure for table `class_user` */
 
@@ -260,6 +261,7 @@ CREATE TABLE `class_user` (
   `student_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
   `academic_year_id` int(11) NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & o not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -269,8 +271,8 @@ CREATE TABLE `class_user` (
 
 /*Data for the table `class_user` */
 
-insert  into `class_user`(`id`,`school_token`,`class_id`,`student_id`,`teacher_id`,`academic_year_id`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'2022-08-20 13:11:21',1,'2022-08-20 13:11:21',1);
+insert  into `class_user`(`id`,`school_token`,`class_id`,`student_id`,`teacher_id`,`academic_year_id`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'0','2022-08-20 13:11:21',1,'2022-08-20 13:11:21',1);
 
 /*Table structure for table `course` */
 
@@ -283,6 +285,7 @@ CREATE TABLE `course` (
   `code` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
+  `is_delete` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -292,8 +295,8 @@ CREATE TABLE `course` (
 
 /*Data for the table `course` */
 
-insert  into `course`(`id`,`school_token`,`teacher_id`,`code`,`name`,`description`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=',1,'U200001','Makro Centra Kubus','Ilmu Pengetahuan Alam Ghaib','2022-08-20 13:05:51',1,'2023-09-01 23:39:27',1);
+insert  into `course`(`id`,`school_token`,`teacher_id`,`code`,`name`,`description`,`is_delete`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=',1,'U200001','Makro Centra Kubus','Ilmu Pengetahuan Alam Ghaib','0','2022-08-20 13:05:51',1,'2023-09-01 23:39:27',1);
 
 /*Table structure for table `course_class` */
 
@@ -311,6 +314,7 @@ CREATE TABLE `course_class` (
   `schdule_end` time NOT NULL,
   `academic_year_id` int(11) NOT NULL,
   `school_grade_id` int(11) NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -320,10 +324,10 @@ CREATE TABLE `course_class` (
 
 /*Data for the table `course_class` */
 
-insert  into `course_class`(`id`,`school_token`,`course_id`,`class_id`,`teacher_id`,`schedule_day`,`schedule_date`,`schedule_start`,`schdule_end`,`academic_year_id`,`school_grade_id`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Senin','2022-08-22','08:00:00','10:00:00',1,4,'2022-08-20 13:23:14',1,'2022-08-20 13:38:38',1),
-(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Selasa','2022-08-23','10:00:00','11:00:00',1,1,'2022-08-20 13:49:10',1,'2022-08-20 13:49:10',1),
-(3,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Rabu','2022-08-24','10:00:00','11:00:00',1,1,'2022-08-20 13:50:46',1,'2022-08-20 13:50:46',1);
+insert  into `course_class`(`id`,`school_token`,`course_id`,`class_id`,`teacher_id`,`schedule_day`,`schedule_date`,`schedule_start`,`schdule_end`,`academic_year_id`,`school_grade_id`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Senin','2022-08-22','08:00:00','10:00:00',1,4,'0','2022-08-20 13:23:14',1,'2022-08-20 13:38:38',1),
+(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Selasa','2022-08-23','10:00:00','11:00:00',1,1,'0','2022-08-20 13:49:10',1,'2022-08-20 13:49:10',1),
+(3,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,'Rabu','2022-08-24','10:00:00','11:00:00',1,1,'0','2022-08-20 13:50:46',1,'2022-08-20 13:50:46',1);
 
 /*Table structure for table `course_class_user` */
 
@@ -338,6 +342,7 @@ CREATE TABLE `course_class_user` (
   `teacher_id` int(11) NOT NULL,
   `academic_year_id` int(11) NOT NULL,
   `school_grade_id` int(11) NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -347,8 +352,8 @@ CREATE TABLE `course_class_user` (
 
 /*Data for the table `course_class_user` */
 
-insert  into `course_class_user`(`id`,`school_token`,`student_id`,`course_id`,`class_id`,`teacher_id`,`academic_year_id`,`school_grade_id`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,1,4,'2022-08-20 13:52:54',1,'2022-08-20 13:52:54',1);
+insert  into `course_class_user`(`id`,`school_token`,`student_id`,`course_id`,`class_id`,`teacher_id`,`academic_year_id`,`school_grade_id`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,1,4,NULL,'2022-08-20 13:52:54',1,'2022-08-20 13:52:54',1);
 
 /*Table structure for table `course_detail` */
 
@@ -369,6 +374,7 @@ CREATE TABLE `course_detail` (
   `name` text NOT NULL,
   `description` text NOT NULL,
   `link_class_forum` text DEFAULT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -378,9 +384,9 @@ CREATE TABLE `course_detail` (
 
 /*Data for the table `course_detail` */
 
-insert  into `course_detail`(`id`,`school_token`,`class_id`,`teacher_id`,`course_id`,`academic_year_id`,`hcode`,`sort_order`,`event_date`,`event_start`,`event_end`,`name`,`description`,`link_class_forum`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'1st-intro',1,'2022-08-22','08:00:00','08:00:00','Introduction','Pengenalan Materi yang akan disiapkan','https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1','2022-08-20 13:25:49',1,'2022-08-20 13:45:34',1),
-(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'2nd-Materi-Reproduksi',2,'2022-08-29','08:00:00','10:00:00','Reproduksi','Reproduksi','https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1','2022-08-20 13:26:06',1,'2022-08-20 13:46:04',1);
+insert  into `course_detail`(`id`,`school_token`,`class_id`,`teacher_id`,`course_id`,`academic_year_id`,`hcode`,`sort_order`,`event_date`,`event_start`,`event_end`,`name`,`description`,`link_class_forum`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'1st-intro',1,'2022-08-22','08:00:00','08:00:00','Introduction','Pengenalan Materi yang akan disiapkan','https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1','0','2022-08-20 13:25:49',1,'2022-08-20 13:45:34',1),
+(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,'2nd-Materi-Reproduksi',2,'2022-08-29','08:00:00','10:00:00','Reproduksi','Reproduksi','https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1','0','2022-08-20 13:26:06',1,'2022-08-20 13:46:04',1);
 
 /*Table structure for table `course_detail_attendance` */
 
@@ -396,6 +402,7 @@ CREATE TABLE `course_detail_attendance` (
   `teacher_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `log_time` time NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -405,8 +412,8 @@ CREATE TABLE `course_detail_attendance` (
 
 /*Data for the table `course_detail_attendance` */
 
-insert  into `course_detail_attendance`(`id`,`school_token`,`course_id`,`course_detail_id`,`course_class_user_id`,`class_id`,`teacher_id`,`student_id`,`log_time`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,1,1,'13:53:18','2022-08-20 13:54:20',1,'2022-08-20 13:54:20',1);
+insert  into `course_detail_attendance`(`id`,`school_token`,`course_id`,`course_detail_id`,`course_class_user_id`,`class_id`,`teacher_id`,`student_id`,`log_time`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,1,1,1,1,'13:53:18','0','2022-08-20 13:54:20',1,'2022-08-20 13:54:20',1);
 
 /*Table structure for table `course_document` */
 
@@ -425,14 +432,15 @@ CREATE TABLE `course_document` (
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_by` int(11) DEFAULT NULL,
   `teacher_id` int(11) DEFAULT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `course_document` */
 
-insert  into `course_document`(`id`,`school_token`,`course_id`,`course_detail_id`,`name`,`description`,`academic_year_id`,`created_at`,`created_by`,`updated_at`,`updated_by`,`teacher_id`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'Pengenalan','Pengenalan IPA dan RPAL',1,'2022-08-20 13:58:00',1,'2022-08-20 13:58:00',1,1),
-(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,'Modul Materi Reproduksi','Belajar Reproduksi',1,'2022-08-20 13:59:50',1,'2022-08-20 13:59:50',1,1);
+insert  into `course_document`(`id`,`school_token`,`course_id`,`course_detail_id`,`name`,`description`,`academic_year_id`,`created_at`,`created_by`,`updated_at`,`updated_by`,`teacher_id`,`is_active`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,NULL,'Pengenalan','Pengenalan IPA dan RPAL',1,'2022-08-20 13:58:00',1,'2022-08-20 13:58:00',1,1,'0'),
+(2,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,1,'Modul Materi Reproduksi','Belajar Reproduksi',1,'2022-08-20 13:59:50',1,'2022-08-20 13:59:50',1,1,'0');
 
 /*Table structure for table `logs` */
 
@@ -461,6 +469,7 @@ CREATE TABLE `mst_academic_year` (
   `final_year` varchar(255) NOT NULL,
   `current_year` varchar(255) NOT NULL,
   `period` varchar(255) NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -470,9 +479,9 @@ CREATE TABLE `mst_academic_year` (
 
 /*Data for the table `mst_academic_year` */
 
-insert  into `mst_academic_year`(`id`,`start_year`,`final_year`,`current_year`,`period`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'2022','2023','1','odd','2022-08-17 18:55:08',1,'2022-08-25 21:54:47',1),
-(2,'2022','2023','0','even','2022-08-17 18:55:21',1,'2022-08-25 21:54:51',1);
+insert  into `mst_academic_year`(`id`,`start_year`,`final_year`,`current_year`,`period`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'2022','2023','1','odd','0','2022-08-17 18:55:08',1,'2022-08-25 21:54:47',1),
+(2,'2022','2023','0','even','0','2022-08-17 18:55:21',1,'2022-08-25 21:54:51',1);
 
 /*Table structure for table `mst_permission` */
 
@@ -501,6 +510,7 @@ CREATE TABLE `mst_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hcode` varchar(100) NOT NULL,
   `name` text NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -510,14 +520,14 @@ CREATE TABLE `mst_role` (
 
 /*Data for the table `mst_role` */
 
-insert  into `mst_role`(`id`,`hcode`,`name`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'admin','Admin','2022-08-14 18:18:19',1,'2022-08-20 11:57:12',1),
-(2,'student','Student','2022-08-14 18:18:19',1,'2022-08-20 11:57:16',1),
-(3,'teacher','Teacher','2022-08-14 18:23:10',1,'2022-08-20 11:57:19',1),
-(5,'staff','Staff','2022-08-20 11:02:11',1,'2022-08-20 11:02:11',1),
-(6,'superadmin','Super Admin','2022-08-20 11:02:11',1,'2022-08-20 11:02:11',1),
-(7,'principal','Principal','2022-08-20 12:06:44',1,'2022-08-20 12:06:44',1),
-(8,'parent','Parent','2022-08-25 22:57:54',1,'2022-08-25 22:57:54',1);
+insert  into `mst_role`(`id`,`hcode`,`name`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'admin','Admin','0','2022-08-14 18:18:19',1,'2022-08-20 11:57:12',1),
+(2,'student','Student','0','2022-08-14 18:18:19',1,'2022-08-20 11:57:16',1),
+(3,'teacher','Teacher','0','2022-08-14 18:23:10',1,'2022-08-20 11:57:19',1),
+(5,'staff','Staff','0','2022-08-20 11:02:11',1,'2022-08-20 11:02:11',1),
+(6,'superadmin','Super Admin','0','2022-08-20 11:02:11',1,'2022-08-20 11:02:11',1),
+(7,'principal','Principal','0','2022-08-20 12:06:44',1,'2022-08-20 12:06:44',1),
+(8,'parent','Parent','0','2022-08-25 22:57:54',1,'2022-08-25 22:57:54',1);
 
 /*Table structure for table `mst_school` */
 
@@ -531,6 +541,7 @@ CREATE TABLE `mst_school` (
   `provinces` varchar(255) NOT NULL,
   `regions` varchar(255) NOT NULL,
   `locations` varchar(255) NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -540,8 +551,8 @@ CREATE TABLE `mst_school` (
 
 /*Data for the table `mst_school` */
 
-insert  into `mst_school`(`id`,`school_level_id`,`token`,`name`,`provinces`,`regions`,`locations`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(2,1,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=','TK Islam Terpadu Al-Azhar Jagakarsa','DKI Jakarta','Jarta Selatan','Jl. Raya Jagakarsa No.16, RT.9/RW.7, Jagakarsa, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12620','2023-08-31 19:04:16',1,'2023-08-31 19:04:16',1);
+insert  into `mst_school`(`id`,`school_level_id`,`token`,`name`,`provinces`,`regions`,`locations`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(2,1,'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=','TK Islam Terpadu Al-Azhar Jagakarsa','DKI Jakarta','Jarta Selatan','Jl. Raya Jagakarsa No.16, RT.9/RW.7, Jagakarsa, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12620','0','2023-08-31 19:04:16',1,'2023-08-31 19:04:16',1);
 
 /*Table structure for table `mst_school_grade` */
 
@@ -552,6 +563,7 @@ CREATE TABLE `mst_school_grade` (
   `school_level_id` int(11) NOT NULL,
   `hcode` varchar(255) NOT NULL,
   `name` text NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -561,19 +573,19 @@ CREATE TABLE `mst_school_grade` (
 
 /*Data for the table `mst_school_grade` */
 
-insert  into `mst_school_grade`(`id`,`school_level_id`,`hcode`,`name`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,2,'I','I','2022-08-20 15:24:24',1,'2023-08-29 19:18:53',1),
-(2,2,'II','II','2022-08-20 15:24:24',1,'2023-08-29 19:19:10',1),
-(3,2,'III','III','2022-08-20 15:23:39',1,'2023-08-29 19:19:11',1),
-(4,2,'IV','IV','2022-08-20 15:23:39',1,'2023-08-29 19:19:13',1),
-(5,2,'V','V','2022-08-20 15:22:57',1,'2023-08-29 19:19:14',1),
-(6,2,'VI','VI','2022-08-20 15:22:57',1,'2023-08-29 19:19:15',1),
-(7,3,'VII','VII','2022-08-17 19:23:52',1,'2023-08-29 19:19:15',1),
-(8,3,'VIII','VIII','2022-08-17 19:24:32',1,'2023-08-29 19:19:16',1),
-(9,3,'IX','IX','2022-08-17 19:24:32',1,'2023-08-29 19:19:17',1),
-(10,4,'X','X','2022-08-17 19:22:34',1,'2023-08-29 19:19:19',1),
-(11,4,'XI','XI','2022-08-17 19:22:44',1,'2023-08-29 19:19:20',1),
-(12,4,'XII','XII','2022-08-17 19:23:52',1,'2023-08-29 19:19:22',1);
+insert  into `mst_school_grade`(`id`,`school_level_id`,`hcode`,`name`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,2,'I','I','0','2022-08-20 15:24:24',1,'2023-08-29 19:18:53',1),
+(2,2,'II','II','0','2022-08-20 15:24:24',1,'2023-08-29 19:19:10',1),
+(3,2,'III','III','0','2022-08-20 15:23:39',1,'2023-08-29 19:19:11',1),
+(4,2,'IV','IV','0','2022-08-20 15:23:39',1,'2023-08-29 19:19:13',1),
+(5,2,'V','V','0','2022-08-20 15:22:57',1,'2023-08-29 19:19:14',1),
+(6,2,'VI','VI','0','2022-08-20 15:22:57',1,'2023-08-29 19:19:15',1),
+(7,3,'VII','VII','0','2022-08-17 19:23:52',1,'2023-08-29 19:19:15',1),
+(8,3,'VIII','VIII','0','2022-08-17 19:24:32',1,'2023-08-29 19:19:16',1),
+(9,3,'IX','IX','0','2022-08-17 19:24:32',1,'2023-08-29 19:19:17',1),
+(10,4,'X','X','0','2022-08-17 19:22:34',1,'2023-08-29 19:19:19',1),
+(11,4,'XI','XI','0','2022-08-17 19:22:44',1,'2023-08-29 19:19:20',1),
+(12,4,'XII','XII','0','2022-08-17 19:23:52',1,'2023-08-29 19:19:22',1);
 
 /*Table structure for table `mst_school_level` */
 
@@ -582,6 +594,7 @@ DROP TABLE IF EXISTS `mst_school_level`;
 CREATE TABLE `mst_school_level` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -591,12 +604,12 @@ CREATE TABLE `mst_school_level` (
 
 /*Data for the table `mst_school_level` */
 
-insert  into `mst_school_level`(`id`,`name`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'TKIT','2022-08-14 18:26:49',0,'2022-08-14 18:26:49',0),
-(2,'SD','2022-08-14 18:26:49',0,'2023-09-02 03:38:52',1),
-(3,'SMP','2022-08-14 18:26:49',0,'2022-08-14 18:26:49',0),
-(4,'SMA','2022-08-14 18:26:49',0,'2022-08-14 18:26:49',0),
-(5,'KAMPUS 1','2023-08-31 21:09:38',1,'2023-08-31 21:26:41',1);
+insert  into `mst_school_level`(`id`,`name`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'TKIT','0','2022-08-14 18:26:49',0,'2022-08-14 18:26:49',0),
+(2,'SD','0','2022-08-14 18:26:49',0,'2023-09-02 03:38:52',1),
+(3,'SMP','0','2022-08-14 18:26:49',0,'2022-08-14 18:26:49',0),
+(4,'SMA','0','2022-08-14 18:26:49',0,'2022-08-14 18:26:49',0),
+(5,'KAMPUS 1','0','2023-08-31 21:09:38',1,'2023-08-31 21:26:41',1);
 
 /*Table structure for table `parent` */
 
@@ -612,7 +625,7 @@ CREATE TABLE `parent` (
   `address` text NOT NULL,
   `other_info` text DEFAULT NULL,
   `role_id` int(11) NOT NULL,
-  `is_delete` int(11) NOT NULL,
+  `is_active` enum('1','0') DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -622,8 +635,8 @@ CREATE TABLE `parent` (
 
 /*Data for the table `parent` */
 
-insert  into `parent`(`id`,`school_token`,`student_id`,`name`,`gender`,`nationality`,`address`,`other_info`,`role_id`,`is_delete`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,'Sanusi','laki-laki','WNI','Jl Batu nunggal 5 derajat lintang utara,\r\nProvinsi tidak diketahui',NULL,2,0,'2022-08-20 12:51:37',1,'2022-08-25 23:49:49',1);
+insert  into `parent`(`id`,`school_token`,`student_id`,`name`,`gender`,`nationality`,`address`,`other_info`,`role_id`,`is_active`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^',1,'Sanusi','laki-laki','WNI','Jl Batu nunggal 5 derajat lintang utara,\r\nProvinsi tidak diketahui',NULL,2,'','2022-08-20 12:51:37',1,'2022-08-25 23:49:49',1);
 
 /*Table structure for table `reff_api` */
 
@@ -815,8 +828,8 @@ CREATE TABLE `student` (
   `address` text NOT NULL,
   `other_info` text DEFAULT NULL,
   `role_id` int(11) NOT NULL,
-  `is_active_student` int(11) NOT NULL,
-  `is_delete` int(11) NOT NULL,
+  `is_active_student` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1: 1 & 0: not active',
+  `is_active` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `register_date` date NOT NULL,
   `academic_year_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
@@ -828,8 +841,8 @@ CREATE TABLE `student` (
 
 /*Data for the table `student` */
 
-insert  into `student`(`id`,`school_token`,`nisn`,`nis`,`name`,`gender`,`nationality`,`address`,`other_info`,`role_id`,`is_active_student`,`is_delete`,`register_date`,`academic_year_id`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^','112233445','202200001','Ucup bin sanusi','laki-laki','WNI','Jl Batu nunggal 5 derajat lintang utara,\r\nProvinsi tidak diketahui',NULL,2,1,0,'2022-08-20',1,'2022-08-20 12:51:37',1,'2022-08-20 14:44:19',1);
+insert  into `student`(`id`,`school_token`,`nisn`,`nis`,`name`,`gender`,`nationality`,`address`,`other_info`,`role_id`,`is_active_student`,`is_active`,`register_date`,`academic_year_id`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^','112233445','202200001','Ucup bin sanusi','laki-laki','WNI','Jl Batu nunggal 5 derajat lintang utara,\r\nProvinsi tidak diketahui',NULL,2,'1','','2022-08-20',1,'2022-08-20 12:51:37',1,'2022-08-20 14:44:19',1);
 
 /*Table structure for table `student_payment_billing` */
 
@@ -954,8 +967,8 @@ CREATE TABLE `teacher` (
   `address` text NOT NULL,
   `other_info` text DEFAULT NULL,
   `role_id` int(11) NOT NULL,
-  `is_active_student` int(11) NOT NULL,
-  `is_delete` int(11) NOT NULL,
+  `is_active_student` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1: active & 0: not active',
+  `is_active` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `register_date` date NOT NULL,
   `register_academic_year_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
@@ -967,8 +980,8 @@ CREATE TABLE `teacher` (
 
 /*Data for the table `teacher` */
 
-insert  into `teacher`(`id`,`school_token`,`nik`,`nip`,`name`,`gender`,`nationality`,`address`,`other_info`,`role_id`,`is_active_student`,`is_delete`,`register_date`,`register_academic_year_id`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^','3175211111710011','111111','Jamal Bahri','laki-laki','WNI','Bojong Gede','[]',3,1,0,'2022-08-01',1,'2022-08-20 14:34:49',1,'2022-08-20 14:43:46',1);
+insert  into `teacher`(`id`,`school_token`,`nik`,`nip`,`name`,`gender`,`nationality`,`address`,`other_info`,`role_id`,`is_active_student`,`is_active`,`register_date`,`register_academic_year_id`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^','3175211111710011','111111','Jamal Bahri','laki-laki','WNI','Bojong Gede','[]',3,'1','','2022-08-01',1,'2022-08-20 14:34:49',1,'2022-08-20 14:43:46',1);
 
 /*Table structure for table `users` */
 
@@ -985,8 +998,7 @@ CREATE TABLE `users` (
   `content` text DEFAULT NULL COMMENT 'create json data',
   `role_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
-  `is_active` int(11) NOT NULL DEFAULT 1,
-  `is_delete` int(11) NOT NULL DEFAULT 0,
+  `is_active` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `is_need_change_password` int(11) NOT NULL DEFAULT 1,
   `created_at` datetime DEFAULT current_timestamp(),
   `created_by` int(11) DEFAULT NULL,
@@ -997,9 +1009,9 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`school_token`,`name`,`username`,`password`,`email`,`phone`,`content`,`role_id`,`account_id`,`is_active`,`is_delete`,`is_need_change_password`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
-(1,'aF5I7jy9nZmGEFY16&zhlIebtI^','Admin','admin','$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O','admin@admin.com','0893456789',NULL,6,0,1,0,1,'2022-08-20 14:36:49',1,'2023-08-29 21:24:38',1),
-(2,'aF5I7jy9nZmGEFY16&zhlIebtI^','jamal','jamal','$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O','jamal@mailinator.com','08765456789',NULL,3,1,1,0,1,'2022-08-20 15:07:02',1,'2022-08-20 15:33:08',1);
+insert  into `users`(`id`,`school_token`,`name`,`username`,`password`,`email`,`phone`,`content`,`role_id`,`account_id`,`is_active`,`is_need_change_password`,`created_at`,`created_by`,`updated_at`,`updated_by`) values 
+(1,'aF5I7jy9nZmGEFY16&zhlIebtI^','Admin','admin','$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O','admin@admin.com','0893456789',NULL,6,0,'1',1,'2022-08-20 14:36:49',1,'2023-08-29 21:24:38',1),
+(2,'aF5I7jy9nZmGEFY16&zhlIebtI^','jamal','jamal','$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O','jamal@mailinator.com','08765456789',NULL,3,1,'1',1,'2022-08-20 15:07:02',1,'2022-08-20 15:33:08',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
