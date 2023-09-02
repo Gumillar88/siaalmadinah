@@ -3,11 +3,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
-use App\Models\MstSchool;
-use App\Models\MstSchoolLevel;
+use App\Models\MstAcademicYear;
 use App\Models\Classes;
 use App\Models\Course;
-use App\Models\Teacher;
+use App\Models\MstSchool;
+use App\Models\MstSchoolGrade;
+use App\Models\MstSchoolLevel;
 use App\Models\Student;
 use App\Http\Models\MasterSchoolModel;
 use App\Http\Models\MasterSchoolLevelModel;
@@ -18,6 +19,8 @@ use App\Http\Models\MasterTeacherModel;
 use App\Helpers\AppHelpers;
 use Validator;
 use Session;
+use App\Models\Teacher;
+use App\Models\User;
 
 class MasterDataController extends Controller
 {
@@ -90,6 +93,7 @@ class MasterDataController extends Controller
         
         $request->session()->flash('data-created', '');
         return back();
+
     }
 
     public function SchoolEditRender($id)
@@ -351,6 +355,14 @@ class MasterDataController extends Controller
         $request->session()->flash('data-created', '');
         return back();
 
+    public function ClassCreateRender()
+    {   
+        $view['module']   = 'Class';
+        $view['page']     = 'Create';
+        $MstAcademicYear  = MstAcademicYear::all();
+        $MstSchoolGrade   = MstSchoolGrade::all();
+        $User            = User::where(['role_id'=>'3','is_active'=>'1'])->get();
+        return view('master_data/class/create',['view'=>$view,'MstAcademicYear'=>$MstAcademicYear,'MstSchoolGrade'=>$MstSchoolGrade,'User'=>$User]);
     }
 
     public function ClassEditRender($id)
@@ -408,7 +420,7 @@ class MasterDataController extends Controller
         $request->session()->flash('data-updated', '');
         return back();
     }
-
+    
     public function ClassRemoveRender($id)
     {
         $class_id = base64_decode($id);

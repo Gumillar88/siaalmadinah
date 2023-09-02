@@ -10,7 +10,8 @@ use Session;
 use App\Models\Apps;
 use App\Http\Models\UserModel;
 use App\Helpers\AppHelpers;
-
+use App\Models\Users
+  
 class AuthController extends Controller
 {
     public function __construct()
@@ -36,7 +37,7 @@ class AuthController extends Controller
             'email'     => $input['email'],
             'password'  => $input['password'],
         ];
-        
+      
         if (Auth::attempt($data)) 
         {
             $user = $this->user->getByEmail($input['email']);
@@ -46,11 +47,16 @@ class AuthController extends Controller
             Session::put('role_id', $user->role_id);
             Session::put('account_id', $user->account_id);
             
+            Session::put('name', $user->name);
+            Session::put('username', $user->username);
+            Session::put('email', $user->email);
+//             Session::put('apps_id', $id);
+          
             return redirect('/sia/choose-app');
         }
         else 
         {
-            return redirect()->route('login')->with('failed', 'Incorrect Email & Password');
+            return redirect()->route('login')->with('failed', 'Incorrect Email or Password');
         }
     }
     public function appsHandler($id)
@@ -67,6 +73,7 @@ class AuthController extends Controller
     public function logoutRender()
     {
         Auth::logout();
+        Session::flush();
         return redirect()->route('login');
 
     }

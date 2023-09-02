@@ -66,7 +66,6 @@
                     </div>
                     <!--end col-->
                 </div>
-
                 <!--end row-->
             </form>
         </div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\{
     PpdbController,
     PaymentController,
     UserController,
+    NilaiController,
     MasterDataController,
     SettingsController,
 };
@@ -153,5 +154,13 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     Route::get('/apps', [SettingsController::class, 'appsRender'])->name('apps');
     Route::get('/role', [SettingsController::class, 'roleRender'])->name('role');
 });
+
+Route::group(['prefix' => 'nilai', 'middleware' => ['auth'], 'as' => 'nilai'], function() {
+    Route::get('/sikap/spiritual', [NilaiController::class, 'sikapSpiritualRender'])->name('nilai-sikap-spiritual');
+    Route::get('/sikap/sosial', [NilaiController::class, 'sikapSosialRender'])->name('nilai-sikap-sosial');
+    Route::get('/naik/catatan', [NilaiController::class, 'naikCatatanRender'])->name('nilai-naik-catatan');
+    Route::get('/cetak/raport', [NilaiController::class, 'cetakRaportRender'])->name('nilai-cetak-raport');
+});
+
 
 Route::get('/logout', [AuthController::class, 'logoutRender'])->name('logout');
