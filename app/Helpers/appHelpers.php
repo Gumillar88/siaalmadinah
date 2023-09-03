@@ -98,4 +98,18 @@ class AppHelpers
         return $data;
     }
 
+    public function _getAllMasterRoleByIdData()
+    {
+        $result = DB::table('mst_role')->get();
+
+        $data   = [];
+
+        foreach ($result as $item)
+        {
+            $data[$item->id] = $item->name;
+        }
+
+        return $data;
+    }
+
 }
