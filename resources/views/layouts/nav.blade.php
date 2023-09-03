@@ -1,7 +1,7 @@
 <?php 
 use Illuminate\Support\Facades\URL;
 use App\Models\AppsMenu;
-$AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_active'=>'1','is_root'=>'1'])->orderBy('menu_order','asc')->get();
+$AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0','is_root'=>'1'])->orderBy('menu_order','asc')->get();
 ?>
 <div class="app-menu navbar-menu" style="padding-top: 1%;">
     <div class="navbar-brand-box">
@@ -50,7 +50,7 @@ $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_active'=>'1'
                     <div class="collapse menu-dropdown" id="{{$AM->slug}}">
                         <ul class="nav nav-sm flex-column">
                             <?php 
-                                    $SubAppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_active'=>'1','is_root'=>'0','id_parent'=>$AM->id])->orderBy('menu_order','asc')->get();
+                                    $SubAppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0','is_root'=>'0','id_parent'=>$AM->id])->orderBy('menu_order','asc')->get();
                                     foreach ($SubAppsMenu as $SAM): ?>
                             <li class="nav-item">
                                 <a href="{{url::to(Session::get('hcode').'/'.$SAM->menu_url)}}" class="nav-link"

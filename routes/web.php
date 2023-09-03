@@ -134,6 +134,19 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     Route::post('/employee/remove/', [MasterDataController::class, 'EmployeeRemoveHandle'])->name('master-employee-delete');
 
     /*
+    ** Users
+    */ 
+    Route::get('/user', [MasterDataController::class, 'UserRender'])->name('master-user');
+
+    Route::post('/user/create', [MasterDataController::class, 'UserCreateHandle'])->name('master-user-save');
+
+    Route::get('/user/edit/{id}', [MasterDataController::class, 'UserEditRender'])->name('master-user-edit');
+    Route::post('/user/edit/', [MasterDataController::class, 'UserEditHandle'])->name('master-user-update');
+
+    Route::get('/user/remove/{id}', [MasterDataController::class, 'UserRemoveRender'])->name('master-user-remove');
+    Route::post('/user/remove/', [MasterDataController::class, 'UserRemoveHandle'])->name('master-user-delete');
+
+    /*
     ** Teacher
     */ 
     Route::get('/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
