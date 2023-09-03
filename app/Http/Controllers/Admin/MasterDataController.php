@@ -23,6 +23,7 @@ use Validator;
 use Session;
 use Hash;
 use App\Models\Teacher;
+use App\Models\Users;
 use App\Models\User;
 
 class MasterDataController extends Controller
@@ -615,6 +616,8 @@ class MasterDataController extends Controller
 
         $_roles = $this->helper->_getAllMasterRoleByIdData();
         $roles = $this->master_roles->getAll();
+
+        $student = Users::where(['role_id'=>'2','is_active'=>'1'])->orderBy('name','asc')->get();
         $data = [
             'lists'         => $lists,
             'form_action'   => URL::to('/master/user/create'),
@@ -623,6 +626,8 @@ class MasterDataController extends Controller
             'schools'       => $schools,
             'roles'         => $roles,
             '_roles'        => $_roles,
+            'student'       => $student,
+
         ];
 
         return view('master_data/users/index', $data);
