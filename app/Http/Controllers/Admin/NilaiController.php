@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class NilaiController extends Controller
 {
+    public function absensiJumlahRender()
+    {
+        $view['module']   = 'Nilai';
+        $view['page']     = 'Jumlah Absensi';
+        return view('nilai/absensi/jumlah',['view'=>$view]);
+    }
     public function sikapSpiritualRender()
     {
         $view['module']   = 'Nilai';
@@ -34,5 +40,10 @@ class NilaiController extends Controller
         $view['module']   = 'Catatan';
         $view['page']     = 'Status Naik Kelas dan Catatan Wali';
         return view('nilai/cetak/raport',['view'=>$view]);
+    }
+    public function cetakLegerRender()
+    {
+        $view['module']   = 'Cetak Leger';
+        return view('nilai/cetak/leger',['view'=>$view]);
     }
 }
