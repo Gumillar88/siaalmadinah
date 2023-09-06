@@ -16,4 +16,10 @@ class SettingsController extends Controller
     {
         return view('settings/role');
     }
+    public function setPicRender()
+    {
+        $view['module']   = 'Setting';
+        $view['page']     = 'Set Wali Kelas';
+        return view('settings/setpic',['view'=>$view]);
+    }
 }

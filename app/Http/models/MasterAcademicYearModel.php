@@ -32,7 +32,7 @@ class MasterAcademicYearModel
     }
     
     /**
-     * Get By school_level_id Master Academic Year data
+     * Get By current year Master Academic Year data
      */
     public function getByCurrentYear()
     {

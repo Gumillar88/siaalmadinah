@@ -55,6 +55,7 @@ Route::group(['prefix' => 'sipo', 'middleware' => ['auth'], 'as' => 'sipo'], fun
     Route::get('/report_print', [SipoController::class, 'reportRender'])->name('report_print');
     Route::get('/class_data', [SipoController::class, 'classDataRender'])->name('class_data');
     Route::get('/teacher_data', [SipoController::class, 'teacherDataRender'])->name('teacher_data');
+    Route::get('/riwayat_mengajar', [SipoController::class, 'riwayatMengajarRender'])->name('riwayatMengajarRender');
 });
 
 Route::group(['prefix' => 'sia', 'middleware' => ['auth'], 'as' => 'sia'], function() {
@@ -143,6 +144,19 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     Route::post('/employee/remove/', [MasterDataController::class, 'EmployeeRemoveHandle'])->name('master-employee-delete');
 
     /*
+    ** Users
+    */ 
+    Route::get('/user', [MasterDataController::class, 'UserRender'])->name('master-user');
+
+    Route::post('/user/create', [MasterDataController::class, 'UserCreateHandle'])->name('master-user-save');
+
+    Route::get('/user/edit/{id}', [MasterDataController::class, 'UserEditRender'])->name('master-user-edit');
+    Route::post('/user/edit/', [MasterDataController::class, 'UserEditHandle'])->name('master-user-update');
+
+    Route::get('/user/remove/{id}', [MasterDataController::class, 'UserRemoveRender'])->name('master-user-remove');
+    Route::post('/user/remove/', [MasterDataController::class, 'UserRemoveHandle'])->name('master-user-delete');
+
+    /*
     ** Teacher
     */ 
     Route::get('/teacher', [MasterDataController::class, 'TeacherRender'])->name('master-teacher');
@@ -172,6 +186,7 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     */
     Route::get('/apps', [SettingsController::class, 'appsRender'])->name('apps');
     Route::get('/role', [SettingsController::class, 'roleRender'])->name('role');
+    Route::get('/setting/setpic', [SettingsController::class, 'setPicRender'])->name('setPicRender');
 });
 
 Route::group(['prefix' => 'nilai', 'middleware' => ['auth'], 'as' => 'nilai'], function() {
@@ -179,6 +194,8 @@ Route::group(['prefix' => 'nilai', 'middleware' => ['auth'], 'as' => 'nilai'], f
     Route::get('/sikap/sosial', [NilaiController::class, 'sikapSosialRender'])->name('nilai-sikap-sosial');
     Route::get('/naik/catatan', [NilaiController::class, 'naikCatatanRender'])->name('nilai-naik-catatan');
     Route::get('/cetak/raport', [NilaiController::class, 'cetakRaportRender'])->name('nilai-cetak-raport');
+    Route::get('/cetak/leger', [NilaiController::class, 'cetakLegerRender'])->name('nilai-cetak-leger');
+    Route::get('/absensi_jumlah', [NilaiController::class, 'absensiJumlahRender'])->name('absensiJumlahRender');
 });
 
 

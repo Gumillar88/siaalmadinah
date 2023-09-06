@@ -21,7 +21,6 @@ class SipoController extends Controller
     {
         return view('sipo/achievement'); 
     }
-
     public function classRender()
     {
         return view('sipo/class_set'); 
@@ -75,5 +74,11 @@ class SipoController extends Controller
     public function teacherDataRender()
     {
         return view('sipo/teacher_data'); 
+    }
+    public function riwayatMengajarRender()
+    {
+        $view['module']   = 'Nilai';
+        $view['page']     = 'Sikap Sosial';
+        return view('sipo/riwayat_mengajar',['view'=>$view]);
     }
 }

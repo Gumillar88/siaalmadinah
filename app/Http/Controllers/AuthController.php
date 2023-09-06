@@ -45,7 +45,6 @@ class AuthController extends Controller
             Session::put('school_token', $user->school_token);
             Session::put('user_id', $user->id);
             Session::put('role_id', $user->role_id);
-            Session::put('account_id', $user->account_id);
             
             Session::put('name', $user->name);
             Session::put('username', $user->username);
