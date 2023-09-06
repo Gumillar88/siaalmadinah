@@ -6,12 +6,12 @@ $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0'
 <div class="app-menu navbar-menu" style="padding-top: 1%;">
     <div class="navbar-brand-box">
         <a href="{{ url::to('/sia/choose-app') }}" class="logo logo-dark">
-            <span class="logo-sm">
-                <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
-            </span>
-            <span class="logo-lg">
-                <img src="{{url('assets/images/logo-dark.png')}}" alt="" height="17">
-            </span>
+            <h2 class="logo-sm">
+                Al Azhar
+            </h2>
+            <h2 class="logo-lg">
+                Al Azhar
+            </h2>
         </a>
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">

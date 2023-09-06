@@ -69,5 +69,7 @@ class EraportController extends Controller
         $mapel_id = base64_decode($request->get('mapel_id'));
         $class_id = base64_decode($request->get('mapel_id'));
         dd($type_id);
+
+        
     }
 }
