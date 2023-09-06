@@ -1,6 +1,48 @@
 @extends('layouts.main')
 
 @section('content')
+<style type="text/css">
+    input[type='radio'] {
+        margin-right: 1em;
+    }
+</style>
+<script type="text/javascript">
+    function roleCheck() {
+        var role_id = $('#role_id option:selected').val()
+        var html = ''
+        html += ''
+        if (role_id == '1') {
+            //Admin
+        }else if (role_id == '2') {
+            //Student
+            html += '<div class="col-12"><div class="mb-3"><label for="nisn" class="form-label">NISN</label><input type="text" required class="form-control" name="content[nisn]" placeholder="Enter nisn" id="nisn"></div></div>'
+            html += '<div class="col-12"><div class="mb-3"><label for="nis" class="form-label">NIS</label><input type="text" required class="form-control" name="content[nis]" placeholder="Enter nis" id="nis"></div></div>'
+        }else if (role_id == '3') {
+            //Teacher
+            html += '<div class="col-12"><div class="mb-3"><label for="NIP" class="form-label">NIP</label><input type="text" required class="form-control" name="content[NIP]" placeholder="Enter NIP" id="NIP"></div></div>' 
+            html += '<div class="col-12"><div class="mb-3"><label for="register_date" class="form-label">Tanggal Masuk</label><input type="date" required class="form-control" name="content[register_date]" placeholder="Enter Tanggal Masuk" id="register_date"></div></div>'
+        }else if (role_id == '5') {
+            //Staff
+        }else if (role_id == '6') {
+            //Super Admin
+        }else if (role_id == '7') {
+            //Principal
+            html += '<div class="col-12"><div class="mb-3"><label for="NIP" class="form-label">NIP</label><input type="text" required class="form-control" name="content[NIP]" placeholder="Enter NIP" id="NIP"></div></div>' 
+            html += '<div class="col-12"><div class="mb-3"><label for="register_date" class="form-label">Tanggal Masuk</label><input type="date" required class="form-control" name="content[register_date]" placeholder="Enter Tanggal Masuk" id="register_date"></div></div>'
+        }else if (role_id == '8') {
+            //Parent
+            html += '<div class="col-12"><div class="mb-3"><label for="nationality" class="form-label">Nationality</label><input type="text" required class="form-control" name="content[nationality]" placeholder="Enter nationality" id="nationality" value="WNI"></div></div>'
+            html += '<div class="col-12"><div class="mb-3"><label for="parent_of" class="form-label">Student</label><select required class="form-control" name="content[parent_of]" id="parent_of"><?php foreach ($student as $s) {
+                echo '<option value="'.$s->id.'">'.$s->name.'</option>';
+            } ?></select></div></div>'
+        }
+        var output = html.length > 0 ? '<div class="col-12 mt-3"><h4>' + $('#role_id option:selected').data('name') + ' Additional Info</h4></div>' + html : ''
+        
+        $('#additional-data').empty()
+        $('#additional-data').html(output)
+        $('.select2').select2();
+    }
+</script>
 <div class="col-md-12">
     <div class="card">
         <div class="card-header card-header-primary">
@@ -29,7 +71,7 @@
             <!--  Extra Large modal example -->
             <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog"
                 aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="myExtraLargeModalLabel">
@@ -52,51 +94,80 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <!--end col-->
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label for="name" class="form-label">Fullname</label>
-                                            <input type="text" class="form-control" name="name"
-                                                placeholder="Enter fullname" id="name">
+                                            <input type="text" required class="form-control" name="name" placeholder="Enter fullname" id="name">
                                         </div>
                                     </div>
-                                    <!--end col-->
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="gender" class="form-label">Gender</label>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" required id="Male" name="content[gender]" class="custom-control-input" value="Male">
+                                                <label class="custom-control-label" for="Male">Male</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" required id="female" name="content[gender]" class="custom-control-input" value="Female">
+                                                <label class="custom-control-label" for="female">Female</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" name="email"
-                                                placeholder="Enter email" id="email">
+                                            <input type="email" required class="form-control" name="email" placeholder="Enter email" id="email">
                                         </div>
                                     </div>
-                                    <!-- col -->
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Phone</label>
+                                            <input type="text" class="form-control" name="content[phone]" placeholder="Enter phone" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Birth Date</label>
+                                            <input type="date" required class="form-control" name="content[birth_date]" placeholder="Enter phone" id="phone" max="{{date('Y-m-d')}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="nationality" class="form-label">Nationality</label>
+                                            <input type="text" required class="form-control" name="content[nationality]" placeholder="Enter nationality" id="nationality" value="WNI">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Address</label>
+                                            <textarea class="form-control" name="content[address]" placeholder="Enter address" id="address"></textarea>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" name="username"
-                                                placeholder="Enter username" id="username">
+                                            <input type="text" required class="form-control" name="username" placeholder="Enter username" id="username">
                                         </div>
                                     </div>
-                                    <!-- col -->
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label for="password" class="form-label">Username</label>
-                                            <input type="password" class="form-control" name="password"
-                                                placeholder="Enter password" id="password">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" required class="form-control" name="password" placeholder="Enter password" id="password">
                                         </div>
                                     </div>
-                                    <!--end col-->
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label for="role_id" class="form-label">Roles</label>
-                                            <select class="form-control" name="role_id">
+                                            <select class="form-control" name="role_id" id="role_id" onchange="roleCheck()">
                                                 <option value="">Please Select</option>
                                                 @foreach($roles as $value)
-                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                                <option value="{{ $value->id }}" data-name="{{ $value->name }}">{{ $value->name }}</option>
                                                 @endforeach
                                             </select>
 
                                         </div>
                                     </div>
+                                    <span id="additional-data"></span>
                                     <!--end col-->
                                     <div class="col-lg-12 mt-3">
                                         <div class="text-end">
@@ -127,7 +198,7 @@
                         @foreach($lists as $key => $value)
                         <tr>
                             <td class="text-center">{{ ++$key }}</td>
-                            <td class="text-left">{{ $_schools[$value->school_token] }}</td>
+                            <td class="text-left">{{ @$_schools[$value->school_token] }}</td>
                             <td class="text-center">{{ $value->name }}</td>
                             <td class="text-center">{{ $value->email }}</td>
                             <td class="text-center">{{ $_roles[$value->role_id] }}</td>

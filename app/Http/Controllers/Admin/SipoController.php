@@ -21,4 +21,10 @@ class SipoController extends Controller
     {
         return view('sipo/achievement'); 
     }
+    public function riwayatMengajarRender()
+    {
+        $view['module']   = 'Nilai';
+        $view['page']     = 'Sikap Sosial';
+        return view('sipo/riwayat_mengajar',['view'=>$view]);
+    }
 }
