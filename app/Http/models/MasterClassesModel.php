@@ -41,6 +41,13 @@ class MasterClassesModel
                 ->first();
     }
 
+    public function getBySchoolToken($school_token)
+    {
+        return DB::table('class')
+                ->where('school_token', $school_token)
+                ->get();
+    }
+
     /**
      * Update class data
      */

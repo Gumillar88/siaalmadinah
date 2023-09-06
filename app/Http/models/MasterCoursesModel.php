@@ -41,6 +41,13 @@ class MasterCoursesModel
                 ->first();
     }
 
+    public function getBySchoolToken($school_token)
+    {
+        return DB::table('course')
+                ->where('school_token', $school_token)
+                ->get();
+    }
+
     /**
      * Update class data
      */
