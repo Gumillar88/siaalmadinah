@@ -14,12 +14,9 @@ use App\Http\Controllers\Admin\{
     NilaiController,
     MasterDataController,
     SettingsController,
-    SipoController
+    SipoController,
+    EraportController,
 };
-// use App\Http\Controllers\Admin\DashboardController;
-// use App\Http\Controllers\Admin\ChooseAppController;
-// use App\Http\Controllers\Admin\BkController;
-// use App\Http\Controllers\Admin\PpdbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +58,14 @@ Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'
     Route::get('/ppdb', [PpdbController::class, 'indexRender'])->name('ppdb');
     Route::get('/ppdb/create', [PpdbController::class, 'createRender'])->name('ppdb-create');
     Route::get('/ppdb', [PpdbController::class, 'indexRender'])->name('ppdb');
+});
+
+Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'], function() {
+    Route::get('/', [EraportController::class, 'indexRender'])->name('dashboard');
+
+    Route::get('/list-mapel-diampu', [EraportController::class, 'mapelDiampuRender'])->name('list-mapel-diampu');
+    Route::get('/keterampilan', [EraportController::class, 'keterampilanRender'])->name('keterampilan');
+    
 });
 
 Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'], function() {

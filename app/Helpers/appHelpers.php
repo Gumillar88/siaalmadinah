@@ -86,7 +86,7 @@ class AppHelpers
 
     public function _getAllMasterTeacherData()
     {
-        $result = DB::table('teacher')->get();
+        $result = DB::table('users')->get();
 
         $data   = [];
 

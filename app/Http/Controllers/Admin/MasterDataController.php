@@ -343,11 +343,12 @@ class MasterDataController extends Controller
         }
 
         $user_id = $request->session()->get('user_id');
+        $academic_year = $this->current_year->getByCurrentYear();
         $data = [
             'school_token'      => $input['school_token'],
             'hcode'          => str_replace(' ', '-', $input['name']),
             'school_grade_id'   => $input['school_level_id'],
-            'academic_year_id'  => Null,
+            'academic_year_id'  => $academic_year->id,
             'name'              => $input['name'],
             'created_at'    => date('Y-m-d H:i:s'),
             'created_by'    => $user_id,
