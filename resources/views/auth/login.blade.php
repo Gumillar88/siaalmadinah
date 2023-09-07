@@ -153,7 +153,7 @@
                             <p class="mb-0">&copy;
                                 <script>
                                 document.write(new Date().getFullYear())
-                                </script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Kitaone
+                                </script> Almadinah with <i class="mdi mdi-heart text-danger"></i> by Kitaone
                                 Technology
                             </p>
                         </div>
