@@ -10,7 +10,7 @@ use Session;
 use App\Models\Apps;
 use App\Http\Models\UserModel;
 use App\Helpers\AppHelpers;
-use App\Models\UserModel;
+use App\Models\User;
   
 class AuthController extends Controller
 {
