@@ -47,8 +47,7 @@ $apps = Apps::get();
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
                                                 <a href="index.html" class="d-block">
-                                                    <img src="{{url('assets/images/logo-light.png')}}" alt=""
-                                                        height="18">
+                                                    <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
                                                 </a>
                                             </div>
                                             <div class="mt-auto">

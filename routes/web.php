@@ -191,6 +191,7 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
     */
     Route::get('/apps', [SettingsController::class, 'appsRender'])->name('apps');
     Route::get('/role', [SettingsController::class, 'roleRender'])->name('role');
+    Route::get('/setting/setpic', [SettingsController::class, 'setPicRender'])->name('setPicRender');
 });
 
 Route::group(['prefix' => 'nilai', 'middleware' => ['auth'], 'as' => 'nilai'], function() {
@@ -198,6 +199,8 @@ Route::group(['prefix' => 'nilai', 'middleware' => ['auth'], 'as' => 'nilai'], f
     Route::get('/sikap/sosial', [NilaiController::class, 'sikapSosialRender'])->name('nilai-sikap-sosial');
     Route::get('/naik/catatan', [NilaiController::class, 'naikCatatanRender'])->name('nilai-naik-catatan');
     Route::get('/cetak/raport', [NilaiController::class, 'cetakRaportRender'])->name('nilai-cetak-raport');
+    Route::get('/cetak/leger', [NilaiController::class, 'cetakLegerRender'])->name('nilai-cetak-leger');
+    Route::get('/absensi_jumlah', [NilaiController::class, 'absensiJumlahRender'])->name('absensiJumlahRender');
 });
 
 

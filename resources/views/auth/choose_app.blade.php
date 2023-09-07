@@ -43,6 +43,7 @@ $apps = Apps::get();
                         <div class="card overflow-hidden border-0">
                             <div class="row p-3">
                                 <div class="col-md-12 text-center pb-3">
+                                    <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="150px">
                                     <h2>Module Aplikasi</h2>
                                 </div>
                                 <?php foreach ($apps as $row): ?>
@@ -51,8 +52,8 @@ $apps = Apps::get();
                                         <a href="{{url::to('sia/module/'.base64_encode($row->id))}}">
                                             <div class="card apps-box"
                                                 style="background-color: #E3F2FD; border-color: transparent;">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">
+                                                <div class="card-body" style="height:150px;">
+                                                    <h5 class="card-title" style="line-height: 120px;">
                                                         <?php echo $row->icon != null ? '<i class="'.$row->icon.'"></i>' : '' ?>
                                                         {{$row->name}}
                                                     </h5>

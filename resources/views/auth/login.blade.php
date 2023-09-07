@@ -37,8 +37,9 @@
                                         <div class="bg-overlay"></div>
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
-                                                <a href="index.html" class="d-block">
-                                                    <h3 class="text-white">Al Azhar</h3>
+                                                <a href="{{ URL::to('/login') }}" class="d-block text-center">
+                                                    <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt=""
+                                                        height="150px">
                                                 </a>
                                             </div>
                                             <div>
@@ -152,7 +153,8 @@
                             <p class="mb-0">&copy;
                                 <script>
                                 document.write(new Date().getFullYear())
-                                </script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                </script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Kitaone
+                                Technology
                             </p>
                         </div>
                     </div>
