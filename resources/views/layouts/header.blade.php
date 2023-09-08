@@ -1,3 +1,8 @@
+<?php 
+use Illuminate\Support\Facades\URL;
+use App\Models\Apps;
+$apps = Apps::get();
+?>
 <header id="page-topbar" style="padding-top: 5px; padding-bottom: 5px;">
     <div class="layout-width">
         <div class="navbar-header">
@@ -175,7 +180,7 @@
                                     </h6>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="#!" class="btn btn-sm btn-soft-info">
+                                    <a href="{{url::to('/sia/choose-app')}}" class="btn btn-sm btn-soft-info">
                                         View All Apps
                                         <i class="ri-arrow-right-s-line align-middle">
                                         </i>
@@ -185,56 +190,25 @@
                         </div>
                         <div class="p-2">
                             <div class="row g-0">
-                                <div class="col">
+                                <?php foreach ($apps as $row): ?>
+                                <div class="col-4">
+                                    <a class="dropdown-icon-item" href="{{url::to('sia/module/'.base64_encode($row->id))}}">
+                                        <?php echo $row->icon != null ? '<i class="'.$row->icon.'"></i>' : '' ?>
+                                        <span>
+                                            {{$row->name}}
+                                        </span>
+                                    </a>
+                                </div>
+                                <?php endforeach ?>
+                                <!-- <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
                                         <img src="{{url('assets/images/brands/github.png')}}" alt="Github">
                                         <span>
                                             GitHub
                                         </span>
                                     </a>
-                                </div>
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="{{url('assets/images/brands/bitbucket.png')}}" alt="bitbucket">
-                                        <span>
-                                            Bitbucket
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="{{url('assets/images/brands/dribbble.png')}}" alt="dribbble">
-                                        <span>
-                                            Dribbble
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row g-0">
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="{{url('assets/images/brands/dropbox.png')}}" alt="dropbox">
-                                        <span>
-                                            Dropbox
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="{{url('assets/images/brands/mail_chimp.png')}}" alt="mail_chimp">
-                                        <span>
-                                            Mail Chimp
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="{{url('assets/images/brands/slack.png')}}" alt="slack">
-                                        <span>
-                                            Slack
-                                        </span>
-                                    </a>
-                                </div>
+                                </div> -->
+                                
                             </div>
                         </div>
                     </div>

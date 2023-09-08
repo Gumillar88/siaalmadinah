@@ -76,6 +76,9 @@ Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'
 
     Route::get('/list-mapel-diampu', [EraportController::class, 'mapelDiampuRender'])->name('list-mapel-diampu');
     Route::get('/keterampilan', [EraportController::class, 'keterampilanRender'])->name('keterampilan');
+    Route::get('/extracurricular', [EraportController::class, 'ExtracurricularRender'])->name('extracurricular');
+    Route::get('/extracurricular/assign', [EraportController::class, 'ExtracurricularStudentRender'])->name('extracurricular-assign');
+    Route::get('/extracurricular/student/load/{id}', [EraportController::class, 'ExtracurricularStudentRender'])->name('extracurricular-student-load');
     
 });
 
@@ -185,6 +188,18 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'],
 
     Route::get('/student/remove/{id}', [MasterDataController::class, 'StudentRemoveRender'])->name('master-student-remove');
     Route::post('/student/remove/', [MasterDataController::class, 'StudentRemoveHandle'])->name('master-student-delete');
+
+    /*
+    ** extracurricular
+    */ 
+    Route::get('/extracurricular', [MasterDataController::class, 'ExtracurricularRender'])->name('master-extracurricular');
+    Route::post('/extracurricular/create', [MasterDataController::class, 'ExtracurricularHandle'])->name('master-extracurricular-save');
+
+    Route::get('/extracurricular/edit/{id}', [MasterDataController::class, 'ExtracurricularEditRender'])->name('master-extracurricular-edit');
+    Route::post('/extracurricular/edit/', [MasterDataController::class, 'ExtracurricularEditHandle'])->name('master-extracurricular-save');
+    
+    Route::get('/extracurricular/remove/{id}', [MasterDataController::class, 'ExtracurricularRemoveRender'])->name('master-extracurricular-remove');
+    Route::post('/extracurricular/remove/', [MasterDataController::class, 'ExtracurricularRemoveHandle'])->name('master-extracurricular-delete');
 
     /*
     ** Module Settings & Role Data

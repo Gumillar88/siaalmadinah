@@ -124,5 +124,6 @@
             $('.select2').select2();
         });
     </script>
+    @yield('script')
 </body>
 </html>
