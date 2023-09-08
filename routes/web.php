@@ -76,6 +76,8 @@ Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'
 
     Route::get('/list-mapel-diampu', [EraportController::class, 'mapelDiampuRender'])->name('list-mapel-diampu');
     Route::get('/keterampilan', [EraportController::class, 'keterampilanRender'])->name('keterampilan');
+
+    Route::post('/upload_file', [EraportController::class, 'uploadFileHandle'])->name('upload-file');
     
 });
 

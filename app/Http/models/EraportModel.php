@@ -33,4 +33,35 @@ class EraportModel
                 ->get();
     }
 
+    public function getDataByTypeId($type_id)
+    {
+        return DB::table('mst_type')
+                ->where('id', $type_id)
+                ->first();
+    }
+
+    public function getDataByMapelId($mapel_id)
+    {
+        return DB::table('course')
+                ->where('id', $mapel_id)
+                ->first();
+    }
+
+    public function getDataByClassId($class_id)
+    {
+        return DB::table('class')
+                ->where('id', $class_id)
+                ->first();
+    }
+
+    public function getDataCourses($type_id, $course_id, $class_id)
+    {
+        $data = DB::table('course_detail')
+                ->where('class_id', $class_id)
+                ->where('course_id', $course_id)
+                ->where('type', $type_id)
+                ->get();
+
+        return $data;
+    }
 }

@@ -12,34 +12,40 @@
     <div class="col-xxl-12 col-lg-6">
         <div class="card card-body">
             <h4 class="card-title">MASS Upload Data Nilai</h4>
-            <div class="btn-group col-lg-2">
-                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"> -- Semua Kelas -- </button>
-                <div class="dropdown-menu">
-                    @foreach($classes as $value)
-                    <a class="dropdown-item" href="{{ URL::to('/')}}{{$value->id}}">{{$value->name}}</a>
-                    @endforeach
+            <form action="{{ $action_upload}}" method="{{ $method }}" enctype="multipart/form-data">
+                @csrf
+                @if(count($errors) > 0)
+                <div class="alert alert-danger" role="alert">
+                    {{ $errors->all()[0] }}
                 </div>
-            </div>
-            <br>
-            <div class="btn-group col-lg-2">
-                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"> Pengetahuan</button>
-                <div class="dropdown-menu">
-                    @foreach($courses as $value)
-                    <a class="dropdown-item" href="{{ URL::to('/')}}{{$value->id}}">{{$value->name}}</a>
-                    @endforeach
+                @endif
+                <div class="form-group col-lg-2">
+                    <select name="class_id" class="btn btn-light dropdown-toggle">
+                        <option value=""> -- Semua Kelas -- </option>
+                        @foreach($classes as $value)
+                        <option value="{{$value->id}}">{{$value->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
-            </div>
-            <br>
-            <div class="col-lg-3">
-                <input class="form-control" type="file" id="formFile">
-            </div>
-            <br>
-            <div class="col">
-                <button type="button" class="btn btn-soft-success waves-effect waves-light col-lg-1">Upload</button>
-                <button type="button" class="btn btn-soft-info waves-effect waves-light">Download Format</button>
-            </div>
+                <br>
+                <div class="form-group col-lg-2">
+                    <select name="types" class="btn btn-light dropdown-toggle">
+                        <option value=""> -- Semua Pengetahuan -- </option>
+                        @foreach($types as $value)
+                        <option value="{{$value->id}}">{{$value->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <br>
+                <div class="col-lg-3">
+                    <input class="form-control" type="file" id="formFile" name="files">
+                </div>
+                <br>
+                <div class="col">
+                    <button type="submit" class="btn btn-soft-success waves-effect waves-light">Upload</button>
+                    <a href="#" class="btn btn-soft-info waves-effect waves-light">Download Format</a>
+                </div>
+            </form>
             <br>
         </div>
     </div>
@@ -56,7 +62,7 @@
                     <div class="card-header">
                         <a
                             href="{{ URL::to('eraport/keterampilan?') }}type_id={{ base64_encode($val->id) }}&mapel_id={{ base64_encode($value->mapel_id) }}&class_id={{ base64_encode($value->class_id) }}">
-                            <h6 class="card-title mb-0">{{ $val->name }}</h6>
+                            <h6 class="card-title mb-0"><i class="fa fa-chevron-right"></i> {{ $val->name }}</h6>
                         </a>
                     </div>
                     @endforeach
