@@ -5,18 +5,18 @@ namespace App\Http\Models;
 use DB;
 use Session;
 
-class MasterExtracurricular
+class AchievementModel
 {
     public function __construct()
     {
-        $this->school_token = session('school_token');
+        $this->school_token = session()->get('school_token');;
     }
     /**
      * Create Master Role data
      */
     public function create($data)
     {   
-        return DB::table('extracurricular')->insertGetid($data);
+        return DB::table('student_achievement')->insertGetid($data);
     }
 
     /**
@@ -24,7 +24,7 @@ class MasterExtracurricular
      */
     public function getOne($id)
     {
-        return DB::table('extracurricular')->where(['school_token'=>$this->school_token,'id'=>$id,'is_active'=>'1'])->first();
+        return DB::table('student_achievement')->where(['school_token'=>$this->school_token,'id'=>$id])->first();
     }
 
     /**
@@ -32,7 +32,10 @@ class MasterExtracurricular
      */
     public function getAll()
     {
-        $data = DB::table('extracurricular')->where(['school_token'=>$this->school_token,'is_active'=>'1'])->get();
+        // echo DB::table('student_achievement')->where(['school_token'=>$this->school_token])->toSql();
+        // echo session()->get('school_token');
+        // exit;
+        $data = DB::table('student_achievement')->where(['school_token'=>$this->school_token])->get();
         // $output = [];
         // foreach ($data as $key => $value) {
         //     if ($key == 'pic') {
@@ -54,7 +57,7 @@ class MasterExtracurricular
      */
     public function update($id, $data)
     {
-        DB::table('extracurricular')
+        DB::table('student_achievement')
         ->where(['school_token'=>$this->school_token,'id'=>$id])
         ->update($data);
     }
@@ -64,7 +67,7 @@ class MasterExtracurricular
      */
     public function remove($id)
     {
-        DB::table('extracurricular')
+        DB::table('student_achievement')
         ->where(['school_token'=>$this->school_token,'id'=>$id])
         ->delete();
     }

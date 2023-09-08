@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 
+use App\Http\Models\AchievementModel;
 use App\Http\Models\MasterAcademicYearModel;
 use App\Http\Models\MasterClassesModel;
 use App\Http\Models\MasterCoursesModel;
@@ -16,6 +17,7 @@ use App\Http\Models\MasterSchoolModel;
 use App\Http\Models\MasterSchoolLevelModel;
 use App\Http\Models\MasterTeacherModel;
 use App\Http\Models\EraportModel;
+use App\Models\Users;
 
 use App\Helpers\AppHelpers;
 use Validator;
@@ -27,7 +29,9 @@ class EraportController extends Controller
 {
     public function __construct()
     {
+        ;
         $this->school_token             = session('school_token');
+        $this->achievement              = new AchievementModel();
         $this->master_school            = new MasterSchoolModel();
         $this->school_level             = new MasterSchoolLevelModel();
         $this->master_class             = new MasterClassesModel();
@@ -77,25 +81,213 @@ class EraportController extends Controller
     public function ExtracurricularRender()
     {
         $lists = $this->master_extracurricular->getAll();
-        
+        $student = Users::where(['role_id'=>'2','is_active'=>'1'])->orderBy('name','asc')->get();
         $data = [
-            'lists'     => $lists,
+            'lists'             => $lists,
+            'form_assign_action'=> URL::to('/eraport/extracurricular/student/assign'),
+            'form_action'       => URL::to('/eraport/extracurricular/student/update'),
+            'form_method'       => 'POST',
+            'student'           => $student,
         ];
 
         return view('eraport/extracurricular/index', $data); 
     }
     public function ExtracurricularStudentRender($id)
     {
+        $id = base64_decode($id);
         // $lists = DB::table('student_extracurricular')->where(['school_token'=>$this->school_token,'extracurricular_id'=>$id])->get();
-        $lists = DB::table('student_extracurricular')->where(['extracurricular_id'=>$id])->get();
+        $lists = DB::table('student_extracurricular')
+        ->join('users', 'users.id', '=', 'student_extracurricular.student_id')
+        ->where(['student_extracurricular.extracurricular_id'=>$id,'users.role_id'=>'2','is_active'=>'1'])
+        ->select('users.id as student_id','users.name as student_name','extracurricular_id','score','description')
+        ->get();
         echo json_encode($lists);
+        exit;
     }
-    public function ExtracurricularStudentAssignRender()
+    public function ExtracurricularStudentNotAssignedRender($id)
     {
+        $id = base64_decode($id);
+        // $lists = DB::table('student_extracurricular')->where(['school_token'=>$this->school_token,'extracurricular_id'=>$id])->get();
+        $lists = DB::table('student_extracurricular')
+        ->join('users', 'users.id', '=', 'student_extracurricular.student_id')
+        ->where(['users.role_id'=>'2','is_active'=>'1'])
+        ->where('student_extracurricular.extracurricular_id','!=', $id)
+        ->select('users.id as student_id','users.name as student_name','extracurricular_id','score','description')
+        ->get();
+        echo json_encode($lists);
+        exit;
+    }
+    public function ExtracurricularStudentUpdateHandle(Request $request)
+    {
+        $input = $request->all();
+        print_r($input);exit;
+    }
+    public function ExtracurricularStudentAssignHandle(Request $request)
+    {
+        $input = $request->all();
+
+        // Validate input
+        $validator = Validator::make($input, [
+            'id'        => 'required|max:255',
+            'student_id'=> 'required|max:255',
+        ]);
+
+        if ($validator->fails())
+        {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $id = base64_decode($input['id']);
+        $user_id = $request->session()->get('user_id');
+        $school_token = $request->session()->get('school_token');
+        
+        $data = [
+            'school_token'      => $school_token,
+            'extracurricular_id'=> $id,
+            'student_id'        => $input['student_id'],
+            'updated_at'        => date('Y-m-d H:i:s'),
+            'updated_by'        => $user_id,
+        ];
+        // Save Data
+        $resp = DB::table('student_extracurricular')->insertGetid($data);
+        $request->session()->flash('data-created', 'success');
+        return back();
+    }
+    public function AchievementRender()
+    {
+        $lists = $this->achievement->getAll();
+        $student = Users::where(['role_id'=>'2','is_active'=>'1'])->orderBy('name','asc')->get();
+        $data = [
+            // 'lists'         => $lists,
+            'lists'         => DB::table('student_achievement')->join('users', 'users.id', '=', 'student_achievement.student_id')->where(['student_achievement.school_token'=>session()->get('school_token')])->select('*','users.id as student_id','users.name as student_name','student_achievement.name as achievement_name')->get(),
+            'student'       => $student,
+            'form_action'   => URL::to('/eraport/achievement/create'),
+            'form_method'   => 'POST',
+        ];
+        
+        return view('eraport/achievement/index', $data);
+    }
+    
+    public function AchievementHandle(Request $request)
+    {
+        $input = $request->all();
+
+        // Validate input
+        $validator = Validator::make($input, [
+            'student_id'    => 'required|max:255',
+            'name'          => 'required|max:255',
+            'type'          => 'required|max:255',
+        ]);
+
+        if ($validator->fails())
+        {
+            return back()->withErrors($validator)->withInput();
+        }
+        
+        $tokens = random_bytes(20);
+        
+        $user_id = $request->session()->get('user_id');
+        $school_token = $request->session()->get('school_token');
+        
+        $data = [
+            'school_token'      => $school_token,
+            'name'              => $input['name'],
+            'type'              => $input['type'],
+            'description'       => $input['description'],
+            'student_id'        => $input['student_id'],
+            'created_at'        => date('Y-m-d H:i:s'),
+            'created_by'        => $user_id,
+            // 'updated_at'        => date('Y-m-d H:i:s'),
+            // 'updated_by'        => $user_id,
+        ];
+        
+        $this->achievement->create($data);
+        
+        $request->session()->flash('data-created', '');
+        return back();
 
     }
-    public function ExtracurricularStudentAssignHandle()
-    {
 
+    public function AchievementEditRender($id)
+    {
+        $school_id = base64_decode($id);
+        $getExtracurricularData = $this->master_extracurricular->getOne($school_id);
+        $teachers = $this->master_teacher->getAll();
+
+        $data = [
+            'form_action'       => URL::to('/master/extracurricular/edit'),
+            'form_method'       => 'POST',
+            'data'              => $getExtracurricularData,
+            'teachers'          => $teachers,
+        ];
+
+        return view('master_data/extracurricular/edit', $data);
+    }
+
+    public function AchievementEditHandle(Request $request)
+    {
+        $input = $request->all();
+
+        // Validate input
+        $validator = Validator::make($input, [
+            'name'          => 'required|max:255',
+            'pic'           => 'required|max:255',
+        ]);
+
+        if ($validator->fails())
+        {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user_id = $request->session()->get('user_id');
+        
+        $data = [
+            'name'              => $input['name'],
+            'description'       => $input['description'],
+            'pic'               => $input['pic'],
+            'updated_at'        => date('Y-m-d H:i:s'),
+            'updated_by'        => $user_id,
+        ];
+
+        $id = base64_decode($input['id']);
+
+        // Save Data
+        $this->master_extracurricular->update($id, $data);
+
+        $request->session()->flash('data-updated', '');
+        return back();
+    }
+
+    public function AchievementRemoveRender($id)
+    {
+        $id = base64_decode($id);
+        $getExtracurricularData = $this->master_extracurricular->getOne($id);
+
+
+        $data = [
+            'form_action'       => URL::to('/master/extracurricular/remove'),
+            'form_method'       => 'POST',
+            'id'               => $id,
+        ];
+
+        return view('master_data/extracurricular/remove', $data);
+    }
+
+    public function AchievementRemoveHandle(Request $request)
+    {
+        $input = $request->all();
+
+        $id = base64_decode($input['id']);
+        if (!$id)
+        {
+            return back()->withErrors('error')->withInput();
+        }
+
+        // Remove data
+        $this->master_extracurricular->remove($id);
+
+        $request->session()->flash('data-deleted', '');
+        return redirect('/master/extracurricular/');
+        
     }
 }

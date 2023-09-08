@@ -76,14 +76,30 @@ Route::group(['prefix' => 'eraport', 'middleware' => ['auth'], 'as' => 'eraport'
 
     Route::get('/list-mapel-diampu', [EraportController::class, 'mapelDiampuRender'])->name('list-mapel-diampu');
     Route::get('/keterampilan', [EraportController::class, 'keterampilanRender'])->name('keterampilan');
+    /*
+    ** extracurricular
+    */ 
     Route::get('/extracurricular', [EraportController::class, 'ExtracurricularRender'])->name('extracurricular');
     Route::get('/extracurricular/assign', [EraportController::class, 'ExtracurricularStudentRender'])->name('extracurricular-assign');
     Route::get('/extracurricular/student/load/{id}', [EraportController::class, 'ExtracurricularStudentRender'])->name('extracurricular-student-load');
+    Route::post('/extracurricular/student/assign', [EraportController::class, 'ExtracurricularStudentAssignHandle'])->name('extracurricular-student-assign');
+    Route::post('/extracurricular/student/update', [EraportController::class, 'ExtracurricularStudentUpdateHandle'])->name('extracurricular-student-update');
+    Route::get('/extracurricular/student/not/assigned/{id}', [EraportController::class, 'ExtracurricularStudentNotAssignedRender'])->name('extracurricular-student-not-assigned');
+    /*
+    ** achievement
+    */ 
+    Route::get('/achievement', [EraportController::class, 'AchievementRender'])->name('achievement');
+    Route::post('/achievement/create', [EraportController::class, 'AchievementHandle'])->name('achievement-save');
+
+    Route::get('/achievement/edit/{id}', [EraportController::class, 'AchievementEditRender'])->name('achievement-edit');
+    Route::post('/achievement/edit/', [EraportController::class, 'AchievementEditHandle'])->name('achievement-save');
     
+    Route::get('/achievement/remove/{id}', [EraportController::class, 'AchievementRemoveRender'])->name('achievement-remove');
+    Route::post('/achievement/remove/', [EraportController::class, 'AchievementRemoveHandle'])->name('achievement-delete');
 });
 
 Route::group(['prefix' => 'master', 'middleware' => ['auth'], 'as' => 'master'], function() {
-    
+
     Route::get('/', [DashboardController::class, 'indexRender'])->name('dashboard');
     /*
     ** Module Master Data
