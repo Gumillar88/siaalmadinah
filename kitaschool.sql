@@ -11,7 +11,7 @@
  Target Server Version : 100425
  File Encoding         : 65001
 
- Date: 04/09/2023 23:41:12
+ Date: 09/09/2023 02:37:28
 */
 
 SET NAMES utf8mb4;
@@ -67,7 +67,7 @@ CREATE TABLE `apps_menu`  (
   `updated_at` datetime NULL DEFAULT current_timestamp,
   `updated_by` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of apps_menu
@@ -85,8 +85,12 @@ INSERT INTO `apps_menu` VALUES (11, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List T
 INSERT INTO `apps_menu` VALUES (12, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List Student', 'student', NULL, 'student', 7, 'menu', NULL, '0', '1', '1', '2023-08-29 12:47:47', '2023-08-29 12:47:47', '1');
 INSERT INTO `apps_menu` VALUES (13, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, NULL, 'Dashboard', 'dashboard', 'Master Dashboard', 'dashboard', 0, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', '1', '', '1', '2021-10-15 20:23:39', '2021-11-17 07:41:42', '1');
 INSERT INTO `apps_menu` VALUES (14, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List Users', 'user', NULL, 'user', 8, NULL, NULL, '0', '0', '1', '2023-09-02 15:14:50', '2023-09-02 15:14:54', '1');
-INSERT INTO `apps_menu` VALUES (15, 's2XXvH8vbxWMusszAnCty/u2jjY=', 3, NULL, 'MAPEL DIAMPU', 'list-mapel-diampu', 'List MAPEL DiAMPU', 'list-mapel-diampu', 1, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', '1', '0', '1', '2023-09-04 21:56:02', '2023-09-04 21:56:05', '1');
-INSERT INTO `apps_menu` VALUES (16, 's2XXvH8vbxWMusszAnCty/u2jjY=', 3, NULL, 'RIWAYAT MENGAJAR', 'list-riwayat-mengajar', NULL, 'list-riwayat-mengajar', 2, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', '1', '0', '1', '2023-09-04 21:59:16', '2023-09-04 21:59:20', '1');
+INSERT INTO `apps_menu` VALUES (15, 's2XXvH8vbxWMusszAnCty/u2jjY=', 3, NULL, 'MAPEL DIAMPU', 'list-mapel-diampu', 'List MAPEL DiAMPU', 'list-mapel-diampu', 2, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', '1', '0', '1', '2023-09-04 21:56:02', '2023-09-04 21:56:05', '1');
+INSERT INTO `apps_menu` VALUES (16, 's2XXvH8vbxWMusszAnCty/u2jjY=', 3, NULL, 'RIWAYAT MENGAJAR', 'list-riwayat-mengajar', NULL, 'list-riwayat-mengajar', 3, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', '1', '0', '1', '2023-09-04 21:59:16', '2023-09-04 21:59:20', '1');
+INSERT INTO `apps_menu` VALUES (17, 's2XXvH8vbxWMusszAnCty/u2jjY=', 3, NULL, 'Dashboard', 'dashboard', NULL, 'dashboard', 1, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', '1', '0', '1', '2023-09-05 22:31:53', '2023-09-05 22:31:57', '1');
+INSERT INTO `apps_menu` VALUES (18, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 4, 2, 'List Extracurricular', 'extracurricular', NULL, 'extracurricular', 8, 'menu', NULL, '0', '0', '1', '2023-09-07 22:39:05', '2023-09-07 22:39:05', '1');
+INSERT INTO `apps_menu` VALUES (19, 's2XXvH8vbxWMusszAnCty/u2jjY=', 3, NULL, 'Ekstrakurikuler', 'extracurricular', NULL, 'extracurricular', 4, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', '1', '0', '1', '2023-09-09 00:02:04', '2023-09-09 00:02:04', '1');
+INSERT INTO `apps_menu` VALUES (20, 's2XXvH8vbxWMusszAnCty/u2jjY=', 3, NULL, 'Prestasi', 'achievement', NULL, 'achievement', 5, 'menu', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-home icon-dual\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg>', '1', '0', '1', '2023-09-09 01:54:10', '2023-09-09 01:54:10', '1');
 
 -- ----------------------------
 -- Table structure for apps_menu_role_permission
@@ -248,13 +252,18 @@ CREATE TABLE `class`  (
   `updated_at` datetime NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of class
 -- ----------------------------
 INSERT INTO `class` VALUES (1, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 'TK-A-1', 1, 1, 'TK A-1', '', '1', '2022-08-14 18:19:11', 0, '2023-09-01 05:46:05', 0);
 INSERT INTO `class` VALUES (2, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 'TK-B-2', 1, 1, 'TK B-2', NULL, '1', '2023-09-01 01:36:35', 1, '2023-09-01 21:27:58', 1);
+INSERT INTO `class` VALUES (4, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'VIII-A', 3, 1, 'VIII A', NULL, '0', '2023-09-05 22:44:42', 1, '2023-09-05 22:44:42', 1);
+INSERT INTO `class` VALUES (5, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'VIII-B', 3, 1, 'VIII B', NULL, '0', '2023-09-05 23:26:16', 1, '2023-09-05 23:26:16', 1);
+INSERT INTO `class` VALUES (6, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'VIII-C', 3, 1, 'VIII C', NULL, '0', '2023-09-05 23:26:31', 1, '2023-09-05 23:27:24', 1);
+INSERT INTO `class` VALUES (7, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'VIII-D', 3, 1, 'VIII D', NULL, '0', '2023-09-05 23:27:05', 1, '2023-09-05 23:27:37', 1);
+INSERT INTO `class` VALUES (8, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'VIII-E', 3, 1, 'VIII E', NULL, '0', '2023-09-05 23:28:01', 1, '2023-09-05 23:28:01', 1);
 
 -- ----------------------------
 -- Table structure for class_user
@@ -297,12 +306,13 @@ CREATE TABLE `course`  (
   `updated_at` datetime NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course
 -- ----------------------------
 INSERT INTO `course` VALUES (1, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 1, 'U200001', 'Makro Centra Kubus', 'Ilmu Pengetahuan Alam Ghaib', '0', '2022-08-20 13:05:51', 1, '2023-09-01 23:39:27', 1);
+INSERT INTO `course` VALUES (3, 's2XXvH8vbxWMusszAnCty/u2jjY=', 4, 'PH4', 'IPS', 'Lorem ipsum', '0', '2023-09-05 22:49:20', 1, '2023-09-06 05:49:53', NULL);
 
 -- ----------------------------
 -- Table structure for course_class
@@ -373,28 +383,29 @@ CREATE TABLE `course_detail`  (
   `course_id` int NOT NULL,
   `academic_year_id` int NOT NULL,
   `hcode` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `sort_order` int NOT NULL,
+  `sort_order` int NULL DEFAULT NULL,
   `event_date` date NULL DEFAULT NULL,
-  `event_start` time NOT NULL,
-  `event_end` time NOT NULL,
-  `name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `event_start` time NULL DEFAULT NULL,
+  `event_end` time NULL DEFAULT NULL,
+  `name` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `link_class_forum` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `type` int NULL DEFAULT NULL,
   `is_delete` enum('1','0') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0' COMMENT '1: is_delete & 0: not_delete',
   `created_at` datetime NULL DEFAULT current_timestamp,
   `created_by` int NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course_detail
 -- ----------------------------
-INSERT INTO `course_detail` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, 1, 1, 1, '1st-intro', 1, '2022-08-22', '08:00:00', '08:00:00', 'Introduction', 'Pengenalan Materi yang akan disiapkan', 'https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1', '0', '2022-08-20 13:25:49', 1, '2022-08-20 13:45:34', 1);
-INSERT INTO `course_detail` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, 1, 1, 1, '2nd-Materi-Reproduksi', 2, '2022-08-29', '08:00:00', '10:00:00', 'Reproduksi', 'Reproduksi', 'https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1', '0', '2022-08-20 13:26:06', 1, '2022-08-20 13:46:04', 1);
-INSERT INTO `course_detail` VALUES (3, '', 0, 0, 0, 0, 'PH4', 1, NULL, '00:00:00', '00:00:00', 'Menganalisis keunggulan dan keterbatasan dalam permintaan dan penawaran serta teknologi, dan pengaruhnya terhadap kegiatan ekonomi, sosial, dan budaya di Indonesia dan negara-negara ASEAN', '', NULL, '0', '2023-09-04 23:04:59', NULL, '2023-09-04 23:04:59', NULL);
-INSERT INTO `course_detail` VALUES (4, '', 0, 0, 0, 0, 'T4', 0, NULL, '00:00:00', '00:00:00', 'Menganalisis keunggulan dan keterbatasan dalam permintaan dan penawaran serta teknologi, dan pengaruhnya terhadap kegiatan ekonomi, sosial, dan budaya di Indonesia dan negara-negara ASEAN', '', NULL, '0', '2023-09-04 23:05:20', NULL, '2023-09-04 23:05:20', NULL);
+INSERT INTO `course_detail` VALUES (1, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 1, 1, 1, 1, '1st-intro', 1, '2022-08-22', '08:00:00', '08:00:00', 'Introduction', 'Pengenalan Materi yang akan disiapkan', 'https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1', NULL, '0', '2022-08-20 13:25:49', 1, '2023-09-06 05:29:13', 1);
+INSERT INTO `course_detail` VALUES (2, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 1, 1, 1, 1, '2nd-Materi-Reproduksi', 2, '2022-08-29', '08:00:00', '10:00:00', 'Reproduksi', 'Reproduksi', 'https://us04web.zoom.us/j/73341197268?pwd=_ckJD6UB2zltBIz2k1hDkWKFc3dBuD.1', NULL, '0', '2022-08-20 13:26:06', 1, '2023-09-06 05:29:23', 1);
+INSERT INTO `course_detail` VALUES (3, 's2XXvH8vbxWMusszAnCty/u2jjY=', 4, 4, 3, 1, 'PH4', 4, '2023-09-06', '00:00:00', '00:00:00', 'Menganalisis keunggulan dan keterbatasan dalam permintaan dan penawaran serta teknologi, dan pengaruhnya terhadap kegiatan ekonomi, sosial, dan budaya di Indonesia dan negara-negara ASEAN', 'Lorem ipsum dolor siamet Lorem ipsum dolor siamet Lorem ipsum dolor siamet ', NULL, 1, '0', '2023-09-06 05:27:57', 1, '2023-09-06 06:05:18', NULL);
+INSERT INTO `course_detail` VALUES (4, 's2XXvH8vbxWMusszAnCty/u2jjY=', 4, 3, 3, 1, 'PRAKTEK', 1, '2023-09-06', NULL, NULL, 'Menyajikan hasil analisis permintaan dan penawaran serta teknologi, dan pengaruhnya terhadap kegiatan ekonomi, sosial, budaya, di Indonesia dan negara-negara ASEAN', NULL, NULL, 2, '0', '2023-09-06 06:10:21', 1, '2023-09-06 06:10:44', NULL);
 
 -- ----------------------------
 -- Table structure for course_detail_attendance
@@ -451,28 +462,31 @@ INSERT INTO `course_document` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, NULL,
 INSERT INTO `course_document` VALUES (2, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, 1, 'Modul Materi Reproduksi', 'Belajar Reproduksi', 1, '2022-08-20 13:59:50', 1, '2022-08-20 13:59:50', 1, 1, '0');
 
 -- ----------------------------
--- Table structure for course_score
+-- Table structure for extracurricular
 -- ----------------------------
-DROP TABLE IF EXISTS `course_score`;
-CREATE TABLE `course_score`  (
+DROP TABLE IF EXISTS `extracurricular`;
+CREATE TABLE `extracurricular`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `course_id` int NULL DEFAULT NULL,
-  `course_detail_id` int NULL DEFAULT NULL,
-  `class_id` int NULL DEFAULT NULL,
-  `student_id` int NULL DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `score_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `score` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `school_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `pic` int NULL DEFAULT NULL,
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `is_active` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '1',
   `created_at` datetime NULL DEFAULT NULL,
   `created_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT NULL,
   `updated_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of course_score
+-- Records of extracurricular
 -- ----------------------------
+INSERT INTO `extracurricular` VALUES (1, NULL, 'Paskibra', NULL, 1, NULL, '1', '2023-09-07 22:28:47', '1', '2023-09-07 22:28:49', '1');
+INSERT INTO `extracurricular` VALUES (3, NULL, 'Basket', 'Deskripsi', 1, NULL, '1', '2023-09-07 22:29:36', '1', '2023-09-07 22:43:10', '1');
+INSERT INTO `extracurricular` VALUES (4, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'Pencak Silat', 'Biar jadi Iko Uwais', 1, NULL, '1', '2023-09-07 16:05:57', '1', '2023-09-07 16:05:57', '1');
+INSERT INTO `extracurricular` VALUES (5, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'Futsal', NULL, 1, NULL, '1', '2023-09-07 22:49:17', '1', '2023-09-07 22:49:17', '1');
 
 -- ----------------------------
 -- Table structure for logs
@@ -586,7 +600,6 @@ CREATE TABLE `mst_school`  (
 -- ----------------------------
 -- Records of mst_school
 -- ----------------------------
-INSERT INTO `mst_school` VALUES (2, 1, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 'TK Islam Terpadu Al-Azhar Jagakarsa', 'DKI Jakarta', 'Jarta Selatan', 'Jl. Raya Jagakarsa No.16, RT.9/RW.7, Jagakarsa, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12620', '0', '2023-08-31 19:04:16', 1, '2023-08-31 19:04:16', 1);
 INSERT INTO `mst_school` VALUES (3, 3, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'SMP AL-AZHAR 19', 'DKI Jakarta', 'Jarta Timur', 'Jl. Jambore No.4, RT.4/RW.14, Cibubur, Kec. Ciracas, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13720', '0', '2023-09-04 14:50:58', 1, '2023-09-04 14:50:58', 1);
 
 -- ----------------------------
@@ -645,6 +658,23 @@ INSERT INTO `mst_school_level` VALUES (2, 'SD', '0', '2022-08-14 18:26:49', 0, '
 INSERT INTO `mst_school_level` VALUES (3, 'SMP', '0', '2022-08-14 18:26:49', 0, '2022-08-14 18:26:49', 0);
 INSERT INTO `mst_school_level` VALUES (4, 'SMA', '0', '2022-08-14 18:26:49', 0, '2022-08-14 18:26:49', 0);
 INSERT INTO `mst_school_level` VALUES (5, 'KAMPUS 1', '0', '2023-08-31 21:09:38', 1, '2023-08-31 21:26:41', 1);
+
+-- ----------------------------
+-- Table structure for mst_type
+-- ----------------------------
+DROP TABLE IF EXISTS `mst_type`;
+CREATE TABLE `mst_type`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `school_token` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of mst_type
+-- ----------------------------
+INSERT INTO `mst_type` VALUES (1, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'Nilai Pengetahuan');
+INSERT INTO `mst_type` VALUES (2, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'Nilai Keterampilan');
 
 -- ----------------------------
 -- Table structure for parent
@@ -851,29 +881,6 @@ INSERT INTO `reff_bank_code` VALUES ('alf', 'ALFA CASHOUT', 1);
 INSERT INTO `reff_bank_code` VALUES ('xxx', 'OTHER', 1);
 
 -- ----------------------------
--- Table structure for score_additional
--- ----------------------------
-DROP TABLE IF EXISTS `score_additional`;
-CREATE TABLE `score_additional`  (
-  `id` int NOT NULL,
-  `academic_year_id` int NULL DEFAULT NULL,
-  `class_id` int NULL DEFAULT NULL,
-  `student_id` int NULL DEFAULT NULL,
-  `teacher_id` int NULL DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `created_at` datetime NULL DEFAULT NULL,
-  `created_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `updated_at` datetime NULL DEFAULT NULL,
-  `updated_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of score_additional
--- ----------------------------
-
--- ----------------------------
 -- Table structure for student
 -- ----------------------------
 DROP TABLE IF EXISTS `student`;
@@ -903,6 +910,58 @@ CREATE TABLE `student`  (
 -- Records of student
 -- ----------------------------
 INSERT INTO `student` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', '112233445', '202200001', 'Ucup bin sanusi', 'laki-laki', 'WNI', 'Jl Batu nunggal 5 derajat lintang utara,\r\nProvinsi tidak diketahui', NULL, 2, '1', '', '2022-08-20', 1, '2022-08-20 12:51:37', 1, '2022-08-20 14:44:19', 1);
+
+-- ----------------------------
+-- Table structure for student_achievement
+-- ----------------------------
+DROP TABLE IF EXISTS `student_achievement`;
+CREATE TABLE `student_achievement`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `school_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `academic_year_id` int NULL DEFAULT NULL,
+  `student_id` int NULL DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `created_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
+  `updated_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of student_achievement
+-- ----------------------------
+INSERT INTO `student_achievement` VALUES (1, 's2XXvH8vbxWMusszAnCty/u2jjY=', NULL, 6, 'Olahraga', 'Lomba Renang', 'Juara 16 Lomba Renang antar sekolah seprovinsi', '2023-09-08 19:08:48', '1', NULL, NULL);
+INSERT INTO `student_achievement` VALUES (2, 's2XXvH8vbxWMusszAnCty/u2jjY=', NULL, 5, 'Olahraga', 'Pencak Silat', 'Juara Harapan 3 Pencak Silat sekecamatan Cibubur Raya', '2023-09-08 19:36:43', '1', NULL, NULL);
+
+-- ----------------------------
+-- Table structure for student_extracurricular
+-- ----------------------------
+DROP TABLE IF EXISTS `student_extracurricular`;
+CREATE TABLE `student_extracurricular`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `school_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `academic_year_id` int NULL DEFAULT NULL,
+  `student_id` int NULL DEFAULT NULL,
+  `extracurricular_id` int NULL DEFAULT NULL,
+  `score` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `created_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
+  `updated_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of student_extracurricular
+-- ----------------------------
+INSERT INTO `student_extracurricular` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', 1, 5, 1, 'B', 'Kurang Rajin', NULL, NULL, NULL, NULL);
+INSERT INTO `student_extracurricular` VALUES (2, 's2XXvH8vbxWMusszAnCty/u2jjY=', NULL, 5, 3, NULL, NULL, NULL, NULL, '2023-09-08 18:13:48', '1');
+INSERT INTO `student_extracurricular` VALUES (4, 's2XXvH8vbxWMusszAnCty/u2jjY=', NULL, 6, 1, NULL, NULL, NULL, NULL, '2023-09-08 18:14:30', '1');
+INSERT INTO `student_extracurricular` VALUES (5, 's2XXvH8vbxWMusszAnCty/u2jjY=', NULL, 6, 3, NULL, NULL, NULL, NULL, '2023-09-08 18:30:55', '1');
 
 -- ----------------------------
 -- Table structure for student_payment_billing
@@ -1041,34 +1100,7 @@ CREATE TABLE `teacher`  (
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
-INSERT INTO `teacher` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', '3175211111710011', '111111', 'Jamal Bahri', 'laki-laki', 'WNI', 'Bojong Gede', '[]', 3, '1', '', '2022-08-01', 1, '2022-08-20 14:34:49', 1, '2022-08-20 14:43:46', 1);
-
--- ----------------------------
--- Table structure for temp_upload_ampu
--- ----------------------------
-DROP TABLE IF EXISTS `temp_upload_ampu`;
-CREATE TABLE `temp_upload_ampu`  (
-  `id` int NOT NULL,
-  `school_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `academic_year_id` int NULL DEFAULT NULL,
-  `class_id` int NULL DEFAULT NULL,
-  `course_id` int NULL DEFAULT NULL,
-  `course_detail_id` int NULL DEFAULT NULL,
-  `teacher_id` int NULL DEFAULT NULL,
-  `student_id` int NULL DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `score_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `raw` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `is_convert` int NULL DEFAULT NULL,
-  `is_delete` int NULL DEFAULT NULL,
-  `uploaded_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `uploaded_at` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of temp_upload_ampu
--- ----------------------------
+INSERT INTO `teacher` VALUES (1, 'aF5I7jy9nZmGEFY16&zhlIebtI^', '3175211111710011', '111111', 'Jamal Bahri', 'laki-laki', 'WNI', 'Bojong Gede', '[]', 3, '1', '1', '2022-08-01', 1, '2022-08-20 14:34:49', 1, '2023-09-08 05:57:32', 1);
 
 -- ----------------------------
 -- Table structure for users
@@ -1090,13 +1122,16 @@ CREATE TABLE `users`  (
   `updated_at` datetime NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 'Admin', 'admin', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'admin@admin.com', NULL, 6, '1', 1, '2022-08-20 14:36:49', 1, '2023-09-02 15:49:34', 1);
+INSERT INTO `users` VALUES (1, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'Admin', 'admin', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'admin@admin.com', NULL, 6, '1', 1, '2022-08-20 14:36:49', 1, '2023-09-06 06:28:38', 1);
 INSERT INTO `users` VALUES (2, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 'jamal', 'jamal', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'jamal@mailinator.com', NULL, 3, '1', 1, '2022-08-20 15:07:02', 1, '2023-09-02 15:49:36', 1);
 INSERT INTO `users` VALUES (3, 'zpszZZXWi+TBZFN8k6pQ5Q5m5qQ=', 'Rendi Aja Kali', 'rendi', '$2y$10$w5a1O8y0kNcwrP8KZrBzfuw2J8TQ8o9F.Ao/d854MEYEgcJ1Ejk/6', 'rendi@mailinator.com', '', 3, '1', 1, '2023-09-02 00:00:00', 1, '2023-09-02 00:00:00', 1);
+INSERT INTO `users` VALUES (4, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'Aja Suharja, S.Pd', 'ajasuharja@mailinator.com', '$2y$10$OCY7f5t/4hiSxBguLUQyzelpYd4Hu20wNWVOGPvdCESTROYy8KFl6', 'ajasuharja@mailinator.com', '', 3, '1', 1, '2023-09-05 00:00:00', 1, '2023-09-06 05:48:35', NULL);
+INSERT INTO `users` VALUES (5, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'Adriano Bramantyo Yudhantoro', 'andriano@mailinator.com', '$2y$10$xoRV38rTwUDk1/Ez68OCb.YElAUqWXXLbqXFSLNq8kzCCCcEZtLni', 'andriano@mailinator.com', '', 2, '1', 1, '2023-09-05 00:00:00', 1, '2023-09-06 05:52:44', NULL);
+INSERT INTO `users` VALUES (6, 's2XXvH8vbxWMusszAnCty/u2jjY=', 'Mike Wazowski', 'mikewazowski@mailinator.com', '$2y$10$1MRGzcmmOo8.LVtd0Rf5G.9LU/ji3K.Eq2PTaeSbJO7U0pH.DHV6O', 'mikewazowski@mailinator.com', NULL, 2, '1', 1, '2023-09-09 01:05:14', NULL, '2023-09-09 01:05:41', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

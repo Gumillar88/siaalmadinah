@@ -18,28 +18,31 @@
     </div>
   </div>
   <div class="col-md-6">
-    <div class="card card-body">
-      <h4 class="card-title">Input Nilai Ekstrakulikuler</h4>
-      <br>
-      <table class="table table-bordered table-nowrap">
-        <thead>
-          <tr align="center">
-              <th scope="col" rowspan="2">NO</th>
-              <th scope="col" rowspan="2">NAMA</th>
-              <th scope="col" colspan="2">Nilai</th>
-          </tr>
-          <tr>
-            <th scope="col">NILAI</th>
-            <th scope="col">DESKRIPSI</th>
-          </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-      </table>
-      <div class="col">
-        <button type="button" class="btn btn-soft-success waves-effect waves-light">Simpan</button>
-        <button type="button" class="btn btn-soft-info waves-effect waves-light">Reset</button>
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title m-2">Input Nilai Ekstrakulikuler</h4>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-nowrap">
+          <thead>
+            <tr align="center">
+                <th scope="col" rowspan="2">NO</th>
+                <th scope="col" rowspan="2">NAMA</th>
+                <th scope="col" colspan="2">Nilai</th>
+            </tr>
+            <tr>
+              <th scope="col">NILAI</th>
+              <th scope="col">DESKRIPSI</th>
+            </tr>
+          </thead>
+          <tbody>
+              
+          </tbody>
+        </table>
+        <div class="col">
+          <button type="button" class="btn btn-soft-success waves-effect waves-light">Simpan</button>
+          <button type="button" class="btn btn-soft-info waves-effect waves-light">Reset</button>
+        </div>
       </div>
     </div>
   </div>

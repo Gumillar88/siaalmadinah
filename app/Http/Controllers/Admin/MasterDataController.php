@@ -3,28 +3,29 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
-use App\Models\MstAcademicYear;
 use App\Models\Classes;
 use App\Models\Course;
 use App\Models\MstSchool;
+use App\Models\MstAcademicYear;
 use App\Models\MstSchoolGrade;
 use App\Models\MstSchoolLevel;
 use App\Models\Student;
-use App\Http\Models\MasterSchoolModel;
-use App\Http\Models\MasterSchoolLevelModel;
-use App\Http\Models\MasterClassesModel;
 use App\Http\Models\MasterAcademicYearModel;
+use App\Http\Models\MasterExtracurricular;
+use App\Http\Models\MasterClassesModel;
 use App\Http\Models\MasterCoursesModel;
-use App\Http\Models\MasterTeacherModel;
 use App\Http\Models\MasterEmployeeModel;
 use App\Http\Models\MasterRoleModel;
+use App\Http\Models\MasterSchoolModel;
+use App\Http\Models\MasterSchoolLevelModel;
+use App\Http\Models\MasterTeacherModel;
 use App\Helpers\AppHelpers;
 use Validator;
 use Session;
 use Hash;
 use App\Models\Teacher;
-use App\Models\Users;
 use App\Models\User;
+use App\Models\Users;
 
 class MasterDataController extends Controller
 {
@@ -32,15 +33,16 @@ class MasterDataController extends Controller
 
     public function __construct()
     {
-        $this->master_school    = new MasterSchoolModel();
-        $this->school_level     = new MasterSchoolLevelModel();
-        $this->master_class     = new MasterClassesModel();
-        $this->current_year     = new MasterAcademicYearModel();
-        $this->master_course    = new MasterCoursesModel();
-        $this->master_teacher   = new MasterTeacherModel();
-        $this->master_employee  = new MasterEmployeeModel();
-        $this->master_roles     = new MasterRoleModel();
-        $this->helper           = new AppHelpers();
+        $this->master_school            = new MasterSchoolModel();
+        $this->school_level             = new MasterSchoolLevelModel();
+        $this->master_class             = new MasterClassesModel();
+        $this->current_year             = new MasterAcademicYearModel();
+        $this->master_course            = new MasterCoursesModel();
+        $this->master_teacher           = new MasterTeacherModel();
+        $this->master_employee          = new MasterEmployeeModel();
+        $this->master_roles             = new MasterRoleModel();
+        $this->master_extracurricular   = new MasterExtracurricular();
+        $this->helper                   = new AppHelpers();
     }
 
     public function SchoolRender()
@@ -793,5 +795,141 @@ class MasterDataController extends Controller
     {
         $list = Student::all();
         return view('master_data/student/index',['list'=>$list]);
+    }
+    public function ExtracurricularRender()
+    {
+        $lists = $this->master_extracurricular->getAll();
+        $teachers = $this->master_teacher->getAll();
+
+        $data = [
+            'lists'         => $lists,
+            'teachers'      => $teachers,
+            'form_action'   => URL::to('/master/extracurricular/create'),
+            'form_method'   => 'POST',
+        ];
+        
+        return view('master_data/extracurricular/index', $data);
+    }
+    
+    public function ExtracurricularHandle(Request $request)
+    {
+        $input = $request->all();
+
+        // Validate input
+        $validator = Validator::make($input, [
+            'name'          => 'required|max:255',
+            'pic'           => 'required|max:255',
+        ]);
+
+        if ($validator->fails())
+        {
+            return back()->withErrors($validator)->withInput();
+        }
+        
+        $tokens = random_bytes(20);
+        
+        $user_id = $request->session()->get('user_id');
+        $school_token = $request->session()->get('school_token');
+        
+        $data = [
+            'school_token'      => $school_token,
+            'name'              => $input['name'],
+            'description'       => $input['description'],
+            'pic'               => $input['pic'],
+            'is_active'         => 1,
+            'created_at'        => date('Y-m-d H:i:s'),
+            'created_by'        => $user_id,
+            'updated_at'        => date('Y-m-d H:i:s'),
+            'updated_by'        => $user_id,
+        ];
+        
+        $this->master_extracurricular->create($data);
+        
+        $request->session()->flash('data-created', '');
+        return back();
+
+    }
+
+    public function ExtracurricularEditRender($id)
+    {
+        $school_id = base64_decode($id);
+        $getExtracurricularData = $this->master_extracurricular->getOne($school_id);
+        $teachers = $this->master_teacher->getAll();
+
+        $data = [
+            'form_action'       => URL::to('/master/extracurricular/edit'),
+            'form_method'       => 'POST',
+            'data'              => $getExtracurricularData,
+            'teachers'          => $teachers,
+        ];
+
+        return view('master_data/extracurricular/edit', $data);
+    }
+
+    public function ExtracurricularEditHandle(Request $request)
+    {
+        $input = $request->all();
+
+        // Validate input
+        $validator = Validator::make($input, [
+            'name'          => 'required|max:255',
+            'pic'           => 'required|max:255',
+        ]);
+
+        if ($validator->fails())
+        {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user_id = $request->session()->get('user_id');
+        
+        $data = [
+            'name'              => $input['name'],
+            'description'       => $input['description'],
+            'pic'               => $input['pic'],
+            'updated_at'        => date('Y-m-d H:i:s'),
+            'updated_by'        => $user_id,
+        ];
+
+        $id = base64_decode($input['id']);
+
+        // Save Data
+        $this->master_extracurricular->update($id, $data);
+
+        $request->session()->flash('data-updated', '');
+        return back();
+    }
+
+    public function ExtracurricularRemoveRender($id)
+    {
+        $id = base64_decode($id);
+        $getExtracurricularData = $this->master_extracurricular->getOne($id);
+
+
+        $data = [
+            'form_action'       => URL::to('/master/extracurricular/remove'),
+            'form_method'       => 'POST',
+            'id'               => $id,
+        ];
+
+        return view('master_data/extracurricular/remove', $data);
+    }
+
+    public function ExtracurricularRemoveHandle(Request $request)
+    {
+        $input = $request->all();
+
+        $id = base64_decode($input['id']);
+        if (!$id)
+        {
+            return back()->withErrors('error')->withInput();
+        }
+
+        // Remove data
+        $this->master_extracurricular->remove($id);
+
+        $request->session()->flash('data-deleted', '');
+        return redirect('/master/extracurricular/');
+        
     }
 }
