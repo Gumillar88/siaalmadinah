@@ -112,4 +112,35 @@ class AppHelpers
         return $data;
     }
 
+    public function _getListScoreStudents($results)
+    {
+        $data = '';
+        $data = '<table class="table table-condensed table-bordered table-hover mt-3">
+                    <thead>
+                        <tr>
+                            <th width="10%">No</th>
+                            <th width="60%">Nama</th>
+                            <th width="30%">Nilai</th>
+                        </tr>
+                    </thead>
+                <tbody>';
+        
+        foreach ($results as $key => $value) {
+            $data .= '<tr>
+                        <td>'.++$key.'</td>
+                        <td>'.$value->name.'</td>
+                        <td>
+                        <input name="id_siswa[]" type="hidden" value="'.$value->student_id.'">
+                        <input name="nilai[]"
+                                type="number" min="0" max="100" class="form-control input-sm" value="'.$value->student_id.'"
+                                required=""></td>
+                    </tr>';
+        }
+
+        $data = '</tbody>
+            </table>';
+
+        echo json_encode($data);
+    }
+
 }

@@ -7,18 +7,18 @@ $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0'
     <div class="navbar-brand-box">
         <a href="{{ url::to('/sia/choose-app') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
+                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
             </span>
             <span class="logo-lg">
-                <img src="{{url('assets/images/logo-dark.png')}}" alt="" height="17">
+                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
             </span>
         </a>
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
+                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
             </span>
             <span class="logo-lg">
-                <img src="{{url('assets/images/logo-light.png')}}" alt="" height="17">
+                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -248,18 +248,18 @@ $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0'
     <div class="navbar-brand-box">
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
+                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{url('assets/images/logo-dark.png')}}" alt="" height="17">
+                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="17">
             </span>
         </a>
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
+                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{url('assets/images/logo-light.png')}}" alt="" height="17">
+                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="17">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
