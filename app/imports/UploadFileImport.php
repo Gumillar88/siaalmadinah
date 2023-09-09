@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\Http\Models\MasterCoursesModel;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Maatwebsite\Excel\Concerns\ToModel;
+// use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
+use Maatwebsite\Excel\Concerns\ToModel;
 
 class UploadFileImport implements ToModel
 {

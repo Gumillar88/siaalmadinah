@@ -27,11 +27,11 @@ use Session;
 use Hash;
 use DB;
 
-// use PHPExcel; 
-// use PHPExcel_IOFactory;
+use PHPExcel; 
+use PHPExcel_IOFactory;
 
 use Maatwebsite\Excel\Facades\Excel;
-// use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\ToModel;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -42,7 +42,6 @@ class EraportController extends Controller
 {
     public function __construct()
     {
-        ;
         $this->school_token             = session('school_token');
         $this->achievement              = new AchievementModel();
         $this->master_school            = new MasterSchoolModel();
@@ -102,8 +101,6 @@ class EraportController extends Controller
 
     public function uploadFileHandle(Request $request)
     {
-        $test_upload = Excel::toCollection(new UploadFileImport, $request()->file('files')); //Excel::import(new UploadFileImport, request()->file('files'));
-        dd($test_upload);
         $file = $request->file('files');
         $extension = $file->getClientOriginalExtension();
         
@@ -113,45 +110,11 @@ class EraportController extends Controller
         } elseif ($extension === 'xlsx') {
             $reader = IOFactory::createReader('Xlsx');
         }
-
-        // $source      = $request->file('file')->getRealPath();
-        // $destination = 'new_format_xlsx_file.xlsx';
-        // $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($source);
-        // $writer      = new Xlsx($spreadsheet);
-
-        $spreadsheet = $reader->load($file);        
-        // dd($spreadsheet);
+        $spreadsheet = $reader->load($file);
+        
         $worksheet = $spreadsheet->getActiveSheet();
         $data = $worksheet->toArray();
-        // dd($data);
-        $header = $data[0];
-        dd($header);
-        // dd($reader);
-        // $input = $request->all();
-        
-        // $file_excel = $_FILES;
-        // // Validate input
-        // $validator = Validator::make($input, [
-        //     'files' => 'required',
-        // ]);
-
-        // if ($validator->fails())
-        // {
-        //     return back()->withErrors($validator)->withInput();
-        // }
-        // dd($file_excel['files']['full_path']);
-        // $full_path = $file_excel['files']['full_path'];
-        // Excel::import(new UploadFileImport, $full_path);
-        // dd($file_excel['files']);
-        // dd($request->file('files')->filename);
-        // if(isset($file))
-        // {
-        //     $path   = $file_excel['files']['tmp_name'];
-            
-        //     $object = IOFactory::load($path);
-        //     dd($path);
-        // }
-        dd('error');
+        dd($data);
     }
 
     public function keterampilanRender(Request $request)

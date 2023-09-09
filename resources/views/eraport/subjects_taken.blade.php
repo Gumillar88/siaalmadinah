@@ -50,6 +50,7 @@
         </div>
     </div>
     <div class="row">
+
         @foreach($mapel as $value)
         <div class="col-xxl-4 col-lg-6">
             <div class="card card-body">
