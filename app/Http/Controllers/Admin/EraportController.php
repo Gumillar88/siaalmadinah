@@ -95,7 +95,7 @@ class EraportController extends Controller
         $course_id = $request->get('course_id');
         
         $data = $this->e_raport->getCourseClassStudentData($school_token, $course_id);
-
+        
         return response()->json($data);
     }
 

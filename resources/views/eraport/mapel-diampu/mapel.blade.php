@@ -139,7 +139,7 @@ $(document).ready(function() {
                 var html = '';
                 $.each(data, function(key, value) {
 
-                    html += '<tr><td>1</td><td>' + value.student_id +
+                    html += '<tr><td>1</td><td>' + value.name +
                         '</td><td><input name="id_siswa[]" type="hidden" value="' +
                         value.student_id +
                         '"><input name="nilai[]" type="number" min="0" max="100" class="form-control input-sm" value="' +
