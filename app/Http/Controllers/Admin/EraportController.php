@@ -89,6 +89,17 @@ class EraportController extends Controller
         return view('eraport/subjects_taken', $data); 
     }
 
+    public function getDataRender(Request $request)
+    {
+        $school_token = $request->session()->get('school_token');
+        $course_id = $request->get('course_id');
+        
+        $data = $this->e_raport->getCourseClassStudentData($school_token, $course_id);
+
+        return response()->json($data);
+    }
+
+
     public function uploadFileHandle(Request $request)
     {
         $test_upload = Excel::toCollection(new UploadFileImport, $request()->file('files')); //Excel::import(new UploadFileImport, request()->file('files'));
@@ -165,6 +176,14 @@ class EraportController extends Controller
         
         return view('eraport/mapel-diampu/mapel', $data); 
     }
+
+    public function riwayatMengajarRender()
+    {
+        $data = [];
+
+        return view('eraport/riwayat-mengajar/riwayat', $data); 
+    }
+
     public function ExtracurricularRender()
     {
         $lists = $this->master_extracurricular->getAll();
